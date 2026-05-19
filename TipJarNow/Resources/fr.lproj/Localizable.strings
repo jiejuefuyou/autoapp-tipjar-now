@@ -1,0 +1,102 @@
+/* TipJarNow — Français (fr) */
+
+/* Main / nav */
+"TipJar Now" = "TipJar Now";
+"TipJar Pro" = "TipJar Pro";
+"Pro" = "Pro";
+"Pro unlocked" = "Pro débloqué";
+
+/* ContentView */
+"Add Method" = "Ajouter un mode";
+"Remove Current" = "Supprimer le mode actuel";
+"Switch" = "Changer";
+"No payment methods yet" = "Aucun mode de paiement";
+"Add a tip method (PayPal / Venmo / 微信 / PayPay) to show its QR code on demand." = "Ajoutez un mode de pourboire (PayPal / Venmo / WeChat / PayPay) pour afficher son QR code à la demande.";
+"Add a Method" = "Ajouter un mode";
+"Free tier: 1 method. Pro: unlimited methods + Apple Watch + themes." = "Version gratuite : 1 mode. Pro : modes illimités + Apple Watch + thèmes.";
+"Unlock Pro" = "Débloquer Pro";
+
+/* MethodEditView */
+"Method" = "Mode";
+"Kind" = "Type";
+"Address / Handle" = "Adresse / Identifiant";
+"Display Name (optional)" = "Nom à afficher (facultatif)";
+"e.g. \"My Venmo\"" = "par ex. « Mon Venmo »";
+"Cancel" = "Annuler";
+"Save" = "Enregistrer";
+
+/* MethodEditView placeholders */
+"placeholder.paypal"  = "user@email.com ou paypal.me/identifiant";
+"placeholder.venmo"   = "@votre-venmo";
+"placeholder.wechat"  = "URL du QR de réception WeChat Pay";
+"placeholder.alipay"  = "URL du QR de réception Alipay";
+"placeholder.paypay"  = "Lien de réception PayPay";
+"placeholder.linepay" = "Lien de réception LINE Pay";
+"placeholder.cashapp" = "$votre-cashtag";
+"placeholder.zelle"   = "téléphone ou e-mail";
+"placeholder.revolut" = "@votre-revtag";
+"placeholder.wise"    = "wise.com/pay/me/votrenom";
+
+/* MethodEditView hints */
+"hint.paypal"  = "Saisissez votre e-mail PayPal ou paypal.me/identifiant. Le QR pointera vers votre page PayPal.";
+"hint.venmo"   = "Uniquement votre @identifiant. Le QR ouvre venmo.com/identifiant.";
+"hint.wechat"  = "Ouvrez WeChat → Moi → Paiement → Recevoir, puis enregistrez l'URL du QR. Les utilisateurs Pro peuvent téléverser l'image QR directement.";
+"hint.alipay"  = "Ouvrez Alipay → Recevoir, puis enregistrez l'URL du QR. Les utilisateurs Pro peuvent téléverser l'image QR directement.";
+"hint.paypay"  = "Ouvrez le lien de réception PayPay et copiez l'URL.";
+"hint.linepay" = "Lien de réception LINE Pay.";
+"hint.cashapp" = "Votre $cashtag (par ex. $john). Le QR ouvre cash.app/$john.";
+"hint.zelle"   = "Téléphone ou e-mail Zelle. Le QR encode un URI tel: ou mailto:.";
+"hint.revolut" = "Votre @revtag. Le QR ouvre revolut.com/pay-me/@revtag.";
+"hint.wise"    = "Votre lien pay.me Wise.";
+
+/* OnboardingView */
+"Show your QR. Get tipped." = "Montrez votre QR. Recevez votre pourboire.";
+"Open TipJar Now → tap → done. No fumbling for app, no typing addresses." = "Ouvrez TipJar Now, touchez, c'est fait. Pas besoin de chercher l'app ni de saisir d'adresse.";
+"10 payment methods." = "10 modes de paiement.";
+"PayPal, Venmo, WeChat, PayPay, LINE Pay, Cash App, Zelle and more." = "PayPal, Venmo, WeChat, PayPay, LINE Pay, Cash App, Zelle et plus encore.";
+"On your wrist. Forever." = "À votre poignet. Pour toujours.";
+"$1.99 once. Apple Watch, custom themes, lock screen widget. No subscription." = "1,99 $ une seule fois. Apple Watch, thèmes personnalisés, widget d'écran verrouillé. Sans abonnement.";
+"Get Started" = "Commencer";
+"Skip" = "Passer";
+"Skip onboarding" = "Passer l'introduction";
+
+/* PaywallView */
+"One-time purchase. No subscription. Unlock everything forever." = "Achat unique. Pas d'abonnement. Tout débloqué à vie.";
+"Unlimited tip methods" = "Modes de pourboire illimités";
+"Apple Watch QR display" = "Affichage QR sur Apple Watch";
+"Custom themes (matte / gradient / neon)" = "Thèmes personnalisés (mat / dégradé / néon)";
+"Upload your own QR image (WeChat / PayPay)" = "Téléversez votre propre image QR (WeChat / PayPay)";
+"Lock screen widget — instant QR access" = "Widget d'écran verrouillé — QR instantané";
+"Haptic feedback on tap" = "Retour haptique au toucher";
+"Restore Purchase" = "Restaurer l'achat";
+"No subscription. No data collected. Ever." = "Sans abonnement. Aucune collecte de données. Jamais.";
+"Payment will be charged to your Apple ID. This is a one-time purchase that unlocks all premium features for the lifetime of your Apple ID." = "Le paiement sera débité de votre identifiant Apple. Il s'agit d'un achat unique qui débloque toutes les fonctionnalités premium tant que votre identifiant Apple est actif.";
+"Close" = "Fermer";
+"Processing…" = "Traitement…";
+"Unlock for %@" = "Débloquer pour %@";
+
+/* SettingsView */
+"Settings" = "Réglages";
+"Premium" = "Premium";
+"Free tier" = "Version gratuite";
+"Language" = "Langue";
+"About" = "À propos";
+"Version" = "Version";
+"Build" = "Build";
+"Privacy Policy" = "Politique de confidentialité";
+"Terms of Use" = "Conditions d'utilisation";
+"No data collected. Ever." = "Aucune collecte de données. Jamais.";
+"Done" = "Terminé";
+"System default" = "Réglage du système";
+
+/* TipMethod kinds */
+"method.paypal"  = "PayPal";
+"method.venmo"   = "Venmo";
+"method.wechat"  = "WeChat Pay";
+"method.alipay"  = "Alipay";
+"method.paypay"  = "PayPay";
+"method.linepay" = "LINE Pay";
+"method.cashapp" = "Cash App";
+"method.zelle"   = "Zelle";
+"method.revolut" = "Revolut";
+"method.wise"    = "Wise";

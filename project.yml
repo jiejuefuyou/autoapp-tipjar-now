@@ -27,16 +27,37 @@ targets:
     platform: iOS
     sources:
       - path: TipJarNow
+        excludes:
+          - "Resources/en.lproj"
+          - "Resources/ja.lproj"
+          - "Resources/zh-Hans.lproj"
+          - "Resources/zh-Hant.lproj"
+          - "Resources/ko.lproj"
+          - "Resources/es.lproj"
+          - "Resources/fr.lproj"
+          - "Resources/de.lproj"
+    resources:
+      - path: TipJarNow/Resources/Assets.xcassets
+      - path: TipJarNow/Resources/en.lproj
+      - path: TipJarNow/Resources/ja.lproj
+      - path: TipJarNow/Resources/zh-Hans.lproj
+      - path: TipJarNow/Resources/zh-Hant.lproj
+      - path: TipJarNow/Resources/ko.lproj
+      - path: TipJarNow/Resources/es.lproj
+      - path: TipJarNow/Resources/fr.lproj
+      - path: TipJarNow/Resources/de.lproj
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.jiejuefuyou.tipjarnow
         PRODUCT_NAME: TipJarNow
         INFOPLIST_KEY_CFBundleDisplayName: TipJar Now
+        INFOPLIST_KEY_CFBundleLocalizations: "en ja zh-Hans zh-Hant ko es fr de"
         INFOPLIST_KEY_UILaunchScreen_Generation: "YES"
         INFOPLIST_KEY_UIApplicationSceneManifest_Generation: "YES"
         INFOPLIST_KEY_UISupportedInterfaceOrientations: "UIInterfaceOrientationPortrait"
         TARGETED_DEVICE_FAMILY: "1"
         SUPPORTS_MACCATALYST: "NO"
+        SWIFT_EMIT_LOC_STRINGS: "YES"
 schemes:
   TipJarNow:
     build:

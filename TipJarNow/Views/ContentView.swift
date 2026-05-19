@@ -4,8 +4,12 @@ import CoreImage.CIFilterBuiltins
 struct ContentView: View {
     @Environment(IAPManager.self) private var iap
     @Environment(TipJarStore.self) private var store
+    @Environment(LocalizationManager.self) private var l10n
+
+    @AppStorage("hasSeenOnboarding") private var hasSeenOnboarding: Bool = false
 
     @State private var showPaywall = false
+    @State private var showSettings = false
     @State private var addingMethod = false
     @State private var selectedMethod: TipMethod?
 
@@ -20,15 +24,22 @@ struct ContentView: View {
                     emptyState
                 }
             }
-            .navigationTitle("TipJar Now")
+            .navigationTitle(Text(LocalizedStringKey("TipJar Now")))
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    if !iap.isPremium {
+                    HStack(spacing: 12) {
                         Button {
-                            showPaywall = true
+                            showSettings = true
                         } label: {
-                            Label("Pro", systemImage: "sparkles")
-                                .font(.caption.bold())
+                            Image(systemName: "gear")
+                        }
+                        if !iap.isPremium {
+                            Button {
+                                showPaywall = true
+                            } label: {
+                                Label(LocalizedStringKey("Pro"), systemImage: "sparkles")
+                                    .font(.caption.bold())
+                            }
                         }
                     }
                 }
@@ -37,16 +48,16 @@ struct ContentView: View {
                         Button {
                             handleAddMethod()
                         } label: {
-                            Label("Add Method", systemImage: "plus")
+                            Label(LocalizedStringKey("Add Method"), systemImage: "plus")
                         }
                         if let m = currentMethod {
                             Button(role: .destructive) {
                                 store.remove(m)
                             } label: {
-                                Label("Remove Current", systemImage: "trash")
+                                Label(LocalizedStringKey("Remove Current"), systemImage: "trash")
                             }
                         }
-                        Section("Switch") {
+                        Section(LocalizedStringKey("Switch")) {
                             ForEach(store.methods) { m in
                                 Button {
                                     selectedMethod = m
@@ -60,14 +71,39 @@ struct ContentView: View {
                     }
                 }
             }
+            // CRITICAL: SwiftUI sheet/fullScreenCover attaches modal to scene
+            // presentation host, NOT to ContentView's view tree. The .id on
+            // TipJarNowApp.swift only rebuilds ContentView itself — modal
+            // content stays stale on language change. Force rebuild per-modal.
             .sheet(isPresented: $showPaywall) {
                 PaywallView()
+                    .environment(l10n)
+                    .environment(\.locale, l10n.currentLocale)
+                    .id(l10n.override)
+            }
+            .sheet(isPresented: $showSettings) {
+                SettingsView()
+                    .environment(l10n)
+                    .environment(\.locale, l10n.currentLocale)
+                    .id(l10n.override)
             }
             .sheet(isPresented: $addingMethod) {
                 MethodEditView { newMethod in
                     store.add(newMethod)
                     selectedMethod = newMethod
                 }
+                .environment(l10n)
+                .environment(\.locale, l10n.currentLocale)
+                .id(l10n.override)
+            }
+            .fullScreenCover(isPresented: Binding(
+                get: { !hasSeenOnboarding },
+                set: { _ in /* OnboardingView writes hasSeenOnboarding directly */ }
+            )) {
+                OnboardingView(hasSeenOnboarding: $hasSeenOnboarding)
+                    .environment(l10n)
+                    .environment(\.locale, l10n.currentLocale)
+                    .id(l10n.override)
             }
         }
     }
@@ -84,13 +120,13 @@ struct ContentView: View {
             Image(systemName: "qrcode")
                 .font(.system(size: 56))
                 .foregroundStyle(.tint)
-            Text("No payment methods yet")
+            Text(LocalizedStringKey("No payment methods yet"))
                 .font(.headline)
-            Text("Add a tip method (PayPal / Venmo / 微信 / PayPay) to show its QR code on demand.")
+            Text(LocalizedStringKey("Add a tip method (PayPal / Venmo / 微信 / PayPay) to show its QR code on demand."))
                 .multilineTextAlignment(.center)
                 .foregroundStyle(.secondary)
                 .padding(.horizontal)
-            Button("Add a Method") {
+            Button(LocalizedStringKey("Add a Method")) {
                 handleAddMethod()
             }
             .buttonStyle(.borderedProminent)
@@ -137,11 +173,11 @@ struct ContentView: View {
 
     private var proHint: some View {
         VStack(spacing: 8) {
-            Text("Free tier: 1 method. Pro: unlimited methods + Apple Watch + themes.")
+            Text(LocalizedStringKey("Free tier: 1 method. Pro: unlimited methods + Apple Watch + themes."))
                 .font(.footnote)
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)
-            Button("Unlock Pro") {
+            Button(LocalizedStringKey("Unlock Pro")) {
                 showPaywall = true
             }
             .font(.footnote.weight(.semibold))

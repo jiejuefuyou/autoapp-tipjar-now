@@ -1,0 +1,102 @@
+/* TipJarNow — 繁體中文 (zh-Hant) */
+
+/* Main / nav */
+"TipJar Now" = "TipJar Now";
+"TipJar Pro" = "TipJar Pro";
+"Pro" = "Pro";
+"Pro unlocked" = "Pro 已解鎖";
+
+/* ContentView */
+"Add Method" = "新增收款方式";
+"Remove Current" = "移除目前方式";
+"Switch" = "切換";
+"No payment methods yet" = "尚未新增任何收款方式";
+"Add a tip method (PayPal / Venmo / 微信 / PayPay) to show its QR code on demand." = "新增一種收款方式 (PayPal / Venmo / 微信 / PayPay),隨時叫出 QR 碼。";
+"Add a Method" = "新增方式";
+"Free tier: 1 method. Pro: unlimited methods + Apple Watch + themes." = "免費版:1 種方式。Pro:方式數量不限 + Apple Watch + 主題。";
+"Unlock Pro" = "解鎖 Pro";
+
+/* MethodEditView */
+"Method" = "收款方式";
+"Kind" = "類型";
+"Address / Handle" = "地址 / 帳號";
+"Display Name (optional)" = "顯示名稱 (選填)";
+"e.g. \"My Venmo\"" = "例如:「我的 Venmo」";
+"Cancel" = "取消";
+"Save" = "儲存";
+
+/* MethodEditView placeholders */
+"placeholder.paypal"  = "user@email.com 或 paypal.me/帳號";
+"placeholder.venmo"   = "@你的 Venmo";
+"placeholder.wechat"  = "微信收款 QR 碼網址";
+"placeholder.alipay"  = "支付寶收款 QR 碼網址";
+"placeholder.paypay"  = "PayPay 收款連結";
+"placeholder.linepay" = "LINE Pay 收款連結";
+"placeholder.cashapp" = "$你的 cashtag";
+"placeholder.zelle"   = "電話或電子郵件";
+"placeholder.revolut" = "@你的 revtag";
+"placeholder.wise"    = "wise.com/pay/me/你的名字";
+
+/* MethodEditView hints */
+"hint.paypal"  = "輸入你的 PayPal 電子郵件或 paypal.me/帳號。QR 碼會連到 PayPal 收款頁。";
+"hint.venmo"   = "只需要 @帳號。QR 碼會開啟 venmo.com/帳號。";
+"hint.wechat"  = "在微信開啟「我」→「服務」→「收付款」→「二維碼收款」,儲存 QR 連結。Pro 使用者可以直接上傳 QR 圖片。";
+"hint.alipay"  = "在支付寶開啟「收錢」→「儲存收款碼」,儲存連結。Pro 使用者可以直接上傳 QR 圖片。";
+"hint.paypay"  = "開啟 PayPay 收款連結,複製網址。";
+"hint.linepay" = "LINE Pay 收款連結。";
+"hint.cashapp" = "你的 $cashtag (例如 $john)。QR 碼會開啟 cash.app/$john。";
+"hint.zelle"   = "Zelle 電話或電子郵件。QR 碼會編碼為 tel: 或 mailto: 連結。";
+"hint.revolut" = "你的 @revtag。QR 碼會開啟 revolut.com/pay-me/@revtag。";
+"hint.wise"    = "你的 Wise pay.me 連結。";
+
+/* OnboardingView */
+"Show your QR. Get tipped." = "亮出 QR 碼,收到小費。";
+"Open TipJar Now → tap → done. No fumbling for app, no typing addresses." = "開啟 TipJar Now,輕點一下,完成。不用翻找 App,也不用輸入地址。";
+"10 payment methods." = "10 種收款方式。";
+"PayPal, Venmo, WeChat, PayPay, LINE Pay, Cash App, Zelle and more." = "PayPal、Venmo、微信、PayPay、LINE Pay、Cash App、Zelle 等多種方式。";
+"On your wrist. Forever." = "戴在你的手腕上,永久使用。";
+"$1.99 once. Apple Watch, custom themes, lock screen widget. No subscription." = "$1.99 一次買斷。支援 Apple Watch、自訂主題、鎖定畫面小工具。不訂閱。";
+"Get Started" = "開始使用";
+"Skip" = "略過";
+"Skip onboarding" = "略過引導";
+
+/* PaywallView */
+"One-time purchase. No subscription. Unlock everything forever." = "一次性買斷,不訂閱,永久解鎖全部功能。";
+"Unlimited tip methods" = "收款方式不限數量";
+"Apple Watch QR display" = "Apple Watch QR 碼顯示";
+"Custom themes (matte / gradient / neon)" = "自訂主題 (霧面 / 漸層 / 霓虹)";
+"Upload your own QR image (WeChat / PayPay)" = "上傳你自己的 QR 圖片 (微信 / PayPay)";
+"Lock screen widget — instant QR access" = "鎖定畫面小工具 — 一鍵叫出 QR 碼";
+"Haptic feedback on tap" = "點按時觸覺回饋";
+"Restore Purchase" = "回復購買項目";
+"No subscription. No data collected. Ever." = "不訂閱,不收集任何資料,絕對不會。";
+"Payment will be charged to your Apple ID. This is a one-time purchase that unlocks all premium features for the lifetime of your Apple ID." = "費用將從你的 Apple ID 扣款。一次性買斷,在 Apple ID 有效期內永久解鎖全部進階功能。";
+"Close" = "關閉";
+"Processing…" = "處理中…";
+"Unlock for %@" = "%@ 解鎖";
+
+/* SettingsView */
+"Settings" = "設定";
+"Premium" = "進階版";
+"Free tier" = "免費版";
+"Language" = "語言";
+"About" = "關於";
+"Version" = "版本";
+"Build" = "建置";
+"Privacy Policy" = "隱私權政策";
+"Terms of Use" = "使用條款";
+"No data collected. Ever." = "絕對不收集任何資料。";
+"Done" = "完成";
+"System default" = "跟隨系統";
+
+/* TipMethod kinds */
+"method.paypal"  = "PayPal";
+"method.venmo"   = "Venmo";
+"method.wechat"  = "微信支付";
+"method.alipay"  = "支付寶";
+"method.paypay"  = "PayPay";
+"method.linepay" = "LINE Pay";
+"method.cashapp" = "Cash App";
+"method.zelle"   = "Zelle";
+"method.revolut" = "Revolut";
+"method.wise"    = "Wise";

@@ -9,8 +9,8 @@ struct OnboardingView: View {
             screen(
                 index: 0,
                 icon: "qrcode",
-                title: "Show your QR. Get tipped.",
-                subtitle: "Open TipJar Now → tap → done. No fumbling for app, no typing addresses.",
+                titleKey: LocalizedStringKey("Show your QR. Get tipped."),
+                subtitleKey: LocalizedStringKey("Open TipJar Now → tap → done. No fumbling for app, no typing addresses."),
                 color: .accentColor
             )
             .tag(0)
@@ -18,8 +18,8 @@ struct OnboardingView: View {
             screen(
                 index: 1,
                 icon: "globe",
-                title: "10 payment methods.",
-                subtitle: "PayPal, Venmo, WeChat, PayPay, LINE Pay, Cash App, Zelle and more.",
+                titleKey: LocalizedStringKey("10 payment methods."),
+                subtitleKey: LocalizedStringKey("PayPal, Venmo, WeChat, PayPay, LINE Pay, Cash App, Zelle and more."),
                 color: .blue
             )
             .tag(1)
@@ -27,8 +27,8 @@ struct OnboardingView: View {
             screen(
                 index: 2,
                 icon: "applewatch",
-                title: "On your wrist. Forever.",
-                subtitle: "$1.99 once. Apple Watch, custom themes, lock screen widget. No subscription.",
+                titleKey: LocalizedStringKey("On your wrist. Forever."),
+                subtitleKey: LocalizedStringKey("$1.99 once. Apple Watch, custom themes, lock screen widget. No subscription."),
                 color: .green,
                 showCTA: true
             )
@@ -37,13 +37,31 @@ struct OnboardingView: View {
         .tabViewStyle(.page)
         .indexViewStyle(.page(backgroundDisplayMode: .always))
         .ignoresSafeArea()
+        .overlay(alignment: .topTrailing) {
+            // Skip button — Apple HIG mandates ≥44×44pt hit target.
+            // Per CLAUDE.md lesson #15e: 16pt font + padding(.vertical, 14) +
+            // explicit frame(minWidth: 60, minHeight: 44) + contentShape.
+            Button {
+                hasSeenOnboarding = true
+            } label: {
+                Text(LocalizedStringKey("Skip"))
+                    .font(.body.weight(.medium))
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 14)
+                    .frame(minWidth: 60, minHeight: 44)
+                    .contentShape(Rectangle())
+            }
+            .padding(.top, 50)
+            .padding(.trailing, 16)
+            .accessibilityLabel(Text(LocalizedStringKey("Skip onboarding")))
+        }
     }
 
     private func screen(
         index: Int,
         icon: String,
-        title: String,
-        subtitle: String,
+        titleKey: LocalizedStringKey,
+        subtitleKey: LocalizedStringKey,
         color: Color,
         showCTA: Bool = false
     ) -> some View {
@@ -52,11 +70,11 @@ struct OnboardingView: View {
             Image(systemName: icon)
                 .font(.system(size: 80))
                 .foregroundStyle(color)
-            Text(title)
+            Text(titleKey)
                 .font(.largeTitle.bold())
                 .multilineTextAlignment(.center)
                 .padding(.horizontal)
-            Text(subtitle)
+            Text(subtitleKey)
                 .font(.body)
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)
@@ -66,7 +84,7 @@ struct OnboardingView: View {
                 Button {
                     hasSeenOnboarding = true
                 } label: {
-                    Text("Get Started")
+                    Text(LocalizedStringKey("Get Started"))
                         .font(.headline)
                         .frame(maxWidth: .infinity)
                         .padding()

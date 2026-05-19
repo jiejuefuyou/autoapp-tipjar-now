@@ -1,0 +1,102 @@
+/* TipJarNow — 한국어 (ko) */
+
+/* Main / nav */
+"TipJar Now" = "TipJar Now";
+"TipJar Pro" = "TipJar Pro";
+"Pro" = "Pro";
+"Pro unlocked" = "Pro 잠금 해제됨";
+
+/* ContentView */
+"Add Method" = "결제 수단 추가";
+"Remove Current" = "현재 수단 삭제";
+"Switch" = "전환";
+"No payment methods yet" = "아직 결제 수단이 없습니다";
+"Add a tip method (PayPal / Venmo / 微信 / PayPay) to show its QR code on demand." = "팁 결제 수단 (PayPal / Venmo / WeChat / PayPay)을 추가하면 언제든 QR 코드를 표시할 수 있어요.";
+"Add a Method" = "수단 추가";
+"Free tier: 1 method. Pro: unlimited methods + Apple Watch + themes." = "무료: 수단 1개. Pro: 수단 무제한 + Apple Watch + 테마.";
+"Unlock Pro" = "Pro 잠금 해제";
+
+/* MethodEditView */
+"Method" = "결제 수단";
+"Kind" = "종류";
+"Address / Handle" = "주소 / 아이디";
+"Display Name (optional)" = "표시 이름 (선택)";
+"e.g. \"My Venmo\"" = "예: '내 Venmo'";
+"Cancel" = "취소";
+"Save" = "저장";
+
+/* MethodEditView placeholders */
+"placeholder.paypal"  = "user@email.com 또는 paypal.me/아이디";
+"placeholder.venmo"   = "@당신의 Venmo";
+"placeholder.wechat"  = "WeChat Pay 수취 QR URL";
+"placeholder.alipay"  = "Alipay 수취 QR URL";
+"placeholder.paypay"  = "PayPay 수취 링크";
+"placeholder.linepay" = "LINE Pay 수취 링크";
+"placeholder.cashapp" = "$당신의 cashtag";
+"placeholder.zelle"   = "전화번호 또는 이메일";
+"placeholder.revolut" = "@당신의 revtag";
+"placeholder.wise"    = "wise.com/pay/me/당신의이름";
+
+/* MethodEditView hints */
+"hint.paypal"  = "PayPal 이메일 또는 paypal.me/아이디를 입력하세요. QR 코드는 PayPal 페이지로 연결됩니다.";
+"hint.venmo"   = "@아이디만 입력하세요. QR 코드는 venmo.com/아이디로 연결됩니다.";
+"hint.wechat"  = "WeChat에서 '나' → '서비스' → '결제' → '수취 QR'을 열고 QR URL을 저장하세요. Pro 사용자는 QR 이미지를 직접 업로드할 수 있어요.";
+"hint.alipay"  = "Alipay에서 '돈 받기'를 열고 QR URL을 저장하세요. Pro 사용자는 QR 이미지를 직접 업로드할 수 있어요.";
+"hint.paypay"  = "PayPay 수취 링크를 열어 URL을 복사하세요.";
+"hint.linepay" = "LINE Pay 수취 링크입니다.";
+"hint.cashapp" = "$cashtag (예: $john). QR 코드는 cash.app/$john로 연결됩니다.";
+"hint.zelle"   = "Zelle 전화번호 또는 이메일. QR은 tel: 또는 mailto: URI로 인코딩됩니다.";
+"hint.revolut" = "@revtag. QR 코드는 revolut.com/pay-me/@revtag로 연결됩니다.";
+"hint.wise"    = "Wise pay.me 링크입니다.";
+
+/* OnboardingView */
+"Show your QR. Get tipped." = "QR을 보여주고 팁을 받으세요.";
+"Open TipJar Now → tap → done. No fumbling for app, no typing addresses." = "TipJar Now를 열고 탭하면 끝. 앱을 뒤지거나 주소를 입력할 필요가 없어요.";
+"10 payment methods." = "10가지 결제 수단.";
+"PayPal, Venmo, WeChat, PayPay, LINE Pay, Cash App, Zelle and more." = "PayPal, Venmo, WeChat, PayPay, LINE Pay, Cash App, Zelle 외 다수.";
+"On your wrist. Forever." = "당신의 손목에, 영원히.";
+"$1.99 once. Apple Watch, custom themes, lock screen widget. No subscription." = "$1.99 한 번 결제. Apple Watch, 맞춤 테마, 잠금 화면 위젯 포함. 구독 없음.";
+"Get Started" = "시작하기";
+"Skip" = "건너뛰기";
+"Skip onboarding" = "온보딩 건너뛰기";
+
+/* PaywallView */
+"One-time purchase. No subscription. Unlock everything forever." = "일회 구매. 구독 없음. 모든 기능을 영원히 잠금 해제합니다.";
+"Unlimited tip methods" = "결제 수단 무제한";
+"Apple Watch QR display" = "Apple Watch QR 표시";
+"Custom themes (matte / gradient / neon)" = "맞춤 테마 (매트 / 그라데이션 / 네온)";
+"Upload your own QR image (WeChat / PayPay)" = "내 QR 이미지 업로드 (WeChat / PayPay)";
+"Lock screen widget — instant QR access" = "잠금 화면 위젯 — 즉시 QR 접근";
+"Haptic feedback on tap" = "탭할 때 햅틱 피드백";
+"Restore Purchase" = "구매 복원";
+"No subscription. No data collected. Ever." = "구독 없음. 데이터 수집 일절 없음.";
+"Payment will be charged to your Apple ID. This is a one-time purchase that unlocks all premium features for the lifetime of your Apple ID." = "결제는 Apple ID로 청구됩니다. 일회 구매이며, Apple ID가 유효한 동안 모든 프리미엄 기능을 영구히 사용할 수 있습니다.";
+"Close" = "닫기";
+"Processing…" = "처리 중…";
+"Unlock for %@" = "%@에 잠금 해제";
+
+/* SettingsView */
+"Settings" = "설정";
+"Premium" = "프리미엄";
+"Free tier" = "무료";
+"Language" = "언어";
+"About" = "정보";
+"Version" = "버전";
+"Build" = "빌드";
+"Privacy Policy" = "개인정보 처리방침";
+"Terms of Use" = "이용 약관";
+"No data collected. Ever." = "데이터를 일절 수집하지 않습니다.";
+"Done" = "완료";
+"System default" = "시스템 기본값";
+
+/* TipMethod kinds */
+"method.paypal"  = "PayPal";
+"method.venmo"   = "Venmo";
+"method.wechat"  = "WeChat Pay";
+"method.alipay"  = "Alipay";
+"method.paypay"  = "PayPay";
+"method.linepay" = "LINE Pay";
+"method.cashapp" = "Cash App";
+"method.zelle"   = "Zelle";
+"method.revolut" = "Revolut";
+"method.wise"    = "Wise";

@@ -14,18 +14,22 @@ enum TipMethodKind: String, Codable, CaseIterable, Identifiable {
 
     var id: String { rawValue }
 
+    /// Display name rendered via the app's localized bundle. Brand names
+    /// (PayPal, Venmo, etc.) are largely identical across locales, but we
+    /// route through `String(localized:)` so any locale-specific romanization
+    /// (e.g. zh-Hans "微信支付" vs. zh-Hant "微信支付") flows through .lproj.
     var displayName: String {
         switch self {
-        case .paypal:  return "PayPal"
-        case .venmo:   return "Venmo"
-        case .wechat:  return "微信支付 (WeChat Pay)"
-        case .alipay:  return "支付宝 (Alipay)"
-        case .paypay:  return "PayPay (JP)"
-        case .linePay: return "LINE Pay"
-        case .cashApp: return "Cash App"
-        case .zelle:   return "Zelle"
-        case .revolut: return "Revolut"
-        case .wise:    return "Wise"
+        case .paypal:  return String(localized: "method.paypal")
+        case .venmo:   return String(localized: "method.venmo")
+        case .wechat:  return String(localized: "method.wechat")
+        case .alipay:  return String(localized: "method.alipay")
+        case .paypay:  return String(localized: "method.paypay")
+        case .linePay: return String(localized: "method.linepay")
+        case .cashApp: return String(localized: "method.cashapp")
+        case .zelle:   return String(localized: "method.zelle")
+        case .revolut: return String(localized: "method.revolut")
+        case .wise:    return String(localized: "method.wise")
         }
     }
 
