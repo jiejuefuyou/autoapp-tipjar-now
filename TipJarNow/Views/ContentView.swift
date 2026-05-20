@@ -1,5 +1,6 @@
 import SwiftUI
 import CoreImage.CIFilterBuiltins
+import UIKit
 
 struct ContentView: View {
     @Environment(IAPManager.self) private var iap
@@ -12,17 +13,21 @@ struct ContentView: View {
     @State private var showSettings = false
     @State private var addingMethod = false
     @State private var selectedMethod: TipMethod?
+    @State private var showCopiedToast = false
 
     var body: some View {
         NavigationStack {
-            Group {
-                if store.methods.isEmpty {
-                    emptyState
-                } else if let method = currentMethod {
-                    qrCardView(for: method)
-                } else {
-                    emptyState
+            ZStack {
+                Group {
+                    if store.methods.isEmpty {
+                        emptyState
+                    } else if let method = currentMethod {
+                        qrCardView(for: method)
+                    } else {
+                        emptyState
+                    }
                 }
+                copiedToast
             }
             .navigationTitle(Text(LocalizedStringKey("TipJar Now")))
             .toolbar {
@@ -137,14 +142,8 @@ struct ContentView: View {
 
     @ViewBuilder
     private func qrCardView(for method: TipMethod) -> some View {
-        VStack(spacing: 24) {
-            VStack(spacing: 8) {
-                Image(systemName: method.kind.symbol)
-                    .font(.system(size: 40))
-                    .foregroundStyle(.tint)
-                Text(method.displayName ?? method.kind.displayName)
-                    .font(.title2.bold())
-            }
+        VStack(spacing: 20) {
+            heroCard(for: method)
 
             qrImage(for: method)
                 .resizable()
@@ -164,11 +163,119 @@ struct ContentView: View {
                 .truncationMode(.middle)
                 .padding(.horizontal)
 
+            actionButtonsRow(for: method)
+
             if !iap.isPremium && store.methods.count >= TipJarStore.freeMethodLimit {
                 proHint
             }
         }
         .padding()
+    }
+
+    /// Hero card — large styled header with brand-color top stripe, big SF
+    /// Symbol, method name, and "Send a tip" subtitle. Concept-driven, high
+    /// contrast vs body so it reads at-a-glance when the QR is on screen.
+    @ViewBuilder
+    private func heroCard(for method: TipMethod) -> some View {
+        let brand = method.kind.brandColor
+        VStack(spacing: 0) {
+            // Brand color stripe — top edge
+            Rectangle()
+                .fill(LinearGradient(
+                    colors: [brand, brand.opacity(0.7)],
+                    startPoint: .leading,
+                    endPoint: .trailing
+                ))
+                .frame(height: 6)
+
+            VStack(spacing: 6) {
+                Image(systemName: method.kind.symbol)
+                    .font(.system(size: 44, weight: .semibold))
+                    .foregroundStyle(brand)
+                    .padding(.top, 12)
+
+                Text(method.displayName ?? method.kind.displayName)
+                    .font(.largeTitle.bold())
+                    .foregroundStyle(.primary)
+
+                Text(LocalizedStringKey("Send a tip"))
+                    .font(.title3)
+                    .foregroundStyle(.secondary)
+                    .padding(.bottom, 12)
+            }
+            .frame(maxWidth: .infinity)
+        }
+        .background(
+            RoundedRectangle(cornerRadius: 16)
+                .fill(Color(.secondarySystemBackground))
+        )
+        .clipShape(RoundedRectangle(cornerRadius: 16))
+        .overlay(
+            RoundedRectangle(cornerRadius: 16)
+                .strokeBorder(.quaternary, lineWidth: 1)
+        )
+    }
+
+    /// Row of Copy + Share buttons under the QR. Native iOS feel — copy gives
+    /// haptic + toast feedback, share uses ShareLink (iOS 16+) for the system
+    /// sheet so the user can hand the link to any installed messaging app.
+    @ViewBuilder
+    private func actionButtonsRow(for method: TipMethod) -> some View {
+        let link = method.paymentURL?.absoluteString ?? method.addressOrLink
+        HStack(spacing: 12) {
+            Button {
+                copyLink(link)
+            } label: {
+                Label(LocalizedStringKey("Copy Link"), systemImage: "doc.on.doc")
+                    .font(.subheadline.weight(.semibold))
+                    .frame(maxWidth: .infinity, minHeight: 44)
+            }
+            .buttonStyle(.bordered)
+
+            ShareLink(item: link) {
+                Label(LocalizedStringKey("Share"), systemImage: "square.and.arrow.up")
+                    .font(.subheadline.weight(.semibold))
+                    .frame(maxWidth: .infinity, minHeight: 44)
+            }
+            .buttonStyle(.borderedProminent)
+            .simultaneousGesture(TapGesture().onEnded {
+                UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+            })
+        }
+        .padding(.horizontal)
+    }
+
+    private func copyLink(_ link: String) {
+        UIPasteboard.general.string = link
+        UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+        withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
+            showCopiedToast = true
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            withAnimation(.easeOut(duration: 0.25)) {
+                showCopiedToast = false
+            }
+        }
+    }
+
+    /// Toast overlay — slides in from the top, auto-dismisses after 1.5s.
+    @ViewBuilder
+    private var copiedToast: some View {
+        VStack {
+            if showCopiedToast {
+                Label(LocalizedStringKey("Copied"), systemImage: "checkmark.circle.fill")
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(.white)
+                    .padding(.horizontal, 18)
+                    .padding(.vertical, 10)
+                    .background(.tint, in: Capsule())
+                    .shadow(color: .black.opacity(0.18), radius: 8, y: 4)
+                    .transition(.move(edge: .top).combined(with: .opacity))
+                    .padding(.top, 8)
+            }
+            Spacer()
+        }
+        .allowsHitTesting(false)
     }
 
     private var proHint: some View {
@@ -196,6 +303,31 @@ struct ContentView: View {
             return
         }
         addingMethod = true
+    }
+}
+
+// MARK: - Brand colors per payment method
+//
+// Hero card displays a subtle accent stripe + icon tint in each provider's
+// brand color. Colors approximate the published brand palette but stay
+// readable on both light + dark backgrounds. Not used for marketing — just
+// visual differentiation so user can scan-recognize WeChat vs PayPal vs
+// Venmo on the hero card at a glance.
+
+extension TipMethodKind {
+    var brandColor: Color {
+        switch self {
+        case .paypal:  return Color(red: 0.00, green: 0.27, blue: 0.55)  // PayPal blue
+        case .venmo:   return Color(red: 0.05, green: 0.46, blue: 0.95)  // Venmo blue
+        case .wechat:  return Color(red: 0.04, green: 0.78, blue: 0.30)  // WeChat green
+        case .alipay:  return Color(red: 0.10, green: 0.59, blue: 0.93)  // Alipay blue
+        case .paypay:  return Color(red: 0.93, green: 0.10, blue: 0.10)  // PayPay red
+        case .linePay: return Color(red: 0.00, green: 0.78, blue: 0.00)  // LINE green
+        case .cashApp: return Color(red: 0.00, green: 0.81, blue: 0.40)  // Cash App green
+        case .zelle:   return Color(red: 0.43, green: 0.20, blue: 0.69)  // Zelle purple
+        case .revolut: return Color(red: 0.00, green: 0.00, blue: 0.00)  // Revolut black
+        case .wise:    return Color(red: 0.61, green: 0.97, blue: 0.36)  // Wise green
+        }
     }
 }
 

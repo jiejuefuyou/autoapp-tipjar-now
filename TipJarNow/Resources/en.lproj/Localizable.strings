@@ -89,6 +89,12 @@
 "Done" = "Done";
 "System default" = "System default";
 
+/* ContentView v1.0.x — hero card + copy/share actions */
+"Send a tip" = "Send a tip";
+"Copy Link" = "Copy Link";
+"Share" = "Share";
+"Copied" = "Copied";
+
 /* TipMethod kinds */
 "method.paypal"  = "PayPal";
 "method.venmo"   = "Venmo";

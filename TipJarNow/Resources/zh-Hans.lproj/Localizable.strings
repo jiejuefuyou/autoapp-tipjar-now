@@ -89,6 +89,12 @@
 "Done" = "完成";
 "System default" = "跟随系统";
 
+/* ContentView v1.0.x — hero card + copy/share actions */
+"Send a tip" = "打赏";
+"Copy Link" = "复制链接";
+"Share" = "分享";
+"Copied" = "已复制";
+
 /* TipMethod kinds */
 "method.paypal"  = "PayPal";
 "method.venmo"   = "Venmo";

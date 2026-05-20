@@ -89,6 +89,12 @@
 "Done" = "完了";
 "System default" = "システムのデフォルト";
 
+/* ContentView v1.0.x — hero card + copy/share actions */
+"Send a tip" = "チップを送る";
+"Copy Link" = "リンクをコピー";
+"Share" = "共有";
+"Copied" = "コピーしました";
+
 /* TipMethod kinds */
 "method.paypal"  = "PayPal";
 "method.venmo"   = "Venmo";

@@ -89,6 +89,12 @@
 "Done" = "완료";
 "System default" = "시스템 기본값";
 
+/* ContentView v1.0.x — hero card + copy/share actions */
+"Send a tip" = "팁 보내기";
+"Copy Link" = "링크 복사";
+"Share" = "공유";
+"Copied" = "복사됨";
+
 /* TipMethod kinds */
 "method.paypal"  = "PayPal";
 "method.venmo"   = "Venmo";

@@ -89,6 +89,12 @@
 "Done" = "Terminé";
 "System default" = "Réglage du système";
 
+/* ContentView v1.0.x — hero card + copy/share actions */
+"Send a tip" = "Envoyer un pourboire";
+"Copy Link" = "Copier le lien";
+"Share" = "Partager";
+"Copied" = "Copié";
+
 /* TipMethod kinds */
 "method.paypal"  = "PayPal";
 "method.venmo"   = "Venmo";
