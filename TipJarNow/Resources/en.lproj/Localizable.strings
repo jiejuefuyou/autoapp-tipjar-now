@@ -106,3 +106,21 @@
 "method.zelle"   = "Zelle";
 "method.revolut" = "Revolut";
 "method.wise"    = "Wise";
+
+/* v1.0.1 — paywall loading fallback (Apple 2.1(b) fix, lesson #5) */
+"Loading products…" = "Loading products…";
+"Products are temporarily unavailable. You can continue using TipJar Now for free, or try again later." = "Products are temporarily unavailable. You can continue using TipJar Now for free, or try again later.";
+"Try again" = "Try again";
+"Continue without subscription" = "Continue without subscription";
+
+/* v1.0.1 — purchase result surface (Apple 2.1(b) fix, lesson #5) */
+"OK" = "OK";
+"Purchase failed" = "Purchase failed";
+"Purchase canceled." = "Purchase canceled.";
+"Purchase pending" = "Purchase pending";
+"Purchase pending. We'll complete it shortly." = "Purchase pending. We'll complete it shortly.";
+"Product unavailable. Please try again later." = "Product unavailable. Please try again later.";
+"Purchase verification failed. Please contact support." = "Purchase verification failed. Please contact support.";
+"Unknown purchase result. Please try again." = "Unknown purchase result. Please try again.";
+"Restores a previous purchase" = "Restores a previous purchase";
+"Purchase TipJar Pro for %@" = "Purchase TipJar Pro for %@";

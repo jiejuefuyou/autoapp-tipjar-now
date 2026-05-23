@@ -106,3 +106,21 @@
 "method.zelle"   = "Zelle";
 "method.revolut" = "Revolut";
 "method.wise"    = "Wise";
+
+/* v1.0.1 — paywall loading fallback (Apple 2.1(b) fix, lesson #5) */
+"Loading products…" = "正在載入產品…";
+"Products are temporarily unavailable. You can continue using TipJar Now for free, or try again later." = "暫時無法取得產品資訊。你可以繼續免費使用 TipJar Now,稍後再試。";
+"Try again" = "重試";
+"Continue without subscription" = "不購買,繼續使用";
+
+/* v1.0.1 — purchase result surface (Apple 2.1(b) fix, lesson #5) */
+"OK" = "好";
+"Purchase failed" = "購買失敗";
+"Purchase canceled." = "已取消購買。";
+"Purchase pending" = "購買待處理";
+"Purchase pending. We'll complete it shortly." = "購買待處理,稍後將自動完成。";
+"Product unavailable. Please try again later." = "產品暫時無法使用,請稍後再試。";
+"Purchase verification failed. Please contact support." = "購買驗證失敗,請聯絡技術支援。";
+"Unknown purchase result. Please try again." = "購買結果未知,請再試一次。";
+"Restores a previous purchase" = "回復先前的購買項目";
+"Purchase TipJar Pro for %@" = "以 %@ 購買 TipJar Pro";
