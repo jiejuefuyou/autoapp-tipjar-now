@@ -46,13 +46,13 @@ struct OnboardingView: View {
             } label: {
                 Text(LocalizedStringKey("Skip"))
                     .font(.body.weight(.medium))
-                    .padding(.horizontal, 16)
-                    .padding(.vertical, 14)
+                    .padding(.horizontal, Spacing.md)
+                    .padding(.vertical, 14)   // 14 = HIG-tuned skip vertical (≥44pt hit target)
                     .frame(minWidth: 60, minHeight: 44)
                     .contentShape(Rectangle())
             }
-            .padding(.top, 50)
-            .padding(.trailing, 16)
+            .padding(.top, 50)   // 50 = safe-area top offset for notch; geometry-bound
+            .padding(.trailing, Spacing.md)
             .accessibilityLabel(Text(LocalizedStringKey("Skip onboarding")))
         }
     }
@@ -65,8 +65,9 @@ struct OnboardingView: View {
         color: Color,
         showCTA: Bool = false
     ) -> some View {
-        VStack(spacing: 32) {
+        VStack(spacing: Spacing.xl) {
             Spacer()
+            // Hero glyph — fixed 80pt weight intentional (not Dynamic Type).
             Image(systemName: icon)
                 .font(.system(size: 80))
                 .foregroundStyle(color)
@@ -78,21 +79,21 @@ struct OnboardingView: View {
                 .font(.body)
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)
-                .padding(.horizontal, 32)
+                .padding(.horizontal, Spacing.xl)
             Spacer()
             if showCTA {
                 Button {
                     hasSeenOnboarding = true
                 } label: {
                     Text(LocalizedStringKey("Get Started"))
-                        .font(.headline)
+                        .font(Typography.bodyEmphasis)
                         .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(color, in: RoundedRectangle(cornerRadius: 16))
+                        .padding(Spacing.md)
+                        .background(color, in: RoundedRectangle(cornerRadius: Radius.md))
                         .foregroundStyle(.white)
                 }
                 .padding(.horizontal)
-                .padding(.bottom, 32)
+                .padding(.bottom, Spacing.xl)
             } else {
                 Spacer().frame(height: 80)
             }

@@ -32,7 +32,7 @@ struct ContentView: View {
             .navigationTitle(Text(LocalizedStringKey("TipJar Now")))
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    HStack(spacing: 12) {
+                    HStack(spacing: 12) {   // 12 = toolbar spacing, matches Radius.md visual rhythm
                         Button {
                             showSettings = true
                         } label: {
@@ -121,7 +121,8 @@ struct ContentView: View {
     }
 
     private var emptyState: some View {
-        VStack(spacing: 16) {
+        VStack(spacing: Spacing.md) {
+            // Hero glyph — fixed 56pt weight intentional (not Dynamic Type).
             Image(systemName: "qrcode")
                 .font(.system(size: 56))
                 .foregroundStyle(.tint)
@@ -135,22 +136,22 @@ struct ContentView: View {
                 handleAddMethod()
             }
             .buttonStyle(.borderedProminent)
-            .padding(.top, 4)
+            .padding(.top, Spacing.xs)
         }
-        .padding()
+        .padding(Spacing.md)
     }
 
     @ViewBuilder
     private func qrCardView(for method: TipMethod) -> some View {
-        VStack(spacing: 20) {
+        VStack(spacing: 20) {   // 20 = QR card section rhythm; sits between md(16)/lg(24)
             heroCard(for: method)
 
             qrImage(for: method)
                 .resizable()
                 .interpolation(.none)
                 .frame(width: 280, height: 280)
-                .padding()
-                .background(.white, in: RoundedRectangle(cornerRadius: 24))
+                .padding(Spacing.md)
+                .background(.white, in: RoundedRectangle(cornerRadius: 24))   // 24 = QR brand card; visual depends on this size
                 .overlay(
                     RoundedRectangle(cornerRadius: 24)
                         .strokeBorder(.tertiary, lineWidth: 1)
@@ -169,7 +170,7 @@ struct ContentView: View {
                 proHint
             }
         }
-        .padding()
+        .padding(Spacing.md)
     }
 
     /// Hero card — large styled header with brand-color top stripe, big SF
@@ -189,6 +190,7 @@ struct ContentView: View {
                 .frame(height: 6)
 
             VStack(spacing: 6) {
+                // Hero glyph — fixed 44pt weight intentional (not Dynamic Type).
                 Image(systemName: method.kind.symbol)
                     .font(.system(size: 44, weight: .semibold))
                     .foregroundStyle(brand)
@@ -206,7 +208,7 @@ struct ContentView: View {
             .frame(maxWidth: .infinity)
         }
         .background(
-            RoundedRectangle(cornerRadius: 16)
+            RoundedRectangle(cornerRadius: 16)   // 16 = hero card; visual depends on this size matched 3 times (bg/clip/overlay)
                 .fill(Color(.secondarySystemBackground))
         )
         .clipShape(RoundedRectangle(cornerRadius: 16))
@@ -266,12 +268,12 @@ struct ContentView: View {
                 Label(LocalizedStringKey("Copied"), systemImage: "checkmark.circle.fill")
                     .font(.subheadline.weight(.semibold))
                     .foregroundStyle(.white)
-                    .padding(.horizontal, 18)
-                    .padding(.vertical, 10)
+                    .padding(.horizontal, 18)   // 18 = pill horizontal; sits between md(16)/lg(24) for toast emphasis
+                    .padding(.vertical, 10)     // 10 = pill vertical, between xs(4)/sm(8)
                     .background(.tint, in: Capsule())
                     .shadow(color: .black.opacity(0.18), radius: 8, y: 4)
                     .transition(.move(edge: .top).combined(with: .opacity))
-                    .padding(.top, 8)
+                    .padding(.top, Spacing.sm)
             }
             Spacer()
         }
@@ -279,7 +281,7 @@ struct ContentView: View {
     }
 
     private var proHint: some View {
-        VStack(spacing: 8) {
+        VStack(spacing: Spacing.sm) {
             Text(LocalizedStringKey("Free tier: 1 method. Pro: unlimited methods + Apple Watch + themes."))
                 .font(.footnote)
                 .foregroundStyle(.secondary)
