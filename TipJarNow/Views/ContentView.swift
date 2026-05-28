@@ -38,6 +38,7 @@ struct ContentView: View {
                         } label: {
                             Image(systemName: "gear")
                         }
+                        .accessibilityLabel(Text(LocalizedStringKey("Settings")))
                         if !iap.isPremium {
                             Button {
                                 showPaywall = true
