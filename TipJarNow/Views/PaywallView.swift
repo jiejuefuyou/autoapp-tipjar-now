@@ -27,12 +27,12 @@ struct PaywallView: View {
                         .padding(.horizontal)
 
                     VStack(alignment: .leading, spacing: 14) {
+                        // Only advertise what Pro actually unlocks. The removed rows
+                        // (Apple Watch / themes / QR upload / widget / haptics) had no
+                        // shipping code — false advertising is a 2.3.1 reject risk and
+                        // "Apple Watch" is also a 5.2.5 trademark issue. Re-add a row
+                        // only when the feature actually ships.
                         feature("infinity",                   LocalizedStringKey("Unlimited tip methods"))
-                        feature("applewatch",                 LocalizedStringKey("Apple Watch QR display"))
-                        feature("paintpalette.fill",          LocalizedStringKey("Custom themes (matte / gradient / neon)"))
-                        feature("photo",                      LocalizedStringKey("Upload your own QR image (WeChat / PayPay)"))
-                        feature("rectangle.on.rectangle",     LocalizedStringKey("Lock screen widget — instant QR access"))
-                        feature("hand.tap.fill",              LocalizedStringKey("Haptic feedback on tap"))
                     }
                     .padding()
                     .frame(maxWidth: .infinity, alignment: .leading)
