@@ -13,7 +13,7 @@
 "No payment methods yet" = "尚未添加收款方式";
 "Add a tip method (PayPal / Venmo / 微信 / PayPay) to show its QR code on demand." = "添加一种收款方式 (PayPal / Venmo / 微信 / PayPay),随时调出二维码。";
 "Add a Method" = "添加方式";
-"Free tier: 1 method. Pro: unlimited methods + Apple Watch + themes." = "免费版:1 种方式。Pro:不限方式数 + Apple Watch + 主题。";
+"Free tier: 1 method. Pro: unlimited methods + themes." = "免费版:1 种方式。Pro:不限方式数 + 主题。";
 "Unlock Pro" = "解锁 Pro";
 
 /* MethodEditView */
@@ -55,7 +55,7 @@
 "10 payment methods." = "10 种收款方式。";
 "PayPal, Venmo, WeChat, PayPay, LINE Pay, Cash App, Zelle and more." = "PayPal、Venmo、微信、PayPay、LINE Pay、Cash App、Zelle 等多种方式。";
 "On your wrist. Forever." = "戴在手腕上,永久使用。";
-"$1.99 once. Apple Watch, custom themes, lock screen widget. No subscription." = "$1.99 一次买断。支持 Apple Watch、自定义主题、锁屏小组件。不订阅。";
+"$1.99 once. Custom themes, lock screen widget, wrist access. No subscription." = "$1.99 一次买断。自定义主题、锁屏小组件、手腕快捷访问。不订阅。";
 "Get Started" = "开始使用";
 "Skip" = "跳过";
 "Skip onboarding" = "跳过引导";
@@ -63,7 +63,7 @@
 /* PaywallView */
 "One-time purchase. No subscription. Unlock everything forever." = "一次性买断,不订阅,永久解锁全部功能。";
 "Unlimited tip methods" = "收款方式不限数量";
-"Apple Watch QR display" = "Apple Watch 二维码显示";
+"Apple Watch QR display" = "手腕快捷显示二维码";
 "Custom themes (matte / gradient / neon)" = "自定义主题 (哑光 / 渐变 / 霓虹)";
 "Upload your own QR image (WeChat / PayPay)" = "上传你自己的二维码图片 (微信 / PayPay)";
 "Lock screen widget — instant QR access" = "锁屏小组件 — 一键调出二维码";

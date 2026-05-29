@@ -13,7 +13,7 @@
 "No payment methods yet" = "Aún no hay métodos de pago";
 "Add a tip method (PayPal / Venmo / 微信 / PayPay) to show its QR code on demand." = "Añade un método para propinas (PayPal / Venmo / WeChat / PayPay) y muestra su código QR cuando lo necesites.";
 "Add a Method" = "Añadir un método";
-"Free tier: 1 method. Pro: unlimited methods + Apple Watch + themes." = "Gratis: 1 método. Pro: métodos ilimitados + Apple Watch + temas.";
+"Free tier: 1 method. Pro: unlimited methods + themes." = "Gratis: 1 método. Pro: métodos ilimitados + temas.";
 "Unlock Pro" = "Desbloquear Pro";
 
 /* MethodEditView */
@@ -55,7 +55,7 @@
 "10 payment methods." = "10 métodos de pago.";
 "PayPal, Venmo, WeChat, PayPay, LINE Pay, Cash App, Zelle and more." = "PayPal, Venmo, WeChat, PayPay, LINE Pay, Cash App, Zelle y más.";
 "On your wrist. Forever." = "En tu muñeca. Para siempre.";
-"$1.99 once. Apple Watch, custom themes, lock screen widget. No subscription." = "$1,99 una sola vez. Apple Watch, temas personalizados, widget en la pantalla bloqueada. Sin suscripciones.";
+"$1.99 once. Custom themes, lock screen widget, wrist access. No subscription." = "$1,99 una sola vez. Temas personalizados, widget en pantalla bloqueada, acceso desde la muñeca. Sin suscripciones.";
 "Get Started" = "Comenzar";
 "Skip" = "Saltar";
 "Skip onboarding" = "Saltar la introducción";
@@ -63,7 +63,7 @@
 /* PaywallView */
 "One-time purchase. No subscription. Unlock everything forever." = "Compra única. Sin suscripción. Desbloquea todo para siempre.";
 "Unlimited tip methods" = "Métodos de propina ilimitados";
-"Apple Watch QR display" = "QR en Apple Watch";
+"Apple Watch QR display" = "QR en la muñeca";
 "Custom themes (matte / gradient / neon)" = "Temas personalizados (mate / degradado / neón)";
 "Upload your own QR image (WeChat / PayPay)" = "Sube tu propia imagen QR (WeChat / PayPay)";
 "Lock screen widget — instant QR access" = "Widget en la pantalla bloqueada — QR al instante";

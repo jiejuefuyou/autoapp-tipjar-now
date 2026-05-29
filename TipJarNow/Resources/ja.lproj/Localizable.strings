@@ -13,7 +13,7 @@
 "No payment methods yet" = "支払い方法がまだ登録されていません";
 "Add a tip method (PayPal / Venmo / 微信 / PayPay) to show its QR code on demand." = "支払い方法 (PayPal / Venmo / 微信 / PayPay) を登録すると、QR コードをすぐに表示できます。";
 "Add a Method" = "方法を追加";
-"Free tier: 1 method. Pro: unlimited methods + Apple Watch + themes." = "無料版: 1 方法まで。Pro: 方法無制限 + Apple Watch + テーマ。";
+"Free tier: 1 method. Pro: unlimited methods + themes." = "無料版: 1 方法まで。Pro: 方法無制限 + テーマ。";
 "Unlock Pro" = "Pro を解除";
 
 /* MethodEditView */
@@ -55,7 +55,7 @@
 "10 payment methods." = "10 種類の支払い方法。";
 "PayPal, Venmo, WeChat, PayPay, LINE Pay, Cash App, Zelle and more." = "PayPal、Venmo、微信、PayPay、LINE Pay、Cash App、Zelle など。";
 "On your wrist. Forever." = "あなたの手首に、ずっと。";
-"$1.99 once. Apple Watch, custom themes, lock screen widget. No subscription." = "$1.99 の買い切り。Apple Watch、カスタムテーマ、ロック画面ウィジェット付き。サブスクリプションなし。";
+"$1.99 once. Custom themes, lock screen widget, wrist access. No subscription." = "$1.99 の買い切り。カスタムテーマ、ロック画面ウィジェット、手首アクセス付き。サブスクリプションなし。";
 "Get Started" = "はじめる";
 "Skip" = "スキップ";
 "Skip onboarding" = "オンボーディングをスキップ";
@@ -63,7 +63,7 @@
 /* PaywallView */
 "One-time purchase. No subscription. Unlock everything forever." = "買い切り型。サブスクリプションなし。すべての機能を永久に解除。";
 "Unlimited tip methods" = "支払い方法 無制限";
-"Apple Watch QR display" = "Apple Watch で QR 表示";
+"Apple Watch QR display" = "手首で QR 表示";
 "Custom themes (matte / gradient / neon)" = "カスタムテーマ (マット / グラデーション / ネオン)";
 "Upload your own QR image (WeChat / PayPay)" = "自分の QR 画像をアップロード (微信 / PayPay)";
 "Lock screen widget — instant QR access" = "ロック画面ウィジェット — QR にすぐアクセス";

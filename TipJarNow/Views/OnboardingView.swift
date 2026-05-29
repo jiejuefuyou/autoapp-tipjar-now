@@ -28,7 +28,7 @@ struct OnboardingView: View {
                 index: 2,
                 icon: "applewatch",
                 titleKey: LocalizedStringKey("On your wrist. Forever."),
-                subtitleKey: LocalizedStringKey("$1.99 once. Apple Watch, custom themes, lock screen widget. No subscription."),
+                subtitleKey: LocalizedStringKey("$1.99 once. Custom themes, lock screen widget, wrist access. No subscription."),
                 color: .green,
                 showCTA: true
             )

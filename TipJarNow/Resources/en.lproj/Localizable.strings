@@ -13,7 +13,7 @@
 "No payment methods yet" = "No payment methods yet";
 "Add a tip method (PayPal / Venmo / 微信 / PayPay) to show its QR code on demand." = "Add a tip method (PayPal / Venmo / WeChat / PayPay) to show its QR code on demand.";
 "Add a Method" = "Add a Method";
-"Free tier: 1 method. Pro: unlimited methods + Apple Watch + themes." = "Free tier: 1 method. Pro: unlimited methods + Apple Watch + themes.";
+"Free tier: 1 method. Pro: unlimited methods + themes." = "Free tier: 1 method. Pro: unlimited methods + themes.";
 "Unlock Pro" = "Unlock Pro";
 
 /* MethodEditView */
@@ -55,7 +55,7 @@
 "10 payment methods." = "10 payment methods.";
 "PayPal, Venmo, WeChat, PayPay, LINE Pay, Cash App, Zelle and more." = "PayPal, Venmo, WeChat, PayPay, LINE Pay, Cash App, Zelle and more.";
 "On your wrist. Forever." = "On your wrist. Forever.";
-"$1.99 once. Apple Watch, custom themes, lock screen widget. No subscription." = "$1.99 once. Apple Watch, custom themes, lock screen widget. No subscription.";
+"$1.99 once. Custom themes, lock screen widget, wrist access. No subscription." = "$1.99 once. Custom themes, lock screen widget, wrist access. No subscription.";
 "Get Started" = "Get Started";
 "Skip" = "Skip";
 "Skip onboarding" = "Skip onboarding";
@@ -63,7 +63,8 @@
 /* PaywallView */
 "One-time purchase. No subscription. Unlock everything forever." = "One-time purchase. No subscription. Unlock everything forever.";
 "Unlimited tip methods" = "Unlimited tip methods";
-"Apple Watch QR display" = "Apple Watch QR display";
+/* NOTE: rows removed from PaywallView — kept as stubs so no missing-key warnings */
+"Apple Watch QR display" = "Wrist QR display";
 "Custom themes (matte / gradient / neon)" = "Custom themes (matte / gradient / neon)";
 "Upload your own QR image (WeChat / PayPay)" = "Upload your own QR image (WeChat / PayPay)";
 "Lock screen widget — instant QR access" = "Lock screen widget — instant QR access";

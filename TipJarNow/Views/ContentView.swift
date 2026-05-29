@@ -283,7 +283,7 @@ struct ContentView: View {
 
     private var proHint: some View {
         VStack(spacing: Spacing.sm) {
-            Text(LocalizedStringKey("Free tier: 1 method. Pro: unlimited methods + Apple Watch + themes."))
+            Text(LocalizedStringKey("Free tier: 1 method. Pro: unlimited methods + themes."))
                 .font(.footnote)
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)

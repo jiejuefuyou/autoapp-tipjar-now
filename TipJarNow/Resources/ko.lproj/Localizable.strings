@@ -13,7 +13,7 @@
 "No payment methods yet" = "아직 결제 수단이 없습니다";
 "Add a tip method (PayPal / Venmo / 微信 / PayPay) to show its QR code on demand." = "팁 결제 수단 (PayPal / Venmo / WeChat / PayPay)을 추가하면 언제든 QR 코드를 표시할 수 있어요.";
 "Add a Method" = "수단 추가";
-"Free tier: 1 method. Pro: unlimited methods + Apple Watch + themes." = "무료: 수단 1개. Pro: 수단 무제한 + Apple Watch + 테마.";
+"Free tier: 1 method. Pro: unlimited methods + themes." = "무료: 수단 1개. Pro: 수단 무제한 + 테마.";
 "Unlock Pro" = "Pro 잠금 해제";
 
 /* MethodEditView */
@@ -55,7 +55,7 @@
 "10 payment methods." = "10가지 결제 수단.";
 "PayPal, Venmo, WeChat, PayPay, LINE Pay, Cash App, Zelle and more." = "PayPal, Venmo, WeChat, PayPay, LINE Pay, Cash App, Zelle 외 다수.";
 "On your wrist. Forever." = "당신의 손목에, 영원히.";
-"$1.99 once. Apple Watch, custom themes, lock screen widget. No subscription." = "$1.99 한 번 결제. Apple Watch, 맞춤 테마, 잠금 화면 위젯 포함. 구독 없음.";
+"$1.99 once. Custom themes, lock screen widget, wrist access. No subscription." = "$1.99 한 번 결제. 맞춤 테마, 잠금 화면 위젯, 손목 빠른 접근 포함. 구독 없음.";
 "Get Started" = "시작하기";
 "Skip" = "건너뛰기";
 "Skip onboarding" = "온보딩 건너뛰기";
@@ -63,7 +63,7 @@
 /* PaywallView */
 "One-time purchase. No subscription. Unlock everything forever." = "일회 구매. 구독 없음. 모든 기능을 영원히 잠금 해제합니다.";
 "Unlimited tip methods" = "결제 수단 무제한";
-"Apple Watch QR display" = "Apple Watch QR 표시";
+"Apple Watch QR display" = "손목 빠른 QR 표시";
 "Custom themes (matte / gradient / neon)" = "맞춤 테마 (매트 / 그라데이션 / 네온)";
 "Upload your own QR image (WeChat / PayPay)" = "내 QR 이미지 업로드 (WeChat / PayPay)";
 "Lock screen widget — instant QR access" = "잠금 화면 위젯 — 즉시 QR 접근";

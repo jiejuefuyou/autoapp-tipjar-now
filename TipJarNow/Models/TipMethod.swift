@@ -66,19 +66,27 @@ struct TipMethod: Identifiable, Codable, Hashable {
     }
 
     var paymentURL: URL? {
+        // Percent-encode raw user handles before embedding in a URL path so
+        // characters like spaces, @, +, or non-ASCII don't produce invalid URLs.
+        let encoded = addressOrLink.addingPercentEncoding(
+            withAllowedCharacters: .urlPathAllowed
+        ) ?? addressOrLink
+
         switch kind {
         case .paypal:
-            // PayPal.me URL
+            // PayPal.me URL — if the user pasted a full URL, round-trip through
+            // URL(string:) which already handles any pre-encoded input.
             if addressOrLink.contains("paypal.me") {
-                return URL(string: addressOrLink.starts(with: "http") ? addressOrLink : "https://\(addressOrLink)")
+                let full = addressOrLink.starts(with: "http") ? addressOrLink : "https://\(addressOrLink)"
+                return URL(string: full)
             }
-            return URL(string: "https://paypal.me/\(addressOrLink)")
+            return URL(string: "https://paypal.me/\(encoded)")
         case .venmo:
-            return URL(string: "https://venmo.com/\(addressOrLink)")
+            return URL(string: "https://venmo.com/\(encoded)")
         case .cashApp:
-            return URL(string: "https://cash.app/\(addressOrLink)")
+            return URL(string: "https://cash.app/\(encoded)")
         case .wechat, .alipay, .paypay, .linePay:
-            // Custom URL or QR image
+            // User pastes a full URL — use URLComponents for robust parsing.
             return URL(string: addressOrLink)
         case .zelle, .revolut, .wise:
             return URL(string: addressOrLink)
