@@ -75,6 +75,7 @@ struct ContentView: View {
                     } label: {
                         Image(systemName: "ellipsis.circle")
                     }
+                    .accessibilityLabel(Text(LocalizedStringKey("Payment method options")))
                 }
             }
             // CRITICAL: SwiftUI sheet/fullScreenCover attaches modal to scene
