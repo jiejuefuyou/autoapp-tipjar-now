@@ -63,11 +63,9 @@
 /* PaywallView */
 "One-time purchase. No subscription. Unlock everything forever." = "一次性买断,不订阅,永久解锁全部功能。";
 "Unlimited tip methods" = "收款方式不限数量";
-"Apple Watch QR display" = "手腕快捷显示二维码";
-"Custom themes (matte / gradient / neon)" = "自定义主题 (哑光 / 渐变 / 霓虹)";
-"Upload your own QR image (WeChat / PayPay)" = "上传你自己的二维码图片 (微信 / PayPay)";
-"Lock screen widget — instant QR access" = "锁屏小组件 — 一键调出二维码";
-"Haptic feedback on tap" = "点按时触感反馈";
+"7 designer card themes" = "7 款设计师卡片主题";
+"Printable QR posters" = "可打印的二维码海报";
+"Remove watermark" = "去除水印";
 "Restore Purchase" = "恢复购买";
 "No subscription. No data collected. Ever." = "不订阅,不收集任何数据,绝不。";
 "Payment will be charged to your Apple ID. This is a one-time purchase that unlocks all premium features for the lifetime of your Apple ID." = "费用将通过你的 Apple ID 扣款。一次性买断,Apple ID 有效期内永久解锁全部高级功能。";
@@ -124,3 +122,31 @@
 "Unknown purchase result. Please try again." = "购买结果未知,请重试。";
 "Restores a previous purchase" = "恢复以前的购买";
 "Purchase TipJar Pro for %@" = "以 %@ 购买 TipJar Pro";
+
+/* v1.0.x — Tip Card + printable QR poster */
+"Share Card" = "分享卡片";
+"Export poster" = "导出海报";
+"Made with TipJar Now" = "由 TipJar Now 制作";
+"Tips appreciated 💛" = "感谢你的打赏 💛";
+"Scan to send a tip" = "扫码打赏";
+"Tip card" = "打赏卡片";
+"Tip poster" = "打赏海报";
+"Size" = "尺寸";
+"Theme" = "主题";
+"Pro unlocks 7 card themes and removes the watermark." = "Pro 解锁 7 款卡片主题并去除水印。";
+"Pro unlocks every size + theme and removes the watermark." = "Pro 解锁全部尺寸和主题并去除水印。";
+
+/* Tip card themes */
+"theme.classicLight" = "经典";
+"theme.midnight"     = "午夜";
+"theme.barista"      = "咖啡师";
+"theme.busker"       = "街头艺人";
+"theme.streamer"     = "主播";
+"theme.freelancer"   = "自由职业";
+"theme.event"        = "活动";
+
+/* Poster sizes */
+"poster.size.a4"      = "A4";
+"poster.size.letter"  = "美式信纸";
+"poster.size.counter" = "4×6 台卡";
+"poster.size.story"   = "1080² 竖屏";

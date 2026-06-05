@@ -63,11 +63,9 @@
 /* PaywallView */
 "One-time purchase. No subscription. Unlock everything forever." = "일회 구매. 구독 없음. 모든 기능을 영원히 잠금 해제합니다.";
 "Unlimited tip methods" = "결제 수단 무제한";
-"Apple Watch QR display" = "손목 빠른 QR 표시";
-"Custom themes (matte / gradient / neon)" = "맞춤 테마 (매트 / 그라데이션 / 네온)";
-"Upload your own QR image (WeChat / PayPay)" = "내 QR 이미지 업로드 (WeChat / PayPay)";
-"Lock screen widget — instant QR access" = "잠금 화면 위젯 — 즉시 QR 접근";
-"Haptic feedback on tap" = "탭할 때 햅틱 피드백";
+"7 designer card themes" = "디자이너 카드 테마 7종";
+"Printable QR posters" = "인쇄 가능한 QR 포스터";
+"Remove watermark" = "워터마크 제거";
 "Restore Purchase" = "구매 복원";
 "No subscription. No data collected. Ever." = "구독 없음. 데이터 수집 일절 없음.";
 "Payment will be charged to your Apple ID. This is a one-time purchase that unlocks all premium features for the lifetime of your Apple ID." = "결제는 Apple ID로 청구됩니다. 일회 구매이며, Apple ID가 유효한 동안 모든 프리미엄 기능을 영구히 사용할 수 있습니다.";
@@ -124,3 +122,31 @@
 "Unknown purchase result. Please try again." = "구매 결과를 확인할 수 없습니다. 다시 시도해 주세요.";
 "Restores a previous purchase" = "이전 구매를 복원합니다";
 "Purchase TipJar Pro for %@" = "%@에 TipJar Pro 구매";
+
+/* v1.0.x — Tip Card + printable QR poster */
+"Share Card" = "카드 공유";
+"Export poster" = "포스터 내보내기";
+"Made with TipJar Now" = "TipJar Now로 제작";
+"Tips appreciated 💛" = "팁 감사합니다 💛";
+"Scan to send a tip" = "스캔하여 팁 보내기";
+"Tip card" = "팁 카드";
+"Tip poster" = "팁 포스터";
+"Size" = "크기";
+"Theme" = "테마";
+"Pro unlocks 7 card themes and removes the watermark." = "Pro로 카드 테마 7종을 사용하고 워터마크를 제거합니다.";
+"Pro unlocks every size + theme and removes the watermark." = "Pro로 모든 크기와 테마를 사용하고 워터마크를 제거합니다.";
+
+/* Tip card themes */
+"theme.classicLight" = "클래식";
+"theme.midnight"     = "미드나잇";
+"theme.barista"      = "바리스타";
+"theme.busker"       = "버스커";
+"theme.streamer"     = "스트리머";
+"theme.freelancer"   = "프리랜서";
+"theme.event"        = "이벤트";
+
+/* Poster sizes */
+"poster.size.a4"      = "A4";
+"poster.size.letter"  = "US 레터";
+"poster.size.counter" = "4×6 카운터 카드";
+"poster.size.story"   = "1080² 스토리";

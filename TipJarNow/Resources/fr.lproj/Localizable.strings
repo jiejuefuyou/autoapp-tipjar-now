@@ -63,11 +63,9 @@
 /* PaywallView */
 "One-time purchase. No subscription. Unlock everything forever." = "Achat unique. Pas d'abonnement. Tout débloqué à vie.";
 "Unlimited tip methods" = "Modes de pourboire illimités";
-"Apple Watch QR display" = "Affichage QR au poignet";
-"Custom themes (matte / gradient / neon)" = "Thèmes personnalisés (mat / dégradé / néon)";
-"Upload your own QR image (WeChat / PayPay)" = "Téléversez votre propre image QR (WeChat / PayPay)";
-"Lock screen widget — instant QR access" = "Widget d'écran verrouillé — QR instantané";
-"Haptic feedback on tap" = "Retour haptique au toucher";
+"7 designer card themes" = "7 thèmes de carte design";
+"Printable QR posters" = "Affiches QR imprimables";
+"Remove watermark" = "Supprimer le filigrane";
 "Restore Purchase" = "Restaurer l'achat";
 "No subscription. No data collected. Ever." = "Sans abonnement. Aucune collecte de données. Jamais.";
 "Payment will be charged to your Apple ID. This is a one-time purchase that unlocks all premium features for the lifetime of your Apple ID." = "Le paiement sera débité de votre identifiant Apple. Il s'agit d'un achat unique qui débloque toutes les fonctionnalités premium tant que votre identifiant Apple est actif.";
@@ -124,3 +122,31 @@
 "Unknown purchase result. Please try again." = "Résultat d'achat inconnu. Veuillez réessayer.";
 "Restores a previous purchase" = "Restaure un achat précédent";
 "Purchase TipJar Pro for %@" = "Acheter TipJar Pro pour %@";
+
+/* v1.0.x — Tip Card + printable QR poster */
+"Share Card" = "Partager la carte";
+"Export poster" = "Exporter l'affiche";
+"Made with TipJar Now" = "Créé avec TipJar Now";
+"Tips appreciated 💛" = "Pourboires bienvenus 💛";
+"Scan to send a tip" = "Scannez pour envoyer un pourboire";
+"Tip card" = "Carte de pourboire";
+"Tip poster" = "Affiche de pourboire";
+"Size" = "Taille";
+"Theme" = "Thème";
+"Pro unlocks 7 card themes and removes the watermark." = "Pro débloque 7 thèmes de carte et supprime le filigrane.";
+"Pro unlocks every size + theme and removes the watermark." = "Pro débloque toutes les tailles et thèmes et supprime le filigrane.";
+
+/* Tip card themes */
+"theme.classicLight" = "Classique";
+"theme.midnight"     = "Minuit";
+"theme.barista"      = "Barista";
+"theme.busker"       = "Artiste de rue";
+"theme.streamer"     = "Streamer";
+"theme.freelancer"   = "Indépendant";
+"theme.event"        = "Événement";
+
+/* Poster sizes */
+"poster.size.a4"      = "A4";
+"poster.size.letter"  = "Lettre US";
+"poster.size.counter" = "Carte de comptoir 4×6";
+"poster.size.story"   = "Story 1080²";

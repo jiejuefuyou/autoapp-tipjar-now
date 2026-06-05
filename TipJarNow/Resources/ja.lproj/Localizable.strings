@@ -63,11 +63,9 @@
 /* PaywallView */
 "One-time purchase. No subscription. Unlock everything forever." = "買い切り型。サブスクリプションなし。すべての機能を永久に解除。";
 "Unlimited tip methods" = "支払い方法 無制限";
-"Apple Watch QR display" = "手首で QR 表示";
-"Custom themes (matte / gradient / neon)" = "カスタムテーマ (マット / グラデーション / ネオン)";
-"Upload your own QR image (WeChat / PayPay)" = "自分の QR 画像をアップロード (微信 / PayPay)";
-"Lock screen widget — instant QR access" = "ロック画面ウィジェット — QR にすぐアクセス";
-"Haptic feedback on tap" = "タップ時の触覚フィードバック";
+"7 designer card themes" = "デザインカードテーマ 7 種";
+"Printable QR posters" = "印刷できる QR ポスター";
+"Remove watermark" = "ウォーターマークを削除";
 "Restore Purchase" = "購入を復元";
 "No subscription. No data collected. Ever." = "サブスクリプションなし。データ収集も一切なし。";
 "Payment will be charged to your Apple ID. This is a one-time purchase that unlocks all premium features for the lifetime of your Apple ID." = "お支払いは Apple ID に請求されます。買い切り型で、Apple ID が有効である限り全プレミアム機能をご利用いただけます。";
@@ -124,3 +122,31 @@
 "Unknown purchase result. Please try again." = "購入処理の結果が不明です。もう一度お試しください。";
 "Restores a previous purchase" = "以前の購入を復元します";
 "Purchase TipJar Pro for %@" = "%@ で TipJar Pro を購入";
+
+/* v1.0.x — Tip Card + printable QR poster */
+"Share Card" = "カードを共有";
+"Export poster" = "ポスターを書き出す";
+"Made with TipJar Now" = "TipJar Now で作成";
+"Tips appreciated 💛" = "チップ歓迎 💛";
+"Scan to send a tip" = "スキャンしてチップを送る";
+"Tip card" = "チップカード";
+"Tip poster" = "チップポスター";
+"Size" = "サイズ";
+"Theme" = "テーマ";
+"Pro unlocks 7 card themes and removes the watermark." = "Pro でカードテーマ 7 種が使え、ウォーターマークも消えます。";
+"Pro unlocks every size + theme and removes the watermark." = "Pro で全サイズとテーマが使え、ウォーターマークも消えます。";
+
+/* Tip card themes */
+"theme.classicLight" = "クラシック";
+"theme.midnight"     = "ミッドナイト";
+"theme.barista"      = "バリスタ";
+"theme.busker"       = "バスカー";
+"theme.streamer"     = "配信者";
+"theme.freelancer"   = "フリーランス";
+"theme.event"        = "イベント";
+
+/* Poster sizes */
+"poster.size.a4"      = "A4";
+"poster.size.letter"  = "US レター";
+"poster.size.counter" = "4×6 カウンターカード";
+"poster.size.story"   = "1080² ストーリー";

@@ -27,12 +27,15 @@ struct PaywallView: View {
                         .padding(.horizontal)
 
                     VStack(alignment: .leading, spacing: 14) {
-                        // Only advertise what Pro actually unlocks. The removed rows
-                        // (Apple Watch / themes / QR upload / widget / haptics) had no
-                        // shipping code — false advertising is a 2.3.1 reject risk and
-                        // "Apple Watch" is also a 5.2.5 trademark issue. Re-add a row
-                        // only when the feature actually ships.
-                        feature("infinity",                   LocalizedStringKey("Unlimited tip methods"))
+                        // Only advertise what Pro actually unlocks. Each row below
+                        // maps to shipping code: unlimited methods (TipJarStore
+                        // freeMethodLimit gate), 7 card themes + posters
+                        // (TipCardTheme / ShareCardView / PosterExportView), and
+                        // watermark removal (TipCardView/PosterArtwork showWatermark).
+                        feature("infinity",                LocalizedStringKey("Unlimited tip methods"))
+                        feature("paintpalette.fill",       LocalizedStringKey("7 designer card themes"))
+                        feature("printer.fill",            LocalizedStringKey("Printable QR posters"))
+                        feature("seal.fill",               LocalizedStringKey("Remove watermark"))
                     }
                     .padding()
                     .frame(maxWidth: .infinity, alignment: .leading)

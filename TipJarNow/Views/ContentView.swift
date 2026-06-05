@@ -14,6 +14,8 @@ struct ContentView: View {
     @State private var addingMethod = false
     @State private var selectedMethod: TipMethod?
     @State private var showCopiedToast = false
+    @State private var showShareCard = false
+    @State private var showPosterExport = false
 
     var body: some View {
         NavigationStack {
@@ -55,6 +57,13 @@ struct ContentView: View {
                             handleAddMethod()
                         } label: {
                             Label(LocalizedStringKey("Add Method"), systemImage: "plus")
+                        }
+                        if currentMethod != nil {
+                            Button {
+                                showPosterExport = true
+                            } label: {
+                                Label(LocalizedStringKey("Export poster"), systemImage: "printer")
+                            }
                         }
                         if let m = currentMethod {
                             Button(role: .destructive) {
@@ -102,6 +111,24 @@ struct ContentView: View {
                 .environment(l10n)
                 .environment(\.locale, l10n.currentLocale)
                 .id(l10n.override)
+            }
+            .sheet(isPresented: $showShareCard) {
+                if let m = currentMethod {
+                    ShareCardView(method: m)
+                        .environment(iap)
+                        .environment(l10n)
+                        .environment(\.locale, l10n.currentLocale)
+                        .id(l10n.override)
+                }
+            }
+            .sheet(isPresented: $showPosterExport) {
+                if let m = currentMethod {
+                    PosterExportView(method: m)
+                        .environment(iap)
+                        .environment(l10n)
+                        .environment(\.locale, l10n.currentLocale)
+                        .id(l10n.override)
+                }
             }
             .fullScreenCover(isPresented: Binding(
                 get: { !hasSeenOnboarding },
@@ -220,9 +247,10 @@ struct ContentView: View {
         )
     }
 
-    /// Row of Copy + Share buttons under the QR. Native iOS feel — copy gives
-    /// haptic + toast feedback, share uses ShareLink (iOS 16+) for the system
-    /// sheet so the user can hand the link to any installed messaging app.
+    /// Row of Copy + Share Card buttons under the QR. Native iOS feel — copy
+    /// gives haptic + toast feedback; "Share Card" opens the designed Tip Card
+    /// composer (themes + watermark gating) so users share a branded image
+    /// instead of a bare URL string.
     @ViewBuilder
     private func actionButtonsRow(for method: TipMethod) -> some View {
         let link = method.paymentURL?.absoluteString ?? method.addressOrLink
@@ -236,15 +264,15 @@ struct ContentView: View {
             }
             .buttonStyle(.bordered)
 
-            ShareLink(item: link) {
-                Label(LocalizedStringKey("Share"), systemImage: "square.and.arrow.up")
+            Button {
+                UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                showShareCard = true
+            } label: {
+                Label(LocalizedStringKey("Share Card"), systemImage: "square.and.arrow.up")
                     .font(.subheadline.weight(.semibold))
                     .frame(maxWidth: .infinity, minHeight: 44)
             }
             .buttonStyle(.borderedProminent)
-            .simultaneousGesture(TapGesture().onEnded {
-                UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-            })
         }
         .padding(.horizontal)
     }

@@ -63,11 +63,9 @@
 /* PaywallView */
 "One-time purchase. No subscription. Unlock everything forever." = "Einmalkauf. Kein Abo. Alles für immer freigeschaltet.";
 "Unlimited tip methods" = "Unbegrenzte Trinkgeld-Methoden";
-"Apple Watch QR display" = "QR-Anzeige am Handgelenk";
-"Custom themes (matte / gradient / neon)" = "Eigene Designs (Matt / Verlauf / Neon)";
-"Upload your own QR image (WeChat / PayPay)" = "Eigenes QR-Bild hochladen (WeChat / PayPay)";
-"Lock screen widget — instant QR access" = "Sperrbildschirm-Widget — sofortiger QR-Zugriff";
-"Haptic feedback on tap" = "Haptisches Feedback beim Tippen";
+"7 designer card themes" = "7 Designer-Kartendesigns";
+"Printable QR posters" = "Druckbare QR-Poster";
+"Remove watermark" = "Wasserzeichen entfernen";
 "Restore Purchase" = "Kauf wiederherstellen";
 "No subscription. No data collected. Ever." = "Kein Abo. Keine Datenerfassung. Niemals.";
 "Payment will be charged to your Apple ID. This is a one-time purchase that unlocks all premium features for the lifetime of your Apple ID." = "Die Zahlung wird Ihrer Apple-ID belastet. Es handelt sich um einen Einmalkauf, der alle Premium-Funktionen für die Lebensdauer Ihrer Apple-ID freischaltet.";
@@ -124,3 +122,31 @@
 "Unknown purchase result. Please try again." = "Unbekanntes Kaufergebnis. Bitte versuche es erneut.";
 "Restores a previous purchase" = "Stellt einen früheren Kauf wieder her";
 "Purchase TipJar Pro for %@" = "TipJar Pro für %@ kaufen";
+
+/* v1.0.x — Tip Card + printable QR poster */
+"Share Card" = "Karte teilen";
+"Export poster" = "Poster exportieren";
+"Made with TipJar Now" = "Erstellt mit TipJar Now";
+"Tips appreciated 💛" = "Trinkgeld willkommen 💛";
+"Scan to send a tip" = "Scannen, um Trinkgeld zu senden";
+"Tip card" = "Trinkgeldkarte";
+"Tip poster" = "Trinkgeldposter";
+"Size" = "Größe";
+"Theme" = "Design";
+"Pro unlocks 7 card themes and removes the watermark." = "Pro schaltet 7 Kartendesigns frei und entfernt das Wasserzeichen.";
+"Pro unlocks every size + theme and removes the watermark." = "Pro schaltet alle Größen und Designs frei und entfernt das Wasserzeichen.";
+
+/* Tip card themes */
+"theme.classicLight" = "Klassisch";
+"theme.midnight"     = "Mitternacht";
+"theme.barista"      = "Barista";
+"theme.busker"       = "Straßenmusiker";
+"theme.streamer"     = "Streamer";
+"theme.freelancer"   = "Freiberufler";
+"theme.event"        = "Event";
+
+/* Poster sizes */
+"poster.size.a4"      = "A4";
+"poster.size.letter"  = "US Letter";
+"poster.size.counter" = "4×6 Thekenkarte";
+"poster.size.story"   = "1080²-Story";

@@ -63,11 +63,9 @@
 /* PaywallView */
 "One-time purchase. No subscription. Unlock everything forever." = "Compra única. Sin suscripción. Desbloquea todo para siempre.";
 "Unlimited tip methods" = "Métodos de propina ilimitados";
-"Apple Watch QR display" = "QR en la muñeca";
-"Custom themes (matte / gradient / neon)" = "Temas personalizados (mate / degradado / neón)";
-"Upload your own QR image (WeChat / PayPay)" = "Sube tu propia imagen QR (WeChat / PayPay)";
-"Lock screen widget — instant QR access" = "Widget en la pantalla bloqueada — QR al instante";
-"Haptic feedback on tap" = "Respuesta háptica al tocar";
+"7 designer card themes" = "7 temas de tarjeta de diseño";
+"Printable QR posters" = "Pósteres QR imprimibles";
+"Remove watermark" = "Quitar marca de agua";
 "Restore Purchase" = "Restaurar compra";
 "No subscription. No data collected. Ever." = "Sin suscripciones. Sin recopilación de datos. Nunca.";
 "Payment will be charged to your Apple ID. This is a one-time purchase that unlocks all premium features for the lifetime of your Apple ID." = "El pago se cargará a tu Apple ID. Es una compra única que desbloquea todas las funciones premium mientras tu Apple ID esté activo.";
@@ -124,3 +122,31 @@
 "Unknown purchase result. Please try again." = "Resultado de compra desconocido. Inténtalo de nuevo.";
 "Restores a previous purchase" = "Restaura una compra anterior";
 "Purchase TipJar Pro for %@" = "Comprar TipJar Pro por %@";
+
+/* v1.0.x — Tip Card + printable QR poster */
+"Share Card" = "Compartir tarjeta";
+"Export poster" = "Exportar póster";
+"Made with TipJar Now" = "Hecho con TipJar Now";
+"Tips appreciated 💛" = "Se agradecen las propinas 💛";
+"Scan to send a tip" = "Escanea para enviar una propina";
+"Tip card" = "Tarjeta de propinas";
+"Tip poster" = "Póster de propinas";
+"Size" = "Tamaño";
+"Theme" = "Tema";
+"Pro unlocks 7 card themes and removes the watermark." = "Pro desbloquea 7 temas de tarjeta y quita la marca de agua.";
+"Pro unlocks every size + theme and removes the watermark." = "Pro desbloquea todos los tamaños y temas y quita la marca de agua.";
+
+/* Tip card themes */
+"theme.classicLight" = "Clásico";
+"theme.midnight"     = "Medianoche";
+"theme.barista"      = "Barista";
+"theme.busker"       = "Artista callejero";
+"theme.streamer"     = "Streamer";
+"theme.freelancer"   = "Autónomo";
+"theme.event"        = "Evento";
+
+/* Poster sizes */
+"poster.size.a4"      = "A4";
+"poster.size.letter"  = "Carta EE. UU.";
+"poster.size.counter" = "Tarjeta de mostrador 4×6";
+"poster.size.story"   = "Historia 1080²";
