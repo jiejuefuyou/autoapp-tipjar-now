@@ -144,7 +144,12 @@ struct ThemeChooser: View {
                         swatch(theme: theme, locked: locked, isSelected: isSelected)
                     }
                     .buttonStyle(.plain)
-                    .accessibilityLabel(Text(LocalizedStringKey(theme.nameKey)))
+                    // Convey the locked/premium state to VoiceOver (the visible lock
+                    // badge isn't otherwise announced). Reuses the existing "Premium"
+                    // key — no new localization keys (adversarial-review finding).
+                    .accessibilityLabel(Text(locked
+                        ? "\(NSLocalizedString(theme.nameKey, comment: "Tip card theme name")), \(NSLocalizedString("Premium", comment: "Locked premium theme for VoiceOver"))"
+                        : NSLocalizedString(theme.nameKey, comment: "Tip card theme name")))
                 }
             }
             .padding(.vertical, Spacing.xs)
