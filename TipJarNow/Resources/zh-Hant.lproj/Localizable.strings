@@ -150,3 +150,13 @@
 "poster.size.letter"  = "美式信紙";
 "poster.size.counter" = "4×6 桌卡";
 "poster.size.story"   = "1080² 限時動態";
+
+/* Cross-promo — More from the developer */
+"More from the developer" = "開發者的其他應用程式";
+"Spin to decide — random picker" = "轉動轉盤，隨機幫你決定";
+"Live altimeter & barometer" = "即時高度計與氣壓計";
+"Countdowns to what matters" = "重要日子的倒數計時";
+"Your AI prompt library" = "你的 AI 提示詞庫";
+"Build habits, see your streak" = "養成習慣，記錄連續打卡";
+"Focus timer that tracks your time" = "記錄專注時間的計時器";
+"Stay hydrated every day" = "每天保持充足飲水";

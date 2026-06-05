@@ -150,3 +150,13 @@
 "poster.size.letter"  = "US レター";
 "poster.size.counter" = "4×6 カウンターカード";
 "poster.size.story"   = "1080² ストーリー";
+
+/* Cross-promo — More from the developer */
+"More from the developer" = "開発者の他のアプリ";
+"Spin to decide — random picker" = "ルーレットを回して決める";
+"Live altimeter & barometer" = "リアルタイムの高度計と気圧計";
+"Countdowns to what matters" = "大切な日へのカウントダウン";
+"Your AI prompt library" = "AI プロンプトのライブラリ";
+"Build habits, see your streak" = "習慣を築き、連続記録を伸ばす";
+"Focus timer that tracks your time" = "時間を記録する集中タイマー";
+"Stay hydrated every day" = "毎日しっかり水分補給";

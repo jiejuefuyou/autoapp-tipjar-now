@@ -38,6 +38,8 @@ struct SettingsView: View {
                     LanguagePicker()
                 }
 
+                CrossPromoSection(currentAppStoreID: "6770249058")
+
                 Section(LocalizedStringKey("About")) {
                     LabeledContent(LocalizedStringKey("Version"), value: appVersion)
                     LabeledContent(LocalizedStringKey("Build"),   value: buildNumber)

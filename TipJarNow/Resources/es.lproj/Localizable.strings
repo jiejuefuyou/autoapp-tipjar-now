@@ -150,3 +150,13 @@
 "poster.size.letter"  = "Carta EE. UU.";
 "poster.size.counter" = "Tarjeta de mostrador 4×6";
 "poster.size.story"   = "Historia 1080²";
+
+/* Cross-promo — More from the developer */
+"More from the developer" = "Más del desarrollador";
+"Spin to decide — random picker" = "Gira y decide: elección al azar";
+"Live altimeter & barometer" = "Altímetro y barómetro en tiempo real";
+"Countdowns to what matters" = "Cuentas atrás para lo que importa";
+"Your AI prompt library" = "Tu biblioteca de prompts de IA";
+"Build habits, see your streak" = "Crea hábitos y ve tu racha";
+"Focus timer that tracks your time" = "Temporizador de concentración que registra tu tiempo";
+"Stay hydrated every day" = "Mantente hidratado cada día";
