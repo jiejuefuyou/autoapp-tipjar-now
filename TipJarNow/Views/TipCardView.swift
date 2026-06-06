@@ -84,16 +84,33 @@ struct TipCardView: View {
 
             Spacer(minLength: 0)
 
-            // Watermark (free tier only).
+            // Watermark (free tier only). A tasteful branded chip — a small QR
+            // glyph + wordmark in the theme accent — reads as an intentional
+            // credit rather than a defacing stamp, so free users still feel
+            // good sharing it. Every shared free card is the app's growth loop
+            // (a recipient sees "TipJar Now" + scans), so the credit is
+            // designed to look good, not just to nag.
             if showWatermark {
-                Text(LocalizedStringKey("Made with TipJar Now"))
-                    .font(.system(.caption2, design: .rounded, weight: .medium))
-                    .foregroundStyle(theme.foregroundSecondary)
+                attributionChip
                     .padding(.bottom, 16)
             }
         }
         .frame(width: Self.canvasSize.width, height: Self.canvasSize.height)
         .background(theme.gradient)
+    }
+
+    /// Tasteful "Made with TipJar Now" credit chip drawn on free-tier cards.
+    private var attributionChip: some View {
+        HStack(spacing: 5) {
+            Image(systemName: "qrcode")
+                .font(.system(size: 10, weight: .bold))
+            Text(LocalizedStringKey("Made with TipJar Now"))
+                .font(.system(.caption2, design: .rounded, weight: .semibold))
+        }
+        .foregroundStyle(theme.foregroundSecondary)
+        .padding(.horizontal, 10)
+        .padding(.vertical, 5)
+        .background(theme.foregroundSecondary.opacity(0.12), in: Capsule())
     }
 }
 
@@ -122,11 +139,21 @@ enum TipCardRenderer {
 
 /// Horizontal swatch picker shared by the Share Card and Export Poster flows.
 /// Pro themes show a lock badge for free users; tapping a locked swatch calls
-/// `onLockedTap` (route to paywall) instead of selecting it.
+/// `onLockedTap` (route to paywall, or claim the one-time trial) instead of
+/// selecting it.
+///
+/// When `trialAvailable == true`, every premium swatch shows a "Try free" pill
+/// instead of a lock — the user's single free premium output is still unclaimed,
+/// so the picker advertises that they can taste any premium theme once.
 struct ThemeChooser: View {
     @Binding var selectedThemeID: String
     let isPremium: Bool
-    let onLockedTap: () -> Void
+    /// True while the user still has their one-time free premium output to spend.
+    /// Drives the "Try free" pill (vs. a lock badge) on premium swatches.
+    var trialAvailable: Bool = false
+    /// Called when a free user taps a premium (locked) swatch. Receives the
+    /// tapped theme's id so the handler can claim the trial *and* select it.
+    let onLockedTap: (String) -> Void
 
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
@@ -134,29 +161,41 @@ struct ThemeChooser: View {
                 ForEach(TipCardTheme.all) { theme in
                     let locked = theme.isPro && !isPremium
                     let isSelected = selectedThemeID == theme.id
+                    // A premium swatch is "tryable" (free pill, not a lock) while
+                    // the one-time trial is still available.
+                    let tryable = locked && trialAvailable
                     Button {
                         if locked {
-                            onLockedTap()
+                            onLockedTap(theme.id)
                         } else {
                             selectedThemeID = theme.id
                         }
                     } label: {
-                        swatch(theme: theme, locked: locked, isSelected: isSelected)
+                        swatch(theme: theme, locked: locked, tryable: tryable, isSelected: isSelected)
                     }
                     .buttonStyle(.plain)
-                    // Convey the locked/premium state to VoiceOver (the visible lock
-                    // badge isn't otherwise announced). Reuses the existing "Premium"
-                    // key — no new localization keys (adversarial-review finding).
-                    .accessibilityLabel(Text(locked
-                        ? "\(NSLocalizedString(theme.nameKey, comment: "Tip card theme name")), \(NSLocalizedString("Premium", comment: "Locked premium theme for VoiceOver"))"
-                        : NSLocalizedString(theme.nameKey, comment: "Tip card theme name")))
+                    // Convey the locked/premium/tryable state to VoiceOver (the
+                    // visible badge isn't otherwise announced). Reuses existing
+                    // "Premium" / "Try free" keys — no new localization keys.
+                    .accessibilityLabel(Text(themeAccessibilityLabel(theme: theme, locked: locked, tryable: tryable)))
                 }
             }
             .padding(.vertical, Spacing.xs)
         }
     }
 
-    private func swatch(theme: TipCardTheme, locked: Bool, isSelected: Bool) -> some View {
+    private func themeAccessibilityLabel(theme: TipCardTheme, locked: Bool, tryable: Bool) -> String {
+        let name = NSLocalizedString(theme.nameKey, comment: "Tip card theme name")
+        if tryable {
+            return "\(name), \(NSLocalizedString("Try free", comment: "Premium theme free to try once, for VoiceOver"))"
+        }
+        if locked {
+            return "\(name), \(NSLocalizedString("Premium", comment: "Locked premium theme for VoiceOver"))"
+        }
+        return name
+    }
+
+    private func swatch(theme: TipCardTheme, locked: Bool, tryable: Bool, isSelected: Bool) -> some View {
         VStack(spacing: 4) {
             ZStack {
                 RoundedRectangle(cornerRadius: Radius.md)
@@ -176,7 +215,16 @@ struct ThemeChooser: View {
                 Image(systemName: "qrcode")
                     .font(.system(size: 20, weight: .regular))
                     .foregroundStyle(theme.accent)
-                if locked {
+                if tryable {
+                    // Star badge signals "free to try once" on premium swatches.
+                    Image(systemName: "star.fill")
+                        .font(.system(size: 9, weight: .bold))
+                        .foregroundStyle(.white)
+                        .padding(4)
+                        .background(Color.accentColor, in: Circle())
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
+                        .padding(4)
+                } else if locked {
                     Image(systemName: "lock.fill")
                         .font(.caption2.weight(.bold))
                         .foregroundStyle(.white)
@@ -198,10 +246,20 @@ struct ThemeChooser: View {
 // MARK: - Share Card composer
 
 /// Sheet that lets the user pick a theme and share the designed Tip Card as an
-/// image. Free users share the free theme (watermarked); Pro unlocks all themes
-/// and removes the watermark. Tapping a locked theme routes to the paywall.
+/// image.
+///
+/// Tiers:
+/// - **Pro**: every theme, no watermark.
+/// - **Free, trial unclaimed**: may *taste* any premium theme ONCE — picking a
+///   premium theme claims the one-time free premium output (`TipJarStore`),
+///   which removes the watermark and unlocks the chosen design for this card so
+///   the creator sees their first clean, watermark-free result (the #1 desire
+///   builder). An aspirational prompt then offers to unlock the rest.
+/// - **Free, trial spent**: free theme only, watermarked; premium themes route
+///   to the paywall. The trial flag is persisted, so it never recurs.
 struct ShareCardView: View {
     @Environment(IAPManager.self) private var iap
+    @Environment(TipJarStore.self) private var store
     @Environment(LocalizationManager.self) private var l10n
     @Environment(\.dismiss) private var dismiss
 
@@ -209,13 +267,31 @@ struct ShareCardView: View {
 
     @State private var selectedThemeID: String = TipCardTheme.free.id
     @State private var showPaywall = false
+    @State private var showTrialUsed = false
+    /// Set when the user taps "Unlock" in the trial prompt; the paywall is then
+    /// presented from the prompt's onDismiss so the two sheets never swap
+    /// mid-transition (which would silently drop the paywall presentation).
+    @State private var pendingPaywall = false
+    /// True for this session once the user has claimed their one-time trial here,
+    /// so the clean premium preview persists while they share it even though the
+    /// persisted trial flag is already burned.
+    @State private var trialClaimed = false
 
     private var selectedTheme: TipCardTheme { TipCardTheme.theme(id: selectedThemeID) }
-    private var showWatermark: Bool { !iap.isPremium }
 
-    /// Free users are pinned to the free theme regardless of selection state.
+    /// Whether this user may currently taste a premium theme for free.
+    private var trialAvailable: Bool { store.premiumTrialAvailable(isPremium: iap.isPremium) }
+
+    /// Premium output is unlocked when the user is Pro OR has claimed the trial
+    /// in this session. That governs both the honored theme and the watermark.
+    private var premiumOutputUnlocked: Bool { iap.isPremium || trialClaimed }
+
+    private var showWatermark: Bool { !premiumOutputUnlocked }
+
+    /// The theme actually rendered/shared. Honors the selection when premium
+    /// output is unlocked; otherwise pins to the free theme so gating can't drift.
     private var effectiveTheme: TipCardTheme {
-        iap.isPremium ? selectedTheme : TipCardTheme.free
+        premiumOutputUnlocked ? selectedTheme : TipCardTheme.free
     }
 
     var body: some View {
@@ -240,8 +316,9 @@ struct ShareCardView: View {
                             .font(.headline)
                         ThemeChooser(
                             selectedThemeID: $selectedThemeID,
-                            isPremium: iap.isPremium,
-                            onLockedTap: { showPaywall = true }
+                            isPremium: premiumOutputUnlocked,
+                            trialAvailable: trialAvailable,
+                            onLockedTap: handlePremiumThemeTap
                         )
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -250,17 +327,7 @@ struct ShareCardView: View {
 
                     shareButton
 
-                    if !iap.isPremium {
-                        VStack(spacing: Spacing.xs) {
-                            Text(LocalizedStringKey("Pro unlocks 7 card themes and removes the watermark."))
-                                .font(.footnote)
-                                .foregroundStyle(.secondary)
-                                .multilineTextAlignment(.center)
-                            Button(LocalizedStringKey("Unlock Pro")) { showPaywall = true }
-                                .font(.footnote.weight(.semibold))
-                        }
-                        .padding(.horizontal)
-                    }
+                    footer
                 }
                 .padding(Spacing.md)
             }
@@ -277,6 +344,62 @@ struct ShareCardView: View {
                     .environment(\.locale, l10n.currentLocale)
                     .id(l10n.override)
             }
+            // Aspirational, non-punitive prompt shown once after the free premium
+            // card is granted (lesson #34 — re-inject l10n + iap so the prompt
+            // localizes and can route into the paywall).
+            .sheet(isPresented: $showTrialUsed, onDismiss: {
+                if pendingPaywall { pendingPaywall = false; showPaywall = true }
+            }) {
+                trialUsedPrompt
+                    .environment(iap)
+                    .environment(l10n)
+                    .environment(\.locale, l10n.currentLocale)
+                    .id(l10n.override)
+            }
+        }
+    }
+
+    /// Tap on a premium theme by a free user: claim the one-time trial if it's
+    /// still available, otherwise route to the paywall. Claiming burns the
+    /// persisted trial immediately (idempotent), unlocks the clean preview for
+    /// this session, selects the tapped theme, and surfaces the upsell prompt.
+    private func handlePremiumThemeTap(_ themeID: String) {
+        guard !iap.isPremium else { selectedThemeID = themeID; return }
+        if trialClaimed {
+            // Trial already claimed this session — just let them switch themes.
+            selectedThemeID = themeID
+            return
+        }
+        if store.consumePremiumTrial() {
+            trialClaimed = true
+            selectedThemeID = themeID
+            showTrialUsed = true
+        } else {
+            // Trial was already spent in a prior session → paywall.
+            showPaywall = true
+        }
+    }
+
+    @ViewBuilder
+    private var footer: some View {
+        if !premiumOutputUnlocked {
+            VStack(spacing: Spacing.xs) {
+                if trialAvailable {
+                    // Advertise the free taste before it's claimed.
+                    Text(LocalizedStringKey("Tap any premium theme to make one clean, watermark-free card free."))
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
+                        .multilineTextAlignment(.center)
+                } else {
+                    Text(String(format: NSLocalizedString("Pro unlocks all %lld card themes and removes the watermark.", comment: "Share card upsell with theme count"), TipCardTheme.totalCount))
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
+                        .multilineTextAlignment(.center)
+                }
+                Button(LocalizedStringKey("Unlock Pro")) { showPaywall = true }
+                    .font(.footnote.weight(.semibold))
+            }
+            .padding(.horizontal)
         }
     }
 
@@ -307,6 +430,58 @@ struct ShareCardView: View {
                 .font(.headline)
                 .frame(maxWidth: .infinity, minHeight: 44)
                 .foregroundStyle(.secondary)
+        }
+    }
+
+    /// Aspirational prompt after the one free premium card is granted. Offers
+    /// the unlock without forcing it; the user keeps the clean preview they just
+    /// unlocked for this card either way.
+    private var trialUsedPrompt: some View {
+        NavigationStack {
+            ScrollView {
+                VStack(spacing: 20) {
+                    Image(systemName: "sparkles")
+                        .font(.system(size: 52))
+                        .foregroundStyle(.tint)
+                        .padding(.top, 32)
+
+                    Text(LocalizedStringKey("Here's your free clean card"))
+                        .font(.title2.bold())
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal)
+
+                    Text(LocalizedStringKey("Share it now — no watermark. Unlock Pro to keep every theme watermark-free and print posters, all for a one-time purchase. No subscription."))
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal)
+
+                    Button {
+                        pendingPaywall = true
+                        showTrialUsed = false
+                    } label: {
+                        Text(LocalizedStringKey("Unlock Pro"))
+                            .font(.headline)
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(Color.accentColor, in: RoundedRectangle(cornerRadius: Radius.lg))
+                            .foregroundStyle(.white)
+                    }
+                    .padding(.horizontal)
+                    .accessibilityIdentifier("trial.cta.unlock")
+
+                    Button(LocalizedStringKey("Maybe later")) {
+                        showTrialUsed = false
+                    }
+                    .font(.subheadline)
+                    .padding(.bottom, 24)
+                }
+            }
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button(LocalizedStringKey("Close")) { showTrialUsed = false }
+                }
+            }
         }
     }
 }

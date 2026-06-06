@@ -160,3 +160,22 @@
 "Build habits, see your streak" = "養成習慣，記錄連續打卡";
 "Focus timer that tracks your time" = "記錄專注時間的計時器";
 "Stay hydrated every day" = "每天保持充足飲水";
+
+
+/* Wave-3 — free premium trial + new card themes */
+"Try free" = "免費試用";
+"Maybe later" = "稍後再說";
+"%lld designer card themes" = "%lld 款設計師卡片主題";
+"Pro unlocks all %lld card themes and removes the watermark." = "Pro 解鎖全部 %lld 款卡片主題並移除浮水印。";
+"Tap any premium theme to make one clean, watermark-free card free." = "點按任一進階主題,免費製作一張無浮水印的精美卡片。";
+"Tap any size or premium theme to print one clean, watermark-free poster free." = "點按任一尺寸或進階主題,免費列印一張無浮水印的精美海報。";
+"Here's your free clean card" = "這是你的免費無浮水印卡片";
+"Here's your free clean poster" = "這是你的免費無浮水印海報";
+"Share it now — no watermark. Unlock Pro to keep every theme watermark-free and print posters, all for a one-time purchase. No subscription." = "現在就無浮水印分享吧。解鎖 Pro 即可讓所有主題持續無浮水印,並列印海報——一次買斷,無訂閱。";
+"Export it now — no watermark, any size. Unlock Pro to keep every size and theme watermark-free, with a one-time purchase. No subscription." = "現在就以任意尺寸無浮水印匯出吧。解鎖 Pro 即可讓所有尺寸和主題持續無浮水印——一次買斷,無訂閱。";
+"theme.sunset" = "日落";
+"theme.ocean" = "海洋";
+"theme.forest" = "森林";
+"theme.mono" = "極簡黑";
+"theme.blossom" = "花漾";
+"Payment method options" = "付款方式選項";

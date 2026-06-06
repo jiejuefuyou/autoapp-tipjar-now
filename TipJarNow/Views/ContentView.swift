@@ -116,6 +116,7 @@ struct ContentView: View {
                 if let m = currentMethod {
                     ShareCardView(method: m)
                         .environment(iap)
+                        .environment(store)
                         .environment(l10n)
                         .environment(\.locale, l10n.currentLocale)
                         .id(l10n.override)
@@ -125,6 +126,7 @@ struct ContentView: View {
                 if let m = currentMethod {
                     PosterExportView(method: m)
                         .environment(iap)
+                        .environment(store)
                         .environment(l10n)
                         .environment(\.locale, l10n.currentLocale)
                         .id(l10n.override)

@@ -160,3 +160,22 @@
 "Build habits, see your streak" = "習慣を築き、連続記録を伸ばす";
 "Focus timer that tracks your time" = "時間を記録する集中タイマー";
 "Stay hydrated every day" = "毎日しっかり水分補給";
+
+
+/* Wave-3 — free premium trial + new card themes */
+"Try free" = "無料でお試し";
+"Maybe later" = "あとで";
+"%lld designer card themes" = "デザインカードテーマ %lld 種";
+"Pro unlocks all %lld card themes and removes the watermark." = "Pro でカードテーマ %lld 種すべてが使え、ウォーターマークも消えます。";
+"Tap any premium theme to make one clean, watermark-free card free." = "プレミアムテーマをタップすると、ウォーターマークなしのきれいなカードを 1 枚無料で作れます。";
+"Tap any size or premium theme to print one clean, watermark-free poster free." = "サイズまたはプレミアムテーマをタップすると、ウォーターマークなしのきれいなポスターを 1 枚無料で印刷できます。";
+"Here's your free clean card" = "ウォーターマークなしの無料カードです";
+"Here's your free clean poster" = "ウォーターマークなしの無料ポスターです";
+"Share it now — no watermark. Unlock Pro to keep every theme watermark-free and print posters, all for a one-time purchase. No subscription." = "ウォーターマークなしで今すぐシェアしましょう。Pro を解除すれば、すべてのテーマをウォーターマークなしで使い続け、ポスターも印刷できます。買い切り、サブスクなし。";
+"Export it now — no watermark, any size. Unlock Pro to keep every size and theme watermark-free, with a one-time purchase. No subscription." = "ウォーターマークなし・お好きなサイズで今すぐ書き出しましょう。Pro を解除すれば、すべてのサイズとテーマをウォーターマークなしで使い続けられます。買い切り、サブスクなし。";
+"theme.sunset" = "サンセット";
+"theme.ocean" = "オーシャン";
+"theme.forest" = "フォレスト";
+"theme.mono" = "モノ";
+"theme.blossom" = "ブロッサム";
+"Payment method options" = "支払い方法のオプション";

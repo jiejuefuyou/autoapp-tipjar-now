@@ -161,11 +161,18 @@ enum PosterRenderer {
     }
 }
 
-/// Sheet for exporting a printable QR poster. Free users get the square story
-/// size in the free theme (watermarked); Pro unlocks every size + theme and
-/// removes the watermark. Tapping a locked size/theme routes to the paywall.
+/// Sheet for exporting a printable QR poster.
+///
+/// Tiers mirror the Share Card flow (shared one-time trial in `TipJarStore`):
+/// - **Pro**: every size + theme, no watermark.
+/// - **Free, trial unclaimed**: tapping a locked size or premium theme claims
+///   the single free premium output — unlocking full sizes + the chosen theme,
+///   watermark-free, for this session so the creator can print one clean poster.
+/// - **Free, trial spent**: square story size + free theme only, watermarked;
+///   anything premium routes to the paywall (persisted, so it never recurs).
 struct PosterExportView: View {
     @Environment(IAPManager.self) private var iap
+    @Environment(TipJarStore.self) private var store
     @Environment(LocalizationManager.self) private var l10n
     @Environment(\.dismiss) private var dismiss
 
@@ -174,20 +181,27 @@ struct PosterExportView: View {
     @State private var selectedSize: PosterSize = .story1080
     @State private var selectedThemeID: String = TipCardTheme.free.id
     @State private var showPaywall = false
+    @State private var showTrialUsed = false
+    @State private var pendingPaywall = false
+    /// Session flag set once the user claims their one-time trial here.
+    @State private var trialClaimed = false
 
     /// The single size free users may export.
     private static let freeSize: PosterSize = .story1080
 
     private var selectedTheme: TipCardTheme { TipCardTheme.theme(id: selectedThemeID) }
-    private var showWatermark: Bool { !iap.isPremium }
 
-    /// Free users are pinned to the free theme + free size; the rendered output
-    /// therefore always respects gating even if state somehow drifts.
+    private var trialAvailable: Bool { store.premiumTrialAvailable(isPremium: iap.isPremium) }
+    private var premiumOutputUnlocked: Bool { iap.isPremium || trialClaimed }
+    private var showWatermark: Bool { !premiumOutputUnlocked }
+
+    /// Honored only when premium output is unlocked; otherwise pinned to the
+    /// free theme + free size so gating always holds even if state drifts.
     private var effectiveTheme: TipCardTheme {
-        iap.isPremium ? selectedTheme : TipCardTheme.free
+        premiumOutputUnlocked ? selectedTheme : TipCardTheme.free
     }
     private var effectiveSize: PosterSize {
-        iap.isPremium ? selectedSize : Self.freeSize
+        premiumOutputUnlocked ? selectedSize : Self.freeSize
     }
 
     var body: some View {
@@ -202,7 +216,7 @@ struct PosterExportView: View {
 
                     exportButton
 
-                    if !iap.isPremium {
+                    if !premiumOutputUnlocked {
                         proUpsell
                     }
                 }
@@ -221,7 +235,32 @@ struct PosterExportView: View {
                     .environment(\.locale, l10n.currentLocale)
                     .id(l10n.override)
             }
+            .sheet(isPresented: $showTrialUsed, onDismiss: {
+                if pendingPaywall { pendingPaywall = false; showPaywall = true }
+            }) {
+                trialUsedPrompt
+                    .environment(iap)
+                    .environment(l10n)
+                    .environment(\.locale, l10n.currentLocale)
+                    .id(l10n.override)
+            }
         }
+    }
+
+    /// Claim the one-time trial (or route to the paywall if already spent / a
+    /// double tap). Selecting a specific theme is the caller's responsibility.
+    /// Returns `true` if premium output is now unlocked for this session.
+    @discardableResult
+    private func claimTrialOrPaywall() -> Bool {
+        if iap.isPremium { return true }
+        if trialClaimed { return true }
+        if store.consumePremiumTrial() {
+            trialClaimed = true
+            showTrialUsed = true
+            return true
+        }
+        showPaywall = true
+        return false
     }
 
     /// On-screen preview — scaled down to a comfortable card while preserving
@@ -252,10 +291,17 @@ struct PosterExportView: View {
             Text(LocalizedStringKey("Size"))
                 .font(.headline)
             ForEach(PosterSize.allCases) { size in
-                let locked = !iap.isPremium && size != Self.freeSize
+                let locked = !premiumOutputUnlocked && size != Self.freeSize
+                // While the trial is still available, a locked size shows a star
+                // (free to try once) instead of a lock.
+                let tryable = locked && trialAvailable
                 Button {
                     if locked {
-                        showPaywall = true
+                        // Claim the one-time trial (or paywall); on success this
+                        // session is unlocked, so honor the tapped size.
+                        if claimTrialOrPaywall() {
+                            selectedSize = size
+                        }
                     } else {
                         selectedSize = size
                     }
@@ -267,7 +313,11 @@ struct PosterExportView: View {
                         Text(LocalizedStringKey(size.nameKey))
                             .foregroundStyle(.primary)
                         Spacer()
-                        if locked {
+                        if tryable {
+                            Image(systemName: "star.fill")
+                                .font(.caption2)
+                                .foregroundStyle(Color.accentColor)
+                        } else if locked {
                             Image(systemName: "lock.fill")
                                 .font(.caption)
                                 .foregroundStyle(.secondary)
@@ -277,11 +327,23 @@ struct PosterExportView: View {
                     .frame(minHeight: 44)
                 }
                 .buttonStyle(.plain)
+                .accessibilityLabel(Text(sizeAccessibilityLabel(size: size, locked: locked, tryable: tryable)))
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(Spacing.md)
         .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: Radius.md))
+    }
+
+    private func sizeAccessibilityLabel(size: PosterSize, locked: Bool, tryable: Bool) -> String {
+        let name = NSLocalizedString(size.nameKey, comment: "Poster size name")
+        if tryable {
+            return "\(name), \(NSLocalizedString("Try free", comment: "Premium size free to try once, for VoiceOver"))"
+        }
+        if locked {
+            return "\(name), \(NSLocalizedString("Premium", comment: "Locked premium size for VoiceOver"))"
+        }
+        return name
     }
 
     private var themePicker: some View {
@@ -290,8 +352,14 @@ struct PosterExportView: View {
                 .font(.headline)
             ThemeChooser(
                 selectedThemeID: $selectedThemeID,
-                isPremium: iap.isPremium,
-                onLockedTap: { showPaywall = true }
+                isPremium: premiumOutputUnlocked,
+                trialAvailable: trialAvailable,
+                onLockedTap: { themeID in
+                    // Claim the one-time trial (or paywall); on success select it.
+                    if claimTrialOrPaywall() {
+                        selectedThemeID = themeID
+                    }
+                }
             )
         }
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -336,16 +404,74 @@ struct PosterExportView: View {
         }
     }
 
+    @ViewBuilder
     private var proUpsell: some View {
         VStack(spacing: Spacing.xs) {
-            Text(LocalizedStringKey("Pro unlocks every size + theme and removes the watermark."))
-                .font(.footnote)
-                .foregroundStyle(.secondary)
-                .multilineTextAlignment(.center)
+            if trialAvailable {
+                Text(LocalizedStringKey("Tap any size or premium theme to print one clean, watermark-free poster free."))
+                    .font(.footnote)
+                    .foregroundStyle(.secondary)
+                    .multilineTextAlignment(.center)
+            } else {
+                Text(LocalizedStringKey("Pro unlocks every size + theme and removes the watermark."))
+                    .font(.footnote)
+                    .foregroundStyle(.secondary)
+                    .multilineTextAlignment(.center)
+            }
             Button(LocalizedStringKey("Unlock Pro")) { showPaywall = true }
                 .font(.footnote.weight(.semibold))
         }
         .padding(.horizontal)
+    }
+
+    /// Aspirational prompt after the one free premium poster is granted.
+    private var trialUsedPrompt: some View {
+        NavigationStack {
+            ScrollView {
+                VStack(spacing: 20) {
+                    Image(systemName: "sparkles")
+                        .font(.system(size: 52))
+                        .foregroundStyle(.tint)
+                        .padding(.top, 32)
+
+                    Text(LocalizedStringKey("Here's your free clean poster"))
+                        .font(.title2.bold())
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal)
+
+                    Text(LocalizedStringKey("Export it now — no watermark, any size. Unlock Pro to keep every size and theme watermark-free, with a one-time purchase. No subscription."))
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal)
+
+                    Button {
+                        pendingPaywall = true
+                        showTrialUsed = false
+                    } label: {
+                        Text(LocalizedStringKey("Unlock Pro"))
+                            .font(.headline)
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(Color.accentColor, in: RoundedRectangle(cornerRadius: Radius.lg))
+                            .foregroundStyle(.white)
+                    }
+                    .padding(.horizontal)
+                    .accessibilityIdentifier("trial.cta.unlock")
+
+                    Button(LocalizedStringKey("Maybe later")) {
+                        showTrialUsed = false
+                    }
+                    .font(.subheadline)
+                    .padding(.bottom, 24)
+                }
+            }
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button(LocalizedStringKey("Close")) { showTrialUsed = false }
+                }
+            }
+        }
     }
 }
 

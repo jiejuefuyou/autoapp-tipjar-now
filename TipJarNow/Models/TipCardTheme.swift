@@ -9,8 +9,8 @@ import SwiftUI
 ///
 /// `isPro == false` themes are usable by everyone; the rest require TipJar Pro.
 /// A single free theme (`classicLight`) ships so the share / poster loop works
-/// for free users (watermarked) — Pro removes the watermark and unlocks the
-/// remaining six designs.
+/// for free users (watermarked) — Pro removes the watermark and unlocks every
+/// remaining design (see `proCount`).
 ///
 /// All `Color` values are concrete (`Color(red:green:blue:)`) — never a
 /// `HierarchicalShapeStyle` like `.secondary`/`.tint` — so theme colors can be
@@ -156,10 +156,100 @@ struct TipCardTheme: Identifiable, Hashable {
         qrPanel: Color(red: 0.99, green: 0.98, blue: 0.95)
     )
 
+    /// Warm dusk gradient (peach → magenta) for artists / illustrators.
+    static let sunset = TipCardTheme(
+        id: "sunset",
+        nameKey: "theme.sunset",
+        isPro: true,
+        backgroundColors: [
+            Color(red: 0.98, green: 0.55, blue: 0.34),
+            Color(red: 0.86, green: 0.24, blue: 0.50)
+        ],
+        foreground: Color(red: 1.00, green: 0.99, blue: 0.97),
+        foregroundSecondary: Color(red: 1.00, green: 0.90, blue: 0.85),
+        accent: Color(red: 1.00, green: 0.95, blue: 0.90),
+        onAccent: Color(red: 0.74, green: 0.20, blue: 0.40),
+        qrPanel: Color(red: 1.00, green: 0.99, blue: 0.97)
+    )
+
+    /// Calm teal-to-deep-blue for podcasters / writers / "buy me a coffee".
+    static let ocean = TipCardTheme(
+        id: "ocean",
+        nameKey: "theme.ocean",
+        isPro: true,
+        backgroundColors: [
+            Color(red: 0.02, green: 0.42, blue: 0.55),
+            Color(red: 0.03, green: 0.20, blue: 0.42)
+        ],
+        foreground: Color(red: 0.96, green: 0.99, blue: 1.00),
+        foregroundSecondary: Color(red: 0.73, green: 0.87, blue: 0.93),
+        accent: Color(red: 0.28, green: 0.86, blue: 0.80),
+        onAccent: Color(red: 0.02, green: 0.20, blue: 0.30),
+        qrPanel: Color(red: 0.98, green: 1.00, blue: 1.00)
+    )
+
+    /// Botanical green for makers / gardeners / sustainability creators.
+    static let forest = TipCardTheme(
+        id: "forest",
+        nameKey: "theme.forest",
+        isPro: true,
+        backgroundColors: [
+            Color(red: 0.09, green: 0.27, blue: 0.18),
+            Color(red: 0.16, green: 0.40, blue: 0.24)
+        ],
+        foreground: Color(red: 0.96, green: 0.99, blue: 0.95),
+        foregroundSecondary: Color(red: 0.77, green: 0.88, blue: 0.78),
+        accent: Color(red: 0.62, green: 0.84, blue: 0.42),
+        onAccent: Color(red: 0.07, green: 0.22, blue: 0.13),
+        qrPanel: Color(red: 0.98, green: 1.00, blue: 0.97)
+    )
+
+    /// Minimalist near-black mono for designers / photographers who want the
+    /// QR to be the entire statement.
+    static let mono = TipCardTheme(
+        id: "mono",
+        nameKey: "theme.mono",
+        isPro: true,
+        backgroundColors: [
+            Color(red: 0.07, green: 0.07, blue: 0.08),
+            Color(red: 0.16, green: 0.16, blue: 0.17)
+        ],
+        foreground: Color(red: 0.98, green: 0.98, blue: 0.98),
+        foregroundSecondary: Color(red: 0.68, green: 0.68, blue: 0.70),
+        accent: Color(red: 0.92, green: 0.92, blue: 0.93),
+        onAccent: Color(red: 0.10, green: 0.10, blue: 0.11),
+        qrPanel: Color(red: 1.00, green: 1.00, blue: 1.00)
+    )
+
+    /// Soft pink blossom for crafters / florists / cozy small-shop tip jars.
+    static let blossom = TipCardTheme(
+        id: "blossom",
+        nameKey: "theme.blossom",
+        isPro: true,
+        backgroundColors: [
+            Color(red: 1.00, green: 0.92, blue: 0.94),
+            Color(red: 0.99, green: 0.83, blue: 0.88)
+        ],
+        foreground: Color(red: 0.40, green: 0.13, blue: 0.24),
+        foregroundSecondary: Color(red: 0.62, green: 0.36, blue: 0.46),
+        accent: Color(red: 0.91, green: 0.40, blue: 0.56),
+        onAccent: Color(red: 1.00, green: 0.98, blue: 0.99),
+        qrPanel: Color(red: 1.00, green: 0.99, blue: 0.99)
+    )
+
     /// All themes in display order. First entry is the free default.
     static let all: [TipCardTheme] = [
-        classicLight, midnight, barista, busker, streamer, freelancer, event
+        classicLight, midnight, barista, busker, streamer, freelancer, event,
+        sunset, ocean, forest, mono, blossom
     ]
+
+    /// Number of premium (paid) themes — computed so paywall / upsell copy that
+    /// quotes a theme count stays in sync as the catalog grows (no hardcoded
+    /// number to drift). Used by `ShareCardView` / `PaywallView`.
+    static var proCount: Int { all.filter(\.isPro).count }
+
+    /// Total number of themes (free + premium), for "N card themes" copy.
+    static var totalCount: Int { all.count }
 
     /// The free default theme.
     static var free: TipCardTheme { classicLight }

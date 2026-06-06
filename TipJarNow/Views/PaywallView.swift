@@ -33,7 +33,9 @@ struct PaywallView: View {
                         // (TipCardTheme / ShareCardView / PosterExportView), and
                         // watermark removal (TipCardView/PosterArtwork showWatermark).
                         feature("infinity",                LocalizedStringKey("Unlimited tip methods"))
-                        feature("paintpalette.fill",       LocalizedStringKey("7 designer card themes"))
+                        // Theme count is computed from the catalog so this copy
+                        // never drifts as designs are added (CLAUDE.md #53/#57).
+                        feature("paintpalette.fill",       themeCountText)
                         feature("printer.fill",            LocalizedStringKey("Printable QR posters"))
                         feature("seal.fill",               LocalizedStringKey("Remove watermark"))
                     }
@@ -239,11 +241,22 @@ struct PaywallView: View {
     }
 
     private func feature(_ icon: String, _ text: LocalizedStringKey) -> some View {
+        feature(icon, Text(text))
+    }
+
+    private func feature(_ icon: String, _ text: Text) -> some View {
         HStack(spacing: 12) {
             Image(systemName: icon).foregroundStyle(.tint).frame(width: 28)
-            Text(text)
+            text
             Spacer()
         }
+    }
+
+    /// "N designer card themes" — N computed from the live theme catalog so the
+    /// paywall copy never overstates/understates how many designs Pro unlocks.
+    private var themeCountText: Text {
+        Text(String(format: NSLocalizedString("%lld designer card themes", comment: "Paywall feature row: number of premium card themes"),
+                    TipCardTheme.totalCount))
     }
 
     private func handlePurchaseStateChange(_ state: IAPManager.PurchaseState) {

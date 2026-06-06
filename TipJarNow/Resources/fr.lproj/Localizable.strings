@@ -160,3 +160,22 @@
 "Build habits, see your streak" = "Créez des habitudes, suivez votre série";
 "Focus timer that tracks your time" = "Minuteur de concentration qui suit votre temps";
 "Stay hydrated every day" = "Restez hydraté chaque jour";
+
+
+/* Wave-3 — free premium trial + new card themes */
+"Try free" = "Essai gratuit";
+"Maybe later" = "Plus tard";
+"%lld designer card themes" = "%lld thèmes de carte design";
+"Pro unlocks all %lld card themes and removes the watermark." = "Pro débloque les %lld thèmes de carte et supprime le filigrane.";
+"Tap any premium theme to make one clean, watermark-free card free." = "Touchez un thème premium pour créer gratuitement une carte nette, sans filigrane.";
+"Tap any size or premium theme to print one clean, watermark-free poster free." = "Touchez une taille ou un thème premium pour imprimer gratuitement une affiche nette, sans filigrane.";
+"Here's your free clean card" = "Voici votre carte nette gratuite";
+"Here's your free clean poster" = "Voici votre affiche nette gratuite";
+"Share it now — no watermark. Unlock Pro to keep every theme watermark-free and print posters, all for a one-time purchase. No subscription." = "Partagez-la maintenant, sans filigrane. Activez Pro pour garder tous les thèmes sans filigrane et imprimer des affiches, le tout pour un achat unique. Sans abonnement.";
+"Export it now — no watermark, any size. Unlock Pro to keep every size and theme watermark-free, with a one-time purchase. No subscription." = "Exportez-la maintenant, sans filigrane et dans n'importe quelle taille. Activez Pro pour garder toutes les tailles et thèmes sans filigrane, avec un achat unique. Sans abonnement.";
+"theme.sunset" = "Coucher de soleil";
+"theme.ocean" = "Océan";
+"theme.forest" = "Forêt";
+"theme.mono" = "Mono";
+"theme.blossom" = "Fleur";
+"Payment method options" = "Options de mode de paiement";

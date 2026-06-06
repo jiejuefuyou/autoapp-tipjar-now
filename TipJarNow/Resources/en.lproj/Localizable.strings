@@ -160,3 +160,22 @@
 "Build habits, see your streak" = "Build habits, see your streak";
 "Focus timer that tracks your time" = "Focus timer that tracks your time";
 "Stay hydrated every day" = "Stay hydrated every day";
+
+
+/* Wave-3 — free premium trial + new card themes */
+"Try free" = "Try free";
+"Maybe later" = "Maybe later";
+"%lld designer card themes" = "%lld designer card themes";
+"Pro unlocks all %lld card themes and removes the watermark." = "Pro unlocks all %lld card themes and removes the watermark.";
+"Tap any premium theme to make one clean, watermark-free card free." = "Tap any premium theme to make one clean, watermark-free card free.";
+"Tap any size or premium theme to print one clean, watermark-free poster free." = "Tap any size or premium theme to print one clean, watermark-free poster free.";
+"Here's your free clean card" = "Here's your free clean card";
+"Here's your free clean poster" = "Here's your free clean poster";
+"Share it now — no watermark. Unlock Pro to keep every theme watermark-free and print posters, all for a one-time purchase. No subscription." = "Share it now — no watermark. Unlock Pro to keep every theme watermark-free and print posters, all for a one-time purchase. No subscription.";
+"Export it now — no watermark, any size. Unlock Pro to keep every size and theme watermark-free, with a one-time purchase. No subscription." = "Export it now — no watermark, any size. Unlock Pro to keep every size and theme watermark-free, with a one-time purchase. No subscription.";
+"theme.sunset" = "Sunset";
+"theme.ocean" = "Ocean";
+"theme.forest" = "Forest";
+"theme.mono" = "Mono";
+"theme.blossom" = "Blossom";
+"Payment method options" = "Payment method options";
