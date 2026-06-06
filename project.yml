@@ -58,11 +58,28 @@ targets:
         TARGETED_DEVICE_FAMILY: "1"
         SUPPORTS_MACCATALYST: "NO"
         SWIFT_EMIT_LOC_STRINGS: "YES"
+  TipJarNowTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: TipJarNowTests
+    dependencies:
+      - target: TipJarNow
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.jiejuefuyou.tipjarnow.tests
+        BUNDLE_LOADER: "$(TEST_HOST)"
+        TEST_HOST: "$(BUILT_PRODUCTS_DIR)/TipJarNow.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TipJarNow"
 schemes:
   TipJarNow:
     build:
       targets:
         TipJarNow: all
+        TipJarNowTests: [test]
+    test:
+      config: Debug
+      targets:
+        - TipJarNowTests
     run:
       config: Debug
     archive:
