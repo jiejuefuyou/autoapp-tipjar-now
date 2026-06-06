@@ -27,25 +27,8 @@ targets:
     platform: iOS
     sources:
       - path: TipJarNow
-        excludes:
-          - "Resources/en.lproj"
-          - "Resources/ja.lproj"
-          - "Resources/zh-Hans.lproj"
-          - "Resources/zh-Hant.lproj"
-          - "Resources/ko.lproj"
-          - "Resources/es.lproj"
-          - "Resources/fr.lproj"
-          - "Resources/de.lproj"
     resources:
       - path: TipJarNow/Resources/Assets.xcassets
-      - path: TipJarNow/Resources/en.lproj
-      - path: TipJarNow/Resources/ja.lproj
-      - path: TipJarNow/Resources/zh-Hans.lproj
-      - path: TipJarNow/Resources/zh-Hant.lproj
-      - path: TipJarNow/Resources/ko.lproj
-      - path: TipJarNow/Resources/es.lproj
-      - path: TipJarNow/Resources/fr.lproj
-      - path: TipJarNow/Resources/de.lproj
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.jiejuefuyou.tipjarnow
