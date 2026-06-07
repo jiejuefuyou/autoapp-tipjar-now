@@ -1,3 +1,14 @@
+//  LocalizationManager.swift — PORTFOLIO CANONICAL (orchestrator/ios-core)
+//
+//  Single source of truth for all autoapp iOS apps. DO NOT edit per-app copies.
+//  Edit orchestrator/ios-core/swift/LocalizationManager.swift, then run:
+//      python dashboard/sync_ios_core.py --apply
+//  Drift is gated by dashboard/audit_portfolio.py (core-sync check).
+//
+//  This file is the surface behind the recurring lessons #33 / #34 / #63
+//  ("in-app language switch silently does nothing"). Unifying it makes that
+//  whole regression class structurally impossible to reintroduce per-app.
+//
 import Foundation
 import SwiftUI
 import ObjectiveC.runtime
@@ -100,16 +111,16 @@ final class LocalizationManager {
     /// Native-script display names. Hardcoded because Apple's
     /// `localizedString(forLanguageCode:)` drops the script tag and collapses
     /// "zh-Hans" + "zh-Hant" into a single "中文" label, which makes the two
-    /// Chinese options indistinguishable in the picker (user report 2026-05-11).
+    /// Chinese options indistinguishable in the picker (user report 2026-05-13).
     static let displayNames: [String: String] = [
-        "en": "English",
-        "ja": "日本語",
-        "ko": "한국어",
+        "en":      "English",
+        "ja":      "日本語",
+        "ko":      "한국어",
         "zh-Hans": "简体中文",
         "zh-Hant": "繁體中文",
-        "es": "Español",
-        "fr": "Français",
-        "de": "Deutsch",
+        "es":      "Español",
+        "fr":      "Français",
+        "de":      "Deutsch",
     ]
 
     /// Display name for a language code, rendered in that language's own script.

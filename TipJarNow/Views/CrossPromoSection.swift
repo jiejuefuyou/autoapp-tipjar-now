@@ -1,3 +1,13 @@
+//  CrossPromoSection.swift — PORTFOLIO CANONICAL (orchestrator/ios-core)
+//
+//  Single source of truth for all autoapp iOS apps. DO NOT edit per-app copies.
+//  Edit orchestrator/ios-core/swift/CrossPromoSection.swift, then run:
+//      python dashboard/sync_ios_core.py --apply
+//  Drift is gated by dashboard/audit_portfolio.py (core-sync check).
+//
+//  Holds the full 8-app portfolio. When an app is added, update the `portfolio`
+//  array HERE once and sync — every app's cross-promo list updates together.
+//
 import SwiftUI
 
 /// A single app in the developer's portfolio, surfaced for cross-promotion.
@@ -86,7 +96,7 @@ struct CrossPromoSection: View {
                             .foregroundStyle(Color.accentColor)
                             .frame(width: 28)
                         VStack(alignment: .leading, spacing: 2) {
-                            Text(verbatim: app.brandName)
+                            Text(app.brandName)
                                 .font(.body)
                                 .foregroundStyle(.primary)
                             Text(app.taglineKey)
