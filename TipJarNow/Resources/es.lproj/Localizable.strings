@@ -63,7 +63,6 @@
 /* PaywallView */
 "One-time purchase. No subscription. Unlock everything forever." = "Compra única. Sin suscripción. Desbloquea todo para siempre.";
 "Unlimited tip methods" = "Métodos de propina ilimitados";
-"7 designer card themes" = "7 temas de tarjeta de diseño";
 "Printable QR posters" = "Pósteres QR imprimibles";
 "Remove watermark" = "Quitar marca de agua";
 "Restore Purchase" = "Restaurar compra";
@@ -133,7 +132,6 @@
 "Tip poster" = "Póster de propinas";
 "Size" = "Tamaño";
 "Theme" = "Tema";
-"Pro unlocks 7 card themes and removes the watermark." = "Pro desbloquea 7 temas de tarjeta y quita la marca de agua.";
 "Pro unlocks every size + theme and removes the watermark." = "Pro desbloquea todos los tamaños y temas y quita la marca de agua.";
 
 /* Tip card themes */

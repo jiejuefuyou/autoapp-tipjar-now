@@ -63,7 +63,6 @@
 /* PaywallView */
 "One-time purchase. No subscription. Unlock everything forever." = "Einmalkauf. Kein Abo. Alles für immer freigeschaltet.";
 "Unlimited tip methods" = "Unbegrenzte Trinkgeld-Methoden";
-"7 designer card themes" = "7 Designer-Kartendesigns";
 "Printable QR posters" = "Druckbare QR-Poster";
 "Remove watermark" = "Wasserzeichen entfernen";
 "Restore Purchase" = "Kauf wiederherstellen";
@@ -133,7 +132,6 @@
 "Tip poster" = "Trinkgeldposter";
 "Size" = "Größe";
 "Theme" = "Design";
-"Pro unlocks 7 card themes and removes the watermark." = "Pro schaltet 7 Kartendesigns frei und entfernt das Wasserzeichen.";
 "Pro unlocks every size + theme and removes the watermark." = "Pro schaltet alle Größen und Designs frei und entfernt das Wasserzeichen.";
 
 /* Tip card themes */

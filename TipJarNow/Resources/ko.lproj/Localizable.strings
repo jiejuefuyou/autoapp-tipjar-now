@@ -63,7 +63,6 @@
 /* PaywallView */
 "One-time purchase. No subscription. Unlock everything forever." = "일회 구매. 구독 없음. 모든 기능을 영원히 잠금 해제합니다.";
 "Unlimited tip methods" = "결제 수단 무제한";
-"7 designer card themes" = "디자이너 카드 테마 7종";
 "Printable QR posters" = "인쇄 가능한 QR 포스터";
 "Remove watermark" = "워터마크 제거";
 "Restore Purchase" = "구매 복원";
@@ -133,7 +132,6 @@
 "Tip poster" = "팁 포스터";
 "Size" = "크기";
 "Theme" = "테마";
-"Pro unlocks 7 card themes and removes the watermark." = "Pro로 카드 테마 7종을 사용하고 워터마크를 제거합니다.";
 "Pro unlocks every size + theme and removes the watermark." = "Pro로 모든 크기와 테마를 사용하고 워터마크를 제거합니다.";
 
 /* Tip card themes */

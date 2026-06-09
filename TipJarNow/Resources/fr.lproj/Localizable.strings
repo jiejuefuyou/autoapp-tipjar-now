@@ -63,7 +63,6 @@
 /* PaywallView */
 "One-time purchase. No subscription. Unlock everything forever." = "Achat unique. Pas d'abonnement. Tout débloqué à vie.";
 "Unlimited tip methods" = "Modes de pourboire illimités";
-"7 designer card themes" = "7 thèmes de carte design";
 "Printable QR posters" = "Affiches QR imprimables";
 "Remove watermark" = "Supprimer le filigrane";
 "Restore Purchase" = "Restaurer l'achat";
@@ -133,7 +132,6 @@
 "Tip poster" = "Affiche de pourboire";
 "Size" = "Taille";
 "Theme" = "Thème";
-"Pro unlocks 7 card themes and removes the watermark." = "Pro débloque 7 thèmes de carte et supprime le filigrane.";
 "Pro unlocks every size + theme and removes the watermark." = "Pro débloque toutes les tailles et thèmes et supprime le filigrane.";
 
 /* Tip card themes */

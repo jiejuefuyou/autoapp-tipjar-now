@@ -63,7 +63,6 @@
 /* PaywallView */
 "One-time purchase. No subscription. Unlock everything forever." = "One-time purchase. No subscription. Unlock everything forever.";
 "Unlimited tip methods" = "Unlimited tip methods";
-"7 designer card themes" = "7 designer card themes";
 "Printable QR posters" = "Printable QR posters";
 "Remove watermark" = "Remove watermark";
 "Restore Purchase" = "Restore Purchase";
@@ -133,7 +132,6 @@
 "Tip poster" = "Tip poster";
 "Size" = "Size";
 "Theme" = "Theme";
-"Pro unlocks 7 card themes and removes the watermark." = "Pro unlocks 7 card themes and removes the watermark.";
 "Pro unlocks every size + theme and removes the watermark." = "Pro unlocks every size + theme and removes the watermark.";
 
 /* Tip card themes */

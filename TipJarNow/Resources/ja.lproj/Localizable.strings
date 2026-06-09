@@ -63,7 +63,6 @@
 /* PaywallView */
 "One-time purchase. No subscription. Unlock everything forever." = "買い切り型。サブスクリプションなし。すべての機能を永久に解除。";
 "Unlimited tip methods" = "支払い方法 無制限";
-"7 designer card themes" = "デザインカードテーマ 7 種";
 "Printable QR posters" = "印刷できる QR ポスター";
 "Remove watermark" = "ウォーターマークを削除";
 "Restore Purchase" = "購入を復元";
@@ -133,7 +132,6 @@
 "Tip poster" = "チップポスター";
 "Size" = "サイズ";
 "Theme" = "テーマ";
-"Pro unlocks 7 card themes and removes the watermark." = "Pro でカードテーマ 7 種が使え、ウォーターマークも消えます。";
 "Pro unlocks every size + theme and removes the watermark." = "Pro で全サイズとテーマが使え、ウォーターマークも消えます。";
 
 /* Tip card themes */

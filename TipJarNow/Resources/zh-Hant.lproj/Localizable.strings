@@ -63,7 +63,6 @@
 /* PaywallView */
 "One-time purchase. No subscription. Unlock everything forever." = "一次性買斷,不訂閱,永久解鎖全部功能。";
 "Unlimited tip methods" = "收款方式不限數量";
-"7 designer card themes" = "7 款設計師卡片主題";
 "Printable QR posters" = "可列印的 QR 碼海報";
 "Remove watermark" = "移除浮水印";
 "Restore Purchase" = "回復購買項目";
@@ -133,7 +132,6 @@
 "Tip poster" = "贊助海報";
 "Size" = "尺寸";
 "Theme" = "主題";
-"Pro unlocks 7 card themes and removes the watermark." = "Pro 解鎖 7 款卡片主題並移除浮水印。";
 "Pro unlocks every size + theme and removes the watermark." = "Pro 解鎖全部尺寸和主題並移除浮水印。";
 
 /* Tip card themes */
