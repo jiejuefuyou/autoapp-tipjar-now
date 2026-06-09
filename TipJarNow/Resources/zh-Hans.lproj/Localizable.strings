@@ -28,26 +28,26 @@
 /* MethodEditView placeholders */
 "placeholder.paypal"  = "user@email.com 或 paypal.me/账号";
 "placeholder.venmo"   = "@你的 Venmo";
-"placeholder.wechat"  = "微信收款二维码链接";
-"placeholder.alipay"  = "支付宝收款二维码链接";
-"placeholder.paypay"  = "PayPay 收款链接";
-"placeholder.linepay" = "LINE Pay 收款链接";
+"placeholder.wechat" = "微信号（可选）";
+"placeholder.alipay" = "支付宝名称（可选）";
+"placeholder.paypay" = "PayPay ID（可选）";
+"placeholder.linepay" = "LINE ID（可选）";
 "placeholder.cashapp" = "$你的 cashtag";
-"placeholder.zelle"   = "电话或邮箱";
+"placeholder.zelle" = "名称（可选）";
 "placeholder.revolut" = "@你的 revtag";
-"placeholder.wise"    = "wise.com/pay/me/你的名字";
+"placeholder.wise" = "你的完整 Wise 收款链接";
 
 /* MethodEditView hints */
-"hint.paypal"  = "输入你的 PayPal 邮箱或 paypal.me/账号。二维码会跳转到 PayPal 收款页。";
-"hint.venmo"   = "只需 @账号。二维码会打开 venmo.com/账号。";
-"hint.wechat"  = "在微信打开「我」→「服务」→「收付款」→「二维码收款」,保存二维码链接。Pro 用户可以直接上传二维码图片。";
-"hint.alipay"  = "在支付宝打开「收钱」→「保存收款码」,保存链接。Pro 用户可以直接上传二维码图片。";
-"hint.paypay"  = "打开 PayPay 收款链接,复制 URL。";
-"hint.linepay" = "LINE Pay 收款链接。";
-"hint.cashapp" = "你的 $cashtag (例如 $john)。二维码会打开 cash.app/$john。";
-"hint.zelle"   = "Zelle 电话或邮箱。二维码会编码为 tel: 或 mailto: 链接。";
-"hint.revolut" = "你的 @revtag。二维码会打开 revolut.com/pay-me/@revtag。";
-"hint.wise"    = "你的 Wise pay.me 链接。";
+"hint.paypal" = "输入你的 PayPal 邮箱或 paypal.me/handle。扫码后会打开你的 paypal.me 页面。";
+"hint.venmo" = "只需填写 @handle。扫码会打开 venmo.com/u/handle（你的个人 Venmo 主页）。";
+"hint.wechat" = "微信支付没有公开链接，请上传你的收款码：打开微信 →「我」→「支付」→「收付款」→「二维码收款」，保存该二维码图片后在此添加。";
+"hint.alipay" = "支付宝没有公开链接，请上传你的收款码：打开支付宝 →「收钱」，保存该二维码图片后在此添加。";
+"hint.paypay" = "PayPay 没有公开链接，请上传你的收款码：打开 PayPay，点开你的二维码/条形码，保存图片后在此添加。";
+"hint.linepay" = "LINE Pay 没有公开链接，请上传你的收款码：打开 LINE Pay →「我的代码」，保存该二维码图片后在此添加。";
+"hint.cashapp" = "你的 $cashtag（例如 $john）。扫码会打开 cash.app/$john。";
+"hint.zelle" = "Zelle 没有公开链接，请上传你的收款码：在你银行的 Zelle 页面打开「My Code」，保存该二维码图片后在此添加。";
+"hint.revolut" = "你的 @revtag。扫码会打开 revolut.me/revtag。";
+"hint.wise" = "粘贴你的完整 Wise 收款链接（Wise → Get paid）。扫码会打开该链接。";
 
 /* OnboardingView */
 "Show your QR. Get tipped." = "亮出二维码,收到打赏。";
@@ -55,7 +55,7 @@
 "10 payment methods." = "10 种收款方式。";
 "PayPal, Venmo, WeChat, PayPay, LINE Pay, Cash App, Zelle and more." = "PayPal、Venmo、微信、PayPay、LINE Pay、Cash App、Zelle 等多种方式。";
 "Keep 100% of your tips." = "小费 100% 归你。";
-"$1.99 once unlocks unlimited payment methods. No subscription, no platform cut — every tip is yours." = "$1.99 一次性解锁无限收款方式。无订阅、无平台抽成 — 每一笔小费都归你。";
+"$1.99 once unlocks unlimited payment methods. No subscription, no platform cut — every tip is yours." = "一次性购买即可解锁无限收款方式和可打印海报。无订阅、无平台抽成 —— 小费 100% 归你。";
 "Get Started" = "开始使用";
 "Skip" = "跳过";
 "Skip onboarding" = "跳过引导";
@@ -132,7 +132,6 @@
 "Tip poster" = "打赏海报";
 "Size" = "尺寸";
 "Theme" = "主题";
-"Pro unlocks every size + theme and removes the watermark." = "Pro 解锁全部尺寸和主题并去除水印。";
 
 /* Tip card themes */
 "theme.classicLight" = "经典";
@@ -166,14 +165,27 @@
 "%lld designer card themes" = "%lld 款设计师卡片主题";
 "Pro unlocks all %lld card themes and removes the watermark." = "Pro 解锁全部 %lld 款卡片主题并去除水印。";
 "Tap any premium theme to make one clean, watermark-free card free." = "点按任意高级主题,免费制作一张无水印的精美卡片。";
-"Tap any size or premium theme to print one clean, watermark-free poster free." = "点按任意尺寸或高级主题,免费打印一张无水印的精美海报。";
 "Here's your free clean card" = "这是你的免费无水印卡片";
-"Here's your free clean poster" = "这是你的免费无水印海报";
 "Share it now — no watermark. Unlock Pro to keep every theme watermark-free and print posters, all for a one-time purchase. No subscription." = "现在就无水印分享吧。解锁 Pro 即可让所有主题持续无水印,并打印海报——一次买断,无订阅。";
-"Export it now — no watermark, any size. Unlock Pro to keep every size and theme watermark-free, with a one-time purchase. No subscription." = "现在就以任意尺寸无水印导出吧。解锁 Pro 即可让所有尺寸和主题持续无水印——一次买断,无订阅。";
 "theme.sunset" = "日落";
 "theme.ocean" = "海洋";
 "theme.forest" = "森林";
 "theme.mono" = "极简黑";
 "theme.blossom" = "花漾";
 "Payment method options" = "支付方式选项";
+
+/* v1.0.3 — upload-your-own receive code + edit method */
+"Edit Current" = "编辑当前方式";
+"Edit Method" = "编辑收款方式";
+"Receive code" = "收款码";
+"Label (optional)" = "标签（可选）";
+"Choose receive code image" = "选择收款码图片";
+"Replace receive code image" = "替换收款码图片";
+"Remove image" = "移除图片";
+"Couldn't load that image. Please try another." = "无法加载该图片，请换一张试试。";
+"Add your receive code" = "添加你的收款码";
+"No receive code yet. Tap to add your payment QR." = "还没有收款码。点按以添加你的收款二维码。";
+"QR code to send a tip" = "用于送小费的二维码";
+"Your QR will link to" = "你的二维码将指向";
+"This doesn't look like a valid link yet. Check the format in the hint above." = "这看起来还不是有效链接。请参照上方提示的格式。";
+"This is a free preview. Unlock Pro to export print-ready sizes (A4, Letter, 4×6) in any theme, watermark-free." = "这是免费预览。解锁 Pro 即可用任意主题导出可打印尺寸（A4、Letter、4×6），且无水印。";

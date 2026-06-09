@@ -3,7 +3,6 @@ options:
   bundleIdPrefix: com.jiejuefuyou
   deploymentTarget:
     iOS: "17.0"
-    watchOS: "10.0"
   developmentLanguage: en
   createIntermediateGroups: true
   generateEmptyDirectories: true
@@ -38,6 +37,10 @@ targets:
         INFOPLIST_KEY_UILaunchScreen_Generation: "YES"
         INFOPLIST_KEY_UIApplicationSceneManifest_Generation: "YES"
         INFOPLIST_KEY_UISupportedInterfaceOrientations: "UIInterfaceOrientationPortrait"
+        # Photo library access for the "upload your own receive code" flow
+        # (WeChat / Alipay / PayPay / LINE Pay / Zelle). Base (en) value; each
+        # locale overrides it via Resources/<lang>.lproj/InfoPlist.strings.
+        INFOPLIST_KEY_NSPhotoLibraryUsageDescription: "TipJar Now needs access to your photos so you can pick your payment receive code to show on your tip card."
         TARGETED_DEVICE_FAMILY: "1"
         SUPPORTS_MACCATALYST: "NO"
         SWIFT_EMIT_LOC_STRINGS: "YES"

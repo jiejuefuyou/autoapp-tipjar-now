@@ -12,6 +12,7 @@ struct ContentView: View {
     @State private var showPaywall = false
     @State private var showSettings = false
     @State private var addingMethod = false
+    @State private var editingMethod: TipMethod?
     @State private var selectedMethod: TipMethod?
     @State private var showCopiedToast = false
     @State private var showShareCard = false
@@ -58,7 +59,14 @@ struct ContentView: View {
                         } label: {
                             Label(LocalizedStringKey("Add Method"), systemImage: "plus")
                         }
-                        if currentMethod != nil {
+                        if let m = currentMethod {
+                            Button {
+                                editingMethod = m
+                            } label: {
+                                Label(LocalizedStringKey("Edit Current"), systemImage: "pencil")
+                            }
+                        }
+                        if let m = currentMethod, m.qrImage != nil {
                             Button {
                                 showPosterExport = true
                             } label: {
@@ -107,6 +115,15 @@ struct ContentView: View {
                 MethodEditView { newMethod in
                     store.add(newMethod)
                     selectedMethod = newMethod
+                }
+                .environment(l10n)
+                .environment(\.locale, l10n.currentLocale)
+                .id(l10n.override)
+            }
+            .sheet(item: $editingMethod) { method in
+                MethodEditView(editing: method) { updated in
+                    store.update(updated)
+                    selectedMethod = updated
                 }
                 .environment(l10n)
                 .environment(\.locale, l10n.currentLocale)
@@ -187,13 +204,24 @@ struct ContentView: View {
                     RoundedRectangle(cornerRadius: 24)
                         .strokeBorder(.tertiary, lineWidth: 1)
                 )
+                .overlay {
+                    // Image-only wallet with no uploaded code yet → no payable
+                    // QR exists. Don't pretend the placeholder glyph is scannable;
+                    // prompt the user to add their real receive code.
+                    if method.qrImage == nil && method.requiresUploadedQR {
+                        setupCodeOverlay(for: method)
+                    }
+                }
+                .accessibilityLabel(Text(qrAccessibilityLabel(for: method)))
 
-            Text(method.addressOrLink)
-                .font(.callout.monospacedDigit())
-                .foregroundStyle(.secondary)
-                .lineLimit(1)
-                .truncationMode(.middle)
-                .padding(.horizontal)
+            if !method.addressOrLink.isEmpty {
+                Text(method.addressOrLink)
+                    .font(.callout.monospacedDigit())
+                    .foregroundStyle(.secondary)
+                    .lineLimit(1)
+                    .truncationMode(.middle)
+                    .padding(.horizontal)
+            }
 
             actionButtonsRow(for: method)
 
@@ -202,6 +230,36 @@ struct ContentView: View {
             }
         }
         .padding(Spacing.md)
+    }
+
+    /// Overlay shown on the QR slot when an image-only method (WeChat / Alipay /
+    /// PayPay / LINE Pay / Zelle) has no uploaded receive code yet. Tapping it
+    /// opens the editor's PhotosPicker so the user supplies their real QR.
+    @ViewBuilder
+    private func setupCodeOverlay(for method: TipMethod) -> some View {
+        Button {
+            editingMethod = method
+        } label: {
+            VStack(spacing: Spacing.sm) {
+                Image(systemName: "qrcode.viewfinder")
+                    .font(.system(size: 40))
+                Text(LocalizedStringKey("Add your receive code"))
+                    .font(.subheadline.weight(.semibold))
+                    .multilineTextAlignment(.center)
+            }
+            .foregroundStyle(.white)
+            .padding(Spacing.md)
+            .frame(width: 280, height: 280)
+            .background(.black.opacity(0.55), in: RoundedRectangle(cornerRadius: 24))
+        }
+        .buttonStyle(.plain)
+    }
+
+    private func qrAccessibilityLabel(for method: TipMethod) -> LocalizedStringKey {
+        if method.qrImage == nil && method.requiresUploadedQR {
+            return LocalizedStringKey("No receive code yet. Tap to add your payment QR.")
+        }
+        return LocalizedStringKey("QR code to send a tip")
     }
 
     /// Hero card — large styled header with brand-color top stripe, big SF
@@ -230,6 +288,10 @@ struct ContentView: View {
                 Text(method.displayName ?? method.kind.displayName)
                     .font(.largeTitle.bold())
                     .foregroundStyle(.primary)
+                    .multilineTextAlignment(.center)
+                    .lineLimit(2)
+                    .minimumScaleFactor(0.7)   // long names at AX sizes shrink rather than truncate
+                    .padding(.horizontal, Spacing.md)
 
                 Text(LocalizedStringKey("Send a tip"))
                     .font(.title3)
@@ -255,16 +317,21 @@ struct ContentView: View {
     /// instead of a bare URL string.
     @ViewBuilder
     private func actionButtonsRow(for method: TipMethod) -> some View {
-        let link = method.paymentURL?.absoluteString ?? method.addressOrLink
+        // A scannable QR exists once a URL is synthesized OR a code is uploaded.
+        let canShare = method.qrImage != nil
         HStack(spacing: 12) {
-            Button {
-                copyLink(link)
-            } label: {
-                Label(LocalizedStringKey("Copy Link"), systemImage: "doc.on.doc")
-                    .font(.subheadline.weight(.semibold))
-                    .frame(maxWidth: .infinity, minHeight: 44)
+            // Copy Link only makes sense for URL-based methods (image-only
+            // wallets have no link to copy).
+            if let link = method.paymentURL?.absoluteString {
+                Button {
+                    copyLink(link)
+                } label: {
+                    Label(LocalizedStringKey("Copy Link"), systemImage: "doc.on.doc")
+                        .font(.subheadline.weight(.semibold))
+                        .frame(maxWidth: .infinity, minHeight: 44)
+                }
+                .buttonStyle(.bordered)
             }
-            .buttonStyle(.bordered)
 
             Button {
                 UIImpactFeedbackGenerator(style: .medium).impactOccurred()
@@ -275,6 +342,7 @@ struct ContentView: View {
                     .frame(maxWidth: .infinity, minHeight: 44)
             }
             .buttonStyle(.borderedProminent)
+            .disabled(!canShare)
         }
         .padding(.horizontal)
     }
@@ -327,8 +395,9 @@ struct ContentView: View {
     }
 
     private func qrImage(for method: TipMethod) -> Image {
-        let payload: String = method.paymentURL?.absoluteString ?? method.addressOrLink
-        return Image(uiImage: QRGenerator.image(from: payload) ?? UIImage(systemName: "qrcode") ?? UIImage())
+        // Single resolver (TipMethodQR): uploaded image → synthesized URL QR →
+        // placeholder. Never re-encodes a raw handle string into a dead QR.
+        Image(uiImage: method.qrImageOrPlaceholder)
     }
 
     private func handleAddMethod() {

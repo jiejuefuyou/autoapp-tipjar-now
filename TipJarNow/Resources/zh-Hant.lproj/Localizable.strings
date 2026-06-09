@@ -28,26 +28,26 @@
 /* MethodEditView placeholders */
 "placeholder.paypal"  = "user@email.com 或 paypal.me/帳號";
 "placeholder.venmo"   = "@你的 Venmo";
-"placeholder.wechat"  = "微信收款 QR 碼網址";
-"placeholder.alipay"  = "支付寶收款 QR 碼網址";
-"placeholder.paypay"  = "PayPay 收款連結";
-"placeholder.linepay" = "LINE Pay 收款連結";
+"placeholder.wechat" = "微信號（選填）";
+"placeholder.alipay" = "支付寶名稱（選填）";
+"placeholder.paypay" = "PayPay ID（選填）";
+"placeholder.linepay" = "LINE ID（選填）";
 "placeholder.cashapp" = "$你的 cashtag";
-"placeholder.zelle"   = "電話或電子郵件";
+"placeholder.zelle" = "名稱（選填）";
 "placeholder.revolut" = "@你的 revtag";
-"placeholder.wise"    = "wise.com/pay/me/你的名字";
+"placeholder.wise" = "你的完整 Wise 收款連結";
 
 /* MethodEditView hints */
-"hint.paypal"  = "輸入你的 PayPal 電子郵件或 paypal.me/帳號。QR 碼會連到 PayPal 收款頁。";
-"hint.venmo"   = "只需要 @帳號。QR 碼會開啟 venmo.com/帳號。";
-"hint.wechat"  = "在微信開啟「我」→「服務」→「收付款」→「二維碼收款」,儲存 QR 連結。Pro 使用者可以直接上傳 QR 圖片。";
-"hint.alipay"  = "在支付寶開啟「收錢」→「儲存收款碼」,儲存連結。Pro 使用者可以直接上傳 QR 圖片。";
-"hint.paypay"  = "開啟 PayPay 收款連結,複製網址。";
-"hint.linepay" = "LINE Pay 收款連結。";
-"hint.cashapp" = "你的 $cashtag (例如 $john)。QR 碼會開啟 cash.app/$john。";
-"hint.zelle"   = "Zelle 電話或電子郵件。QR 碼會編碼為 tel: 或 mailto: 連結。";
-"hint.revolut" = "你的 @revtag。QR 碼會開啟 revolut.com/pay-me/@revtag。";
-"hint.wise"    = "你的 Wise pay.me 連結。";
+"hint.paypal" = "輸入你的 PayPal 電子郵件或 paypal.me/handle。掃碼後會開啟你的 paypal.me 頁面。";
+"hint.venmo" = "只需填寫 @handle。掃碼會開啟 venmo.com/u/handle（你的個人 Venmo 主頁）。";
+"hint.wechat" = "微信支付沒有公開連結，請上傳你的收款碼：開啟微信 →「我」→「支付」→「收付款」→「二維碼收款」，儲存該二維碼圖片後在此新增。";
+"hint.alipay" = "支付寶沒有公開連結，請上傳你的收款碼：開啟支付寶 →「收錢」，儲存該二維碼圖片後在此新增。";
+"hint.paypay" = "PayPay 沒有公開連結，請上傳你的收款碼：開啟 PayPay，點開你的二維碼/條碼，儲存圖片後在此新增。";
+"hint.linepay" = "LINE Pay 沒有公開連結，請上傳你的收款碼：開啟 LINE Pay →「我的條碼」，儲存該二維碼圖片後在此新增。";
+"hint.cashapp" = "你的 $cashtag（例如 $john）。掃碼會開啟 cash.app/$john。";
+"hint.zelle" = "Zelle 沒有公開連結，請上傳你的收款碼：在你銀行的 Zelle 頁面開啟「My Code」，儲存該二維碼圖片後在此新增。";
+"hint.revolut" = "你的 @revtag。掃碼會開啟 revolut.me/revtag。";
+"hint.wise" = "貼上你的完整 Wise 收款連結（Wise → Get paid）。掃碼會開啟該連結。";
 
 /* OnboardingView */
 "Show your QR. Get tipped." = "亮出 QR 碼,收到小費。";
@@ -55,7 +55,7 @@
 "10 payment methods." = "10 種收款方式。";
 "PayPal, Venmo, WeChat, PayPay, LINE Pay, Cash App, Zelle and more." = "PayPal、Venmo、微信、PayPay、LINE Pay、Cash App、Zelle 等多種方式。";
 "Keep 100% of your tips." = "小費 100% 歸你。";
-"$1.99 once unlocks unlimited payment methods. No subscription, no platform cut — every tip is yours." = "$1.99 一次性解鎖無限收款方式。無訂閱、無平台抽成 — 每一筆小費都歸你。";
+"$1.99 once unlocks unlimited payment methods. No subscription, no platform cut — every tip is yours." = "一次性購買即可解鎖無限收款方式和可列印海報。無訂閱、無平台抽成 —— 小費 100% 歸你。";
 "Get Started" = "開始使用";
 "Skip" = "略過";
 "Skip onboarding" = "略過引導";
@@ -132,7 +132,6 @@
 "Tip poster" = "贊助海報";
 "Size" = "尺寸";
 "Theme" = "主題";
-"Pro unlocks every size + theme and removes the watermark." = "Pro 解鎖全部尺寸和主題並移除浮水印。";
 
 /* Tip card themes */
 "theme.classicLight" = "經典";
@@ -166,14 +165,27 @@
 "%lld designer card themes" = "%lld 款設計師卡片主題";
 "Pro unlocks all %lld card themes and removes the watermark." = "Pro 解鎖全部 %lld 款卡片主題並移除浮水印。";
 "Tap any premium theme to make one clean, watermark-free card free." = "點按任一進階主題,免費製作一張無浮水印的精美卡片。";
-"Tap any size or premium theme to print one clean, watermark-free poster free." = "點按任一尺寸或進階主題,免費列印一張無浮水印的精美海報。";
 "Here's your free clean card" = "這是你的免費無浮水印卡片";
-"Here's your free clean poster" = "這是你的免費無浮水印海報";
 "Share it now — no watermark. Unlock Pro to keep every theme watermark-free and print posters, all for a one-time purchase. No subscription." = "現在就無浮水印分享吧。解鎖 Pro 即可讓所有主題持續無浮水印,並列印海報——一次買斷,無訂閱。";
-"Export it now — no watermark, any size. Unlock Pro to keep every size and theme watermark-free, with a one-time purchase. No subscription." = "現在就以任意尺寸無浮水印匯出吧。解鎖 Pro 即可讓所有尺寸和主題持續無浮水印——一次買斷,無訂閱。";
 "theme.sunset" = "日落";
 "theme.ocean" = "海洋";
 "theme.forest" = "森林";
 "theme.mono" = "極簡黑";
 "theme.blossom" = "花漾";
 "Payment method options" = "付款方式選項";
+
+/* v1.0.3 — upload-your-own receive code + edit method */
+"Edit Current" = "編輯目前方式";
+"Edit Method" = "編輯收款方式";
+"Receive code" = "收款碼";
+"Label (optional)" = "標籤（選填）";
+"Choose receive code image" = "選擇收款碼圖片";
+"Replace receive code image" = "替換收款碼圖片";
+"Remove image" = "移除圖片";
+"Couldn't load that image. Please try another." = "無法載入該圖片，請換一張試試。";
+"Add your receive code" = "新增你的收款碼";
+"No receive code yet. Tap to add your payment QR." = "還沒有收款碼。點按以新增你的收款 QR。";
+"QR code to send a tip" = "用於送小費的 QR 碼";
+"Your QR will link to" = "你的 QR 將指向";
+"This doesn't look like a valid link yet. Check the format in the hint above." = "這看起來還不是有效連結。請參照上方提示的格式。";
+"This is a free preview. Unlock Pro to export print-ready sizes (A4, Letter, 4×6) in any theme, watermark-free." = "這是免費預覽。解鎖 Pro 即可用任意主題匯出可列印尺寸（A4、Letter、4×6），且無浮水印。";

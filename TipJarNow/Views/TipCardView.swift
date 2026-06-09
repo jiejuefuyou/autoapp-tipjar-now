@@ -27,12 +27,9 @@ struct TipCardView: View {
 
     private var handle: String { method.addressOrLink }
 
-    private var qrImage: UIImage {
-        let payload = method.paymentURL?.absoluteString ?? method.addressOrLink
-        return QRGenerator.image(from: payload)
-            ?? UIImage(systemName: "qrcode")
-            ?? UIImage()
-    }
+    /// Shared resolver: uploaded receive-code image → synthesized URL QR →
+    /// placeholder (TipMethodQR). Same single reader as ContentView/Poster.
+    private var qrImage: UIImage { method.qrImageOrPlaceholder }
 
     var body: some View {
         VStack(spacing: 18) {
@@ -68,10 +65,12 @@ struct TipCardView: View {
                 )
 
             // Handle pill — method icon + the address/handle in the accent color.
+            // For image-only wallets with no handle, fall back to the method
+            // name so the pill still identifies the wallet.
             HStack(spacing: 8) {
                 Image(systemName: method.kind.symbol)
                     .font(.system(size: 15, weight: .semibold))
-                Text(handle)
+                Text(handle.isEmpty ? method.kind.displayName : handle)
                     .font(.system(.subheadline, design: .rounded, weight: .semibold))
                     .lineLimit(1)
                     .truncationMode(.middle)

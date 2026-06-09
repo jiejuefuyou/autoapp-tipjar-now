@@ -28,26 +28,26 @@
 /* MethodEditView placeholders */
 "placeholder.paypal"  = "user@email.com または paypal.me/ハンドル";
 "placeholder.venmo"   = "@あなたの Venmo";
-"placeholder.wechat"  = "微信支付 受取 QR の URL";
-"placeholder.alipay"  = "支付宝 受取 QR の URL";
-"placeholder.paypay"  = "PayPay 受け取りリンク";
-"placeholder.linepay" = "LINE Pay 受け取りリンク";
+"placeholder.wechat" = "微信 ID (任意)";
+"placeholder.alipay" = "支付宝の名前 (任意)";
+"placeholder.paypay" = "PayPay ID (任意)";
+"placeholder.linepay" = "LINE ID (任意)";
 "placeholder.cashapp" = "$あなたの cashtag";
-"placeholder.zelle"   = "電話番号またはメール";
+"placeholder.zelle" = "名前 (任意)";
 "placeholder.revolut" = "@あなたの revtag";
-"placeholder.wise"    = "wise.com/pay/me/あなたの名前";
+"placeholder.wise" = "Wise の支払いリンク全体";
 
 /* MethodEditView hints */
-"hint.paypal"  = "PayPal のメールアドレスまたは paypal.me/ハンドルを入力してください。QR は PayPal のページに変換されます。";
-"hint.venmo"   = "@ハンドルのみを入力してください。QR は venmo.com/ハンドルを開きます。";
-"hint.wechat"  = "微信で「自分」→「支払い」→「受取コード」を開き、QR の URL を保存してください。Pro 版では QR 画像を直接アップロードできます。";
-"hint.alipay"  = "支付宝で「受取金額」を開き、QR の URL を保存してください。Pro 版では QR 画像を直接アップロードできます。";
-"hint.paypay"  = "PayPay の受け取りリンクを開いて URL をコピーしてください。";
-"hint.linepay" = "LINE Pay の受け取りリンクです。";
+"hint.paypal" = "PayPal のメールアドレスまたは paypal.me/ハンドルを入力してください。QR は paypal.me のページを開きます。";
+"hint.venmo" = "@ハンドルのみを入力してください。QR は venmo.com/u/ハンドル（あなたの個人 Venmo プロフィール）を開きます。";
+"hint.wechat" = "微信支付には公開リンクがないため、受取コードをアップロードしてください。微信で「自分」→「支払い」→「受取コード」を開いてその QR 画像を保存し、ここに追加します。";
+"hint.alipay" = "支付宝には公開リンクがないため、受取コードをアップロードしてください。支付宝で「受取」を開いてその QR 画像を保存し、ここに追加します。";
+"hint.paypay" = "PayPay には公開リンクがないため、受取コードをアップロードしてください。PayPay で自分の QR / バーコードを開いて画像を保存し、ここに追加します。";
+"hint.linepay" = "LINE Pay には公開リンクがないため、受取コードをアップロードしてください。LINE Pay で「マイコード」を開いて QR 画像を保存し、ここに追加します。";
 "hint.cashapp" = "$cashtag (例: $john)。QR は cash.app/$john を開きます。";
-"hint.zelle"   = "Zelle の電話番号またはメール。QR は tel: または mailto: URI として変換されます。";
-"hint.revolut" = "@revtag。QR は revolut.com/pay-me/@revtag を開きます。";
-"hint.wise"    = "Wise の pay.me リンクです。";
+"hint.zelle" = "Zelle には公開リンクがないため、受取コードをアップロードしてください。銀行の Zelle 画面で「マイコード」を開いて QR 画像を保存し、ここに追加します。";
+"hint.revolut" = "@revtag。QR は revolut.me/revtag を開きます。";
+"hint.wise" = "Wise の支払いリンク全体（Wise →「受け取る」）を貼り付けてください。QR はそのリンクを開きます。";
 
 /* OnboardingView */
 "Show your QR. Get tipped." = "QR を見せて、チップを受け取る。";
@@ -55,7 +55,7 @@
 "10 payment methods." = "10 種類の支払い方法。";
 "PayPal, Venmo, WeChat, PayPay, LINE Pay, Cash App, Zelle and more." = "PayPal、Venmo、微信、PayPay、LINE Pay、Cash App、Zelle など。";
 "Keep 100% of your tips." = "チップは全額あなたのもの。";
-"$1.99 once unlocks unlimited payment methods. No subscription, no platform cut — every tip is yours." = "$1.99 の買い切りで支払い方法が無制限に。サブスクなし、手数料なし — チップは全額あなたのもの。";
+"$1.99 once unlocks unlimited payment methods. No subscription, no platform cut — every tip is yours." = "買い切りで支払い方法が無制限になり、印刷できるポスターも使えます。サブスクなし、手数料なし — チップは全額あなたのもの。";
 "Get Started" = "はじめる";
 "Skip" = "スキップ";
 "Skip onboarding" = "オンボーディングをスキップ";
@@ -132,7 +132,6 @@
 "Tip poster" = "チップポスター";
 "Size" = "サイズ";
 "Theme" = "テーマ";
-"Pro unlocks every size + theme and removes the watermark." = "Pro で全サイズとテーマが使え、ウォーターマークも消えます。";
 
 /* Tip card themes */
 "theme.classicLight" = "クラシック";
@@ -166,14 +165,27 @@
 "%lld designer card themes" = "デザインカードテーマ %lld 種";
 "Pro unlocks all %lld card themes and removes the watermark." = "Pro でカードテーマ %lld 種すべてが使え、ウォーターマークも消えます。";
 "Tap any premium theme to make one clean, watermark-free card free." = "プレミアムテーマをタップすると、ウォーターマークなしのきれいなカードを 1 枚無料で作れます。";
-"Tap any size or premium theme to print one clean, watermark-free poster free." = "サイズまたはプレミアムテーマをタップすると、ウォーターマークなしのきれいなポスターを 1 枚無料で印刷できます。";
 "Here's your free clean card" = "ウォーターマークなしの無料カードです";
-"Here's your free clean poster" = "ウォーターマークなしの無料ポスターです";
 "Share it now — no watermark. Unlock Pro to keep every theme watermark-free and print posters, all for a one-time purchase. No subscription." = "ウォーターマークなしで今すぐシェアしましょう。Pro を解除すれば、すべてのテーマをウォーターマークなしで使い続け、ポスターも印刷できます。買い切り、サブスクなし。";
-"Export it now — no watermark, any size. Unlock Pro to keep every size and theme watermark-free, with a one-time purchase. No subscription." = "ウォーターマークなし・お好きなサイズで今すぐ書き出しましょう。Pro を解除すれば、すべてのサイズとテーマをウォーターマークなしで使い続けられます。買い切り、サブスクなし。";
 "theme.sunset" = "サンセット";
 "theme.ocean" = "オーシャン";
 "theme.forest" = "フォレスト";
 "theme.mono" = "モノ";
 "theme.blossom" = "ブロッサム";
 "Payment method options" = "支払い方法のオプション";
+
+/* v1.0.3 — upload-your-own receive code + edit method */
+"Edit Current" = "現在の方法を編集";
+"Edit Method" = "支払い方法を編集";
+"Receive code" = "受取コード";
+"Label (optional)" = "ラベル (任意)";
+"Choose receive code image" = "受取コードの画像を選ぶ";
+"Replace receive code image" = "受取コードの画像を差し替える";
+"Remove image" = "画像を削除";
+"Couldn't load that image. Please try another." = "その画像を読み込めませんでした。別の画像をお試しください。";
+"Add your receive code" = "受取コードを追加";
+"No receive code yet. Tap to add your payment QR." = "受取コードがまだありません。タップして支払い QR を追加してください。";
+"QR code to send a tip" = "チップを送るための QR コード";
+"Your QR will link to" = "あなたの QR のリンク先";
+"This doesn't look like a valid link yet. Check the format in the hint above." = "まだ有効なリンクになっていないようです。上のヒントの形式をご確認ください。";
+"This is a free preview. Unlock Pro to export print-ready sizes (A4, Letter, 4×6) in any theme, watermark-free." = "これは無料プレビューです。Pro を解除すると、印刷用サイズ (A4・レター・4×6) を好きなテーマでウォーターマークなしに書き出せます。";

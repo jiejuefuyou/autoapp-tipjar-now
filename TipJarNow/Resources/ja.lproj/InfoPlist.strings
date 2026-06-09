@@ -1,0 +1,2 @@
+/* Photo library access — for picking your payment receive-code image. */
+"NSPhotoLibraryUsageDescription" = "受け取り用コードの画像を選んでチップカードに表示するため、写真へのアクセスが必要です。";

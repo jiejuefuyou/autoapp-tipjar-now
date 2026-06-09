@@ -1,0 +1,2 @@
+/* Photo library access — for picking your payment receive-code image. */
+"NSPhotoLibraryUsageDescription" = "받기 코드 이미지를 골라 팁 카드에 표시하려면 사진 접근 권한이 필요합니다.";

@@ -28,26 +28,26 @@
 /* MethodEditView placeholders */
 "placeholder.paypal"  = "user@email.com o paypal.me/usuario";
 "placeholder.venmo"   = "@tu-venmo";
-"placeholder.wechat"  = "URL del QR de cobro de WeChat Pay";
-"placeholder.alipay"  = "URL del QR de cobro de Alipay";
-"placeholder.paypay"  = "Enlace de cobro de PayPay";
-"placeholder.linepay" = "Enlace de cobro de LINE Pay";
+"placeholder.wechat" = "ID de WeChat (opcional)";
+"placeholder.alipay" = "Nombre de Alipay (opcional)";
+"placeholder.paypay" = "ID de PayPay (opcional)";
+"placeholder.linepay" = "ID de LINE (opcional)";
 "placeholder.cashapp" = "$tu-cashtag";
-"placeholder.zelle"   = "teléfono o correo";
+"placeholder.zelle" = "Nombre (opcional)";
 "placeholder.revolut" = "@tu-revtag";
-"placeholder.wise"    = "wise.com/pay/me/tunombre";
+"placeholder.wise" = "tu enlace de pago de Wise completo";
 
 /* MethodEditView hints */
-"hint.paypal"  = "Introduce tu correo de PayPal o paypal.me/usuario. El QR enlazará a tu página de PayPal.";
-"hint.venmo"   = "Solo tu @usuario. El QR abre venmo.com/usuario.";
-"hint.wechat"  = "Abre WeChat → Yo → Servicios → Pago → Recibir, y guarda el enlace del QR. Los usuarios Pro pueden subir directamente la imagen del QR.";
-"hint.alipay"  = "Abre Alipay → Recibir dinero, y guarda el enlace del QR. Los usuarios Pro pueden subir directamente la imagen del QR.";
-"hint.paypay"  = "Abre el enlace de cobro de PayPay y copia la URL.";
-"hint.linepay" = "Enlace de cobro de LINE Pay.";
-"hint.cashapp" = "Tu $cashtag (p. ej. $john). El QR abre cash.app/$john.";
-"hint.zelle"   = "Teléfono o correo de Zelle. El QR codifica una URI tel: o mailto:.";
-"hint.revolut" = "Tu @revtag. El QR abre revolut.com/pay-me/@revtag.";
-"hint.wise"    = "Tu enlace pay.me de Wise.";
+"hint.paypal" = "Introduce tu correo de PayPal o paypal.me/usuario. Tu QR abre tu página de paypal.me.";
+"hint.venmo" = "Solo tu @usuario. Tu QR abre venmo.com/u/usuario (tu perfil personal de Venmo).";
+"hint.wechat" = "WeChat Pay no tiene enlace público, así que sube tu código de cobro: abre WeChat → Yo → Pagar → Cobrar, guarda esa imagen QR y añádela aquí.";
+"hint.alipay" = "Alipay no tiene enlace público, así que sube tu código de cobro: abre Alipay → Cobrar, guarda esa imagen QR y añádela aquí.";
+"hint.paypay" = "PayPay no tiene enlace público, así que sube tu código de cobro: abre PayPay, toca tu QR/código de barras, guarda la imagen y añádela aquí.";
+"hint.linepay" = "LINE Pay no tiene enlace público, así que sube tu código de cobro: abre LINE Pay → Mi código, guarda esa imagen QR y añádela aquí.";
+"hint.cashapp" = "Tu $cashtag (p. ej. $john). Tu QR abre cash.app/$john.";
+"hint.zelle" = "Zelle no tiene enlace público, así que sube tu código de cobro: abre la pantalla de Zelle de tu banco → My Code, guarda esa imagen QR y añádela aquí.";
+"hint.revolut" = "Tu @revtag. Tu QR abre revolut.me/revtag.";
+"hint.wise" = "Pega tu enlace de pago de Wise completo (Wise → Get paid). Tu QR abre ese enlace.";
 
 /* OnboardingView */
 "Show your QR. Get tipped." = "Muestra tu QR. Recibe propinas.";
@@ -55,7 +55,7 @@
 "10 payment methods." = "10 métodos de pago.";
 "PayPal, Venmo, WeChat, PayPay, LINE Pay, Cash App, Zelle and more." = "PayPal, Venmo, WeChat, PayPay, LINE Pay, Cash App, Zelle y más.";
 "Keep 100% of your tips." = "Quédate con el 100% de tus propinas.";
-"$1.99 once unlocks unlimited payment methods. No subscription, no platform cut — every tip is yours." = "$1.99 una vez desbloquea métodos de pago ilimitados. Sin suscripción, sin comisión — cada propina es tuya.";
+"$1.99 once unlocks unlimited payment methods. No subscription, no platform cut — every tip is yours." = "Una compra única desbloquea métodos ilimitados y pósteres imprimibles. Sin suscripción ni comisión de plataforma: cada propina es tuya.";
 "Get Started" = "Comenzar";
 "Skip" = "Saltar";
 "Skip onboarding" = "Saltar la introducción";
@@ -132,7 +132,6 @@
 "Tip poster" = "Póster de propinas";
 "Size" = "Tamaño";
 "Theme" = "Tema";
-"Pro unlocks every size + theme and removes the watermark." = "Pro desbloquea todos los tamaños y temas y quita la marca de agua.";
 
 /* Tip card themes */
 "theme.classicLight" = "Clásico";
@@ -166,14 +165,27 @@
 "%lld designer card themes" = "%lld temas de tarjeta de diseño";
 "Pro unlocks all %lld card themes and removes the watermark." = "Pro desbloquea los %lld temas de tarjeta y quita la marca de agua.";
 "Tap any premium theme to make one clean, watermark-free card free." = "Toca cualquier tema premium para crear gratis una tarjeta limpia, sin marca de agua.";
-"Tap any size or premium theme to print one clean, watermark-free poster free." = "Toca cualquier tamaño o tema premium para imprimir gratis un póster limpio, sin marca de agua.";
 "Here's your free clean card" = "Aquí tienes tu tarjeta limpia gratis";
-"Here's your free clean poster" = "Aquí tienes tu póster limpio gratis";
 "Share it now — no watermark. Unlock Pro to keep every theme watermark-free and print posters, all for a one-time purchase. No subscription." = "Compártela ahora, sin marca de agua. Activa Pro para mantener todos los temas sin marca de agua e imprimir pósteres, con un único pago. Sin suscripción.";
-"Export it now — no watermark, any size. Unlock Pro to keep every size and theme watermark-free, with a one-time purchase. No subscription." = "Expórtalo ahora, sin marca de agua y en cualquier tamaño. Activa Pro para mantener todos los tamaños y temas sin marca de agua, con un único pago. Sin suscripción.";
 "theme.sunset" = "Atardecer";
 "theme.ocean" = "Océano";
 "theme.forest" = "Bosque";
 "theme.mono" = "Mono";
 "theme.blossom" = "Floral";
 "Payment method options" = "Opciones de método de pago";
+
+/* v1.0.3 — upload-your-own receive code + edit method */
+"Edit Current" = "Editar actual";
+"Edit Method" = "Editar método";
+"Receive code" = "Código de cobro";
+"Label (optional)" = "Etiqueta (opcional)";
+"Choose receive code image" = "Elegir imagen del código de cobro";
+"Replace receive code image" = "Reemplazar imagen del código de cobro";
+"Remove image" = "Quitar imagen";
+"Couldn't load that image. Please try another." = "No se pudo cargar esa imagen. Prueba con otra.";
+"Add your receive code" = "Añade tu código de cobro";
+"No receive code yet. Tap to add your payment QR." = "Aún no hay código de cobro. Toca para añadir tu QR de pago.";
+"QR code to send a tip" = "Código QR para enviar una propina";
+"Your QR will link to" = "Tu QR enlazará a";
+"This doesn't look like a valid link yet. Check the format in the hint above." = "Esto aún no parece un enlace válido. Revisa el formato en la pista de arriba.";
+"This is a free preview. Unlock Pro to export print-ready sizes (A4, Letter, 4×6) in any theme, watermark-free." = "Esta es una vista previa gratuita. Desbloquea Pro para exportar tamaños listos para imprimir (A4, Carta, 4×6) en cualquier tema, sin marca de agua.";

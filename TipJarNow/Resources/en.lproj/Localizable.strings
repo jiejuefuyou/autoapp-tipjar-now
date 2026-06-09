@@ -28,26 +28,26 @@
 /* MethodEditView placeholders */
 "placeholder.paypal"  = "user@email.com or paypal.me/handle";
 "placeholder.venmo"   = "@your-venmo";
-"placeholder.wechat"  = "WeChat Pay receive QR URL";
-"placeholder.alipay"  = "Alipay receive QR URL";
-"placeholder.paypay"  = "PayPay receive URL";
-"placeholder.linepay" = "LINE Pay receive URL";
+"placeholder.wechat"  = "WeChat ID (optional)";
+"placeholder.alipay"  = "Alipay name (optional)";
+"placeholder.paypay"  = "PayPay ID (optional)";
+"placeholder.linepay" = "LINE ID (optional)";
 "placeholder.cashapp" = "$your-tag";
-"placeholder.zelle"   = "phone or email";
+"placeholder.zelle"   = "Name (optional)";
 "placeholder.revolut" = "@your-revtag";
-"placeholder.wise"    = "wise.com/pay/me/yourname";
+"placeholder.wise"    = "your full Wise payment link";
 
 /* MethodEditView hints */
-"hint.paypal"  = "Enter your PayPal email or paypal.me/handle. QR will encode to your PayPal page.";
-"hint.venmo"   = "Just your @handle. QR opens venmo.com/handle.";
-"hint.wechat"  = "Open WeChat → Me → Pay → Receive Money → save the QR URL. Pro users can upload the QR image directly.";
-"hint.alipay"  = "Open Alipay → Receive Money → save the QR URL. Pro users can upload the QR image directly.";
-"hint.paypay"  = "PayPay receive link. Open and copy the URL.";
-"hint.linepay" = "LINE Pay receive link.";
-"hint.cashapp" = "Your $cashtag (e.g. $john). QR opens cash.app/$john.";
-"hint.zelle"   = "Zelle phone or email. QR encodes a tel: or mailto: URI.";
-"hint.revolut" = "Your @revtag. QR opens revolut.com/pay-me/@revtag.";
-"hint.wise"    = "Your Wise pay.me link.";
+"hint.paypal"  = "Enter your PayPal email or paypal.me/handle. Your QR opens your PayPal.me page.";
+"hint.venmo"   = "Just your @handle. Your QR opens venmo.com/u/handle (your personal Venmo profile).";
+"hint.wechat"  = "WeChat Pay has no public link, so upload your receive code: open WeChat → Me → Pay → Receive Money → save that QR image, then add it here.";
+"hint.alipay"  = "Alipay has no public link, so upload your receive code: open Alipay → Receive Money → save that QR image, then add it here.";
+"hint.paypay"  = "PayPay has no public link, so upload your receive code: open PayPay → tap your QR/barcode → save the image, then add it here.";
+"hint.linepay" = "LINE Pay has no public link, so upload your receive code: open LINE Pay → My Code → save the QR image, then add it here.";
+"hint.cashapp" = "Your $cashtag (e.g. $john). Your QR opens cash.app/$john.";
+"hint.zelle"   = "Zelle has no public link, so upload your receive code: open your bank's Zelle screen → My Code → save the QR image, then add it here.";
+"hint.revolut" = "Your @revtag. Your QR opens revolut.me/revtag.";
+"hint.wise"    = "Paste your full Wise payment link (from Wise → Get paid). Your QR opens that link.";
 
 /* OnboardingView */
 "Show your QR. Get tipped." = "Show your QR. Get tipped.";
@@ -55,7 +55,7 @@
 "10 payment methods." = "10 payment methods.";
 "PayPal, Venmo, WeChat, PayPay, LINE Pay, Cash App, Zelle and more." = "PayPal, Venmo, WeChat, PayPay, LINE Pay, Cash App, Zelle and more.";
 "Keep 100% of your tips." = "Keep 100% of your tips.";
-"$1.99 once unlocks unlimited payment methods. No subscription, no platform cut — every tip is yours." = "$1.99 once unlocks unlimited payment methods. No subscription, no platform cut — every tip is yours.";
+"$1.99 once unlocks unlimited payment methods. No subscription, no platform cut — every tip is yours." = "A one-time purchase unlocks unlimited methods and printable posters. No subscription, no platform cut — every tip is yours.";
 "Get Started" = "Get Started";
 "Skip" = "Skip";
 "Skip onboarding" = "Skip onboarding";
@@ -132,7 +132,7 @@
 "Tip poster" = "Tip poster";
 "Size" = "Size";
 "Theme" = "Theme";
-"Pro unlocks every size + theme and removes the watermark." = "Pro unlocks every size + theme and removes the watermark.";
+"This is a free preview. Unlock Pro to export print-ready sizes (A4, Letter, 4×6) in any theme, watermark-free." = "This is a free preview. Unlock Pro to export print-ready sizes (A4, Letter, 4×6) in any theme, watermark-free.";
 
 /* Tip card themes */
 "theme.classicLight" = "Classic";
@@ -166,14 +166,26 @@
 "%lld designer card themes" = "%lld designer card themes";
 "Pro unlocks all %lld card themes and removes the watermark." = "Pro unlocks all %lld card themes and removes the watermark.";
 "Tap any premium theme to make one clean, watermark-free card free." = "Tap any premium theme to make one clean, watermark-free card free.";
-"Tap any size or premium theme to print one clean, watermark-free poster free." = "Tap any size or premium theme to print one clean, watermark-free poster free.";
 "Here's your free clean card" = "Here's your free clean card";
-"Here's your free clean poster" = "Here's your free clean poster";
 "Share it now — no watermark. Unlock Pro to keep every theme watermark-free and print posters, all for a one-time purchase. No subscription." = "Share it now — no watermark. Unlock Pro to keep every theme watermark-free and print posters, all for a one-time purchase. No subscription.";
-"Export it now — no watermark, any size. Unlock Pro to keep every size and theme watermark-free, with a one-time purchase. No subscription." = "Export it now — no watermark, any size. Unlock Pro to keep every size and theme watermark-free, with a one-time purchase. No subscription.";
 "theme.sunset" = "Sunset";
 "theme.ocean" = "Ocean";
 "theme.forest" = "Forest";
 "theme.mono" = "Mono";
 "theme.blossom" = "Blossom";
 "Payment method options" = "Payment method options";
+
+/* v1.0.3 — upload-your-own receive code (image-only wallets) + edit method */
+"Edit Current" = "Edit Current";
+"Edit Method" = "Edit Method";
+"Receive code" = "Receive code";
+"Label (optional)" = "Label (optional)";
+"Choose receive code image" = "Choose receive code image";
+"Replace receive code image" = "Replace receive code image";
+"Remove image" = "Remove image";
+"Couldn't load that image. Please try another." = "Couldn't load that image. Please try another.";
+"Add your receive code" = "Add your receive code";
+"No receive code yet. Tap to add your payment QR." = "No receive code yet. Tap to add your payment QR.";
+"QR code to send a tip" = "QR code to send a tip";
+"Your QR will link to" = "Your QR will link to";
+"This doesn't look like a valid link yet. Check the format in the hint above." = "This doesn't look like a valid link yet. Check the format in the hint above.";

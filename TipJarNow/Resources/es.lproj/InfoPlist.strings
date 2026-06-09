@@ -1,0 +1,2 @@
+/* Photo library access — for picking your payment receive-code image. */
+"NSPhotoLibraryUsageDescription" = "TipJar Now necesita acceso a tus fotos para elegir tu código de cobro y mostrarlo en tu tarjeta de propinas.";

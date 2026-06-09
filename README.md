@@ -14,7 +14,7 @@ created: 2026-05-06
 ---
 # TipJar Now (iOS)
 
-Apple Watch + iPhone tip jar app. Service workers (waiters / bartenders / drivers / bandstand 等) display QR code on demand for one-tap tip transfers (PayPal / Venmo / WeChat / PayPay / LINE Pay / etc).
+A native iOS tip-jar / payment-card builder. Service workers (waiters / bartenders / drivers / buskers 等) show a payment QR on demand and export a designed tip card + printable poster. URL-based wallets (PayPal / Venmo / Cash App / Revolut / Wise) synthesize a payable QR from your handle; image-only wallets (WeChat Pay / Alipay / PayPay / LINE Pay / Zelle) let you upload your own receive code. No payment processing, no account, no platform cut.
 
 ## Status
 
@@ -102,10 +102,10 @@ open TipJarNow.xcodeproj
 
 3. Add localizations (en / ja / zh-Hans):
    Display Name: TipJar Pro
-   Description: Unlock unlimited methods, Apple Watch, custom themes.
+   Description: Unlock unlimited tip methods, printable QR posters, all card themes, and remove the watermark.
 
 4. Pricing: Free
-5. Category: Finance
+5. Category: Utilities (NOT Finance — the app displays a QR but processes no payments; Finance invites 1.5 / 2.1 financial-services scrutiny)
 6. Submit for Review
 ```
 

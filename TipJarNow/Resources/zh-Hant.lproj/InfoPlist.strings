@@ -1,0 +1,2 @@
+/* Photo library access — for picking your payment receive-code image. */
+"NSPhotoLibraryUsageDescription" = "TipJar Now 需要存取你的照片，以便選取你的收款碼並顯示在小費卡片上。";

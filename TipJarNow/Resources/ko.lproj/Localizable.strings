@@ -28,26 +28,26 @@
 /* MethodEditView placeholders */
 "placeholder.paypal"  = "user@email.com 또는 paypal.me/아이디";
 "placeholder.venmo"   = "@당신의 Venmo";
-"placeholder.wechat"  = "WeChat Pay 수취 QR URL";
-"placeholder.alipay"  = "Alipay 수취 QR URL";
-"placeholder.paypay"  = "PayPay 수취 링크";
-"placeholder.linepay" = "LINE Pay 수취 링크";
+"placeholder.wechat" = "위챗 ID (선택)";
+"placeholder.alipay" = "알리페이 이름 (선택)";
+"placeholder.paypay" = "PayPay ID (선택)";
+"placeholder.linepay" = "LINE ID (선택)";
 "placeholder.cashapp" = "$당신의 cashtag";
-"placeholder.zelle"   = "전화번호 또는 이메일";
+"placeholder.zelle" = "이름 (선택)";
 "placeholder.revolut" = "@당신의 revtag";
-"placeholder.wise"    = "wise.com/pay/me/당신의이름";
+"placeholder.wise" = "전체 Wise 결제 링크";
 
 /* MethodEditView hints */
-"hint.paypal"  = "PayPal 이메일 또는 paypal.me/아이디를 입력하세요. QR 코드는 PayPal 페이지로 연결됩니다.";
-"hint.venmo"   = "@아이디만 입력하세요. QR 코드는 venmo.com/아이디로 연결됩니다.";
-"hint.wechat"  = "WeChat에서 '나' → '서비스' → '결제' → '수취 QR'을 열고 QR URL을 저장하세요. Pro 사용자는 QR 이미지를 직접 업로드할 수 있어요.";
-"hint.alipay"  = "Alipay에서 '돈 받기'를 열고 QR URL을 저장하세요. Pro 사용자는 QR 이미지를 직접 업로드할 수 있어요.";
-"hint.paypay"  = "PayPay 수취 링크를 열어 URL을 복사하세요.";
-"hint.linepay" = "LINE Pay 수취 링크입니다.";
-"hint.cashapp" = "$cashtag (예: $john). QR 코드는 cash.app/$john로 연결됩니다.";
-"hint.zelle"   = "Zelle 전화번호 또는 이메일. QR은 tel: 또는 mailto: URI로 인코딩됩니다.";
-"hint.revolut" = "@revtag. QR 코드는 revolut.com/pay-me/@revtag로 연결됩니다.";
-"hint.wise"    = "Wise pay.me 링크입니다.";
+"hint.paypal" = "PayPal 이메일 또는 paypal.me/handle을 입력하세요. QR을 스캔하면 paypal.me 페이지가 열립니다.";
+"hint.venmo" = "@핸들만 입력하세요. QR은 venmo.com/u/handle(개인 Venmo 프로필)을 엽니다.";
+"hint.wechat" = "위챗페이는 공개 링크가 없으니 받기 코드를 업로드하세요. 위챗에서 '나' → '결제' → '받기'를 열어 QR 이미지를 저장한 뒤 여기에 추가하세요.";
+"hint.alipay" = "알리페이는 공개 링크가 없으니 받기 코드를 업로드하세요. 알리페이에서 '받기'를 열어 QR 이미지를 저장한 뒤 여기에 추가하세요.";
+"hint.paypay" = "PayPay는 공개 링크가 없으니 받기 코드를 업로드하세요. PayPay에서 내 QR/바코드를 열어 이미지를 저장한 뒤 여기에 추가하세요.";
+"hint.linepay" = "LINE Pay는 공개 링크가 없으니 받기 코드를 업로드하세요. LINE Pay에서 '마이 코드'를 열어 QR 이미지를 저장한 뒤 여기에 추가하세요.";
+"hint.cashapp" = "$cashtag (예: $john). QR은 cash.app/$john을 엽니다.";
+"hint.zelle" = "Zelle는 공개 링크가 없으니 받기 코드를 업로드하세요. 은행 앱의 Zelle 화면에서 'My Code'를 열어 QR 이미지를 저장한 뒤 여기에 추가하세요.";
+"hint.revolut" = "@revtag. QR은 revolut.me/revtag을 엽니다.";
+"hint.wise" = "전체 Wise 결제 링크(Wise → Get paid)를 붙여넣으세요. QR은 해당 링크를 엽니다.";
 
 /* OnboardingView */
 "Show your QR. Get tipped." = "QR을 보여주고 팁을 받으세요.";
@@ -55,7 +55,7 @@
 "10 payment methods." = "10가지 결제 수단.";
 "PayPal, Venmo, WeChat, PayPay, LINE Pay, Cash App, Zelle and more." = "PayPal, Venmo, WeChat, PayPay, LINE Pay, Cash App, Zelle 외 다수.";
 "Keep 100% of your tips." = "팁은 100% 당신의 것.";
-"$1.99 once unlocks unlimited payment methods. No subscription, no platform cut — every tip is yours." = "$1.99 한 번으로 결제 수단 무제한. 구독 없음, 수수료 없음 — 모든 팁은 당신의 것.";
+"$1.99 once unlocks unlimited payment methods. No subscription, no platform cut — every tip is yours." = "한 번 구매로 무제한 결제 수단과 인쇄용 포스터가 열립니다. 구독 없음, 수수료 없음 — 팁은 100% 당신의 것.";
 "Get Started" = "시작하기";
 "Skip" = "건너뛰기";
 "Skip onboarding" = "온보딩 건너뛰기";
@@ -132,7 +132,6 @@
 "Tip poster" = "팁 포스터";
 "Size" = "크기";
 "Theme" = "테마";
-"Pro unlocks every size + theme and removes the watermark." = "Pro로 모든 크기와 테마를 사용하고 워터마크를 제거합니다.";
 
 /* Tip card themes */
 "theme.classicLight" = "클래식";
@@ -166,14 +165,27 @@
 "%lld designer card themes" = "디자이너 카드 테마 %lld종";
 "Pro unlocks all %lld card themes and removes the watermark." = "Pro로 카드 테마 %lld종 전체를 사용하고 워터마크를 제거합니다.";
 "Tap any premium theme to make one clean, watermark-free card free." = "프리미엄 테마를 탭하면 워터마크 없는 깔끔한 카드를 한 번 무료로 만들 수 있어요.";
-"Tap any size or premium theme to print one clean, watermark-free poster free." = "크기나 프리미엄 테마를 탭하면 워터마크 없는 깔끔한 포스터를 한 번 무료로 인쇄할 수 있어요.";
 "Here's your free clean card" = "워터마크 없는 무료 카드예요";
-"Here's your free clean poster" = "워터마크 없는 무료 포스터예요";
 "Share it now — no watermark. Unlock Pro to keep every theme watermark-free and print posters, all for a one-time purchase. No subscription." = "지금 워터마크 없이 공유하세요. Pro를 잠금 해제하면 모든 테마를 계속 워터마크 없이 사용하고 포스터도 인쇄할 수 있어요. 한 번 구매, 구독 없음.";
-"Export it now — no watermark, any size. Unlock Pro to keep every size and theme watermark-free, with a one-time purchase. No subscription." = "지금 원하는 크기로 워터마크 없이 내보내세요. Pro를 잠금 해제하면 모든 크기와 테마를 계속 워터마크 없이 사용할 수 있어요. 한 번 구매, 구독 없음.";
 "theme.sunset" = "선셋";
 "theme.ocean" = "오션";
 "theme.forest" = "포레스트";
 "theme.mono" = "모노";
 "theme.blossom" = "블로섬";
 "Payment method options" = "결제 수단 옵션";
+
+/* v1.0.3 — upload-your-own receive code + edit method */
+"Edit Current" = "현재 방법 편집";
+"Edit Method" = "결제 수단 편집";
+"Receive code" = "받기 코드";
+"Label (optional)" = "라벨 (선택)";
+"Choose receive code image" = "받기 코드 이미지 선택";
+"Replace receive code image" = "받기 코드 이미지 교체";
+"Remove image" = "이미지 제거";
+"Couldn't load that image. Please try another." = "이미지를 불러오지 못했습니다. 다른 이미지를 시도하세요.";
+"Add your receive code" = "받기 코드 추가";
+"No receive code yet. Tap to add your payment QR." = "아직 받기 코드가 없습니다. 탭하여 결제 QR을 추가하세요.";
+"QR code to send a tip" = "팁을 보내기 위한 QR 코드";
+"Your QR will link to" = "QR이 연결될 주소";
+"This doesn't look like a valid link yet. Check the format in the hint above." = "아직 유효한 링크가 아닌 것 같습니다. 위 힌트의 형식을 확인하세요.";
+"This is a free preview. Unlock Pro to export print-ready sizes (A4, Letter, 4×6) in any theme, watermark-free." = "무료 미리보기입니다. Pro를 잠금 해제하면 인쇄용 크기(A4, Letter, 4×6)를 원하는 테마로 워터마크 없이 내보낼 수 있습니다.";
