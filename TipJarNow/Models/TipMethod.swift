@@ -173,7 +173,7 @@ struct TipMethod: Identifiable, Codable, Hashable {
     /// as payable — a synthesized/ pasted URL for `.url` methods, or an uploaded
     /// image for `.uploadedImage` methods. Used for live input validation.
     var hasPayableTarget: Bool {
-        switch payloadKind {
+        switch kind.payloadKind {
         case .url:           return paymentURL != nil
         case .uploadedImage: return qrImageData != nil
         }
