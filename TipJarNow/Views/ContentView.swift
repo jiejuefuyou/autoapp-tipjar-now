@@ -194,25 +194,7 @@ struct ContentView: View {
         VStack(spacing: 20) {   // 20 = QR card section rhythm; sits between md(16)/lg(24)
             heroCard(for: method)
 
-            qrImage(for: method)
-                .resizable()
-                .interpolation(.none)
-                .frame(width: 280, height: 280)
-                .padding(Spacing.md)
-                .background(.white, in: RoundedRectangle(cornerRadius: 24))   // 24 = QR brand card; visual depends on this size
-                .overlay(
-                    RoundedRectangle(cornerRadius: 24)
-                        .strokeBorder(.tertiary, lineWidth: 1)
-                )
-                .overlay {
-                    // Image-only wallet with no uploaded code yet → no payable
-                    // QR exists. Don't pretend the placeholder glyph is scannable;
-                    // prompt the user to add their real receive code.
-                    if method.qrImage == nil && method.requiresUploadedQR {
-                        setupCodeOverlay(for: method)
-                    }
-                }
-                .accessibilityLabel(Text(qrAccessibilityLabel(for: method)))
+            qrCodeImage(for: method)
 
             if !method.addressOrLink.isEmpty {
                 Text(method.addressOrLink)
@@ -230,6 +212,29 @@ struct ContentView: View {
             }
         }
         .padding(Spacing.md)
+    }
+
+    /// The QR slot: the (synthesized or uploaded) code on a white brand card,
+    /// with the "add your code" overlay for image-only wallets that have none.
+    /// Extracted from qrCardView so the SwiftUI type-checker doesn't time out.
+    @ViewBuilder
+    private func qrCodeImage(for method: TipMethod) -> some View {
+        qrImage(for: method)
+            .resizable()
+            .interpolation(.none)
+            .frame(width: 280, height: 280)
+            .padding(Spacing.md)
+            .background(.white, in: RoundedRectangle(cornerRadius: 24))
+            .overlay(
+                RoundedRectangle(cornerRadius: 24)
+                    .strokeBorder(.tertiary, lineWidth: 1)
+            )
+            .overlay {
+                if method.qrImage == nil && method.kind.requiresUploadedQR {
+                    setupCodeOverlay(for: method)
+                }
+            }
+            .accessibilityLabel(Text(qrAccessibilityLabel(for: method)))
     }
 
     /// Overlay shown on the QR slot when an image-only method (WeChat / Alipay /
@@ -256,7 +261,7 @@ struct ContentView: View {
     }
 
     private func qrAccessibilityLabel(for method: TipMethod) -> LocalizedStringKey {
-        if method.qrImage == nil && method.requiresUploadedQR {
+        if method.qrImage == nil && method.kind.requiresUploadedQR {
             return LocalizedStringKey("No receive code yet. Tap to add your payment QR.")
         }
         return LocalizedStringKey("QR code to send a tip")

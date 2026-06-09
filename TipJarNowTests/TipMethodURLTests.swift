@@ -131,8 +131,8 @@ final class TipMethodURLTests: XCTestCase {
         let m = method(.paypal, "john", image: png)
         let resolved = m.qrImage
         XCTAssertNotNil(resolved)
-        XCTAssertEqual(resolved?.size.width, 1, accuracy: 0.001)
-        XCTAssertEqual(resolved?.size.height, 1, accuracy: 0.001)
+        XCTAssertEqual(resolved?.size.width ?? 0, 1, accuracy: 0.001)
+        XCTAssertEqual(resolved?.size.height ?? 0, 1, accuracy: 0.001)
     }
 
     func testURLMethodSynthesizesQRWhenNoImage() {
