@@ -25,6 +25,18 @@ final class TipJarStore {
 
     init() {
         load()
+
+        // Snapshot mode (fastlane screenshots): seed two realistic, QR-renderable
+        // methods so every captured screen shows the app genuinely in use
+        // (lesson #44 / Apple 2.3.3 — this app was rejected for non-real shots).
+        // Assigned directly (persist() NOT called) so nothing is written to
+        // UserDefaults; production behavior untouched.
+        if ProcessInfo.processInfo.arguments.contains("-FASTLANE_SNAPSHOT") {
+            methods = [
+                TipMethod(kind: .paypal, addressOrLink: "alexcreates", displayName: "Alex the Busker"),
+                TipMethod(kind: .venmo, addressOrLink: "alex-creates", displayName: "Alex the Busker"),
+            ]
+        }
     }
 
     // MARK: - One-time premium-output trial

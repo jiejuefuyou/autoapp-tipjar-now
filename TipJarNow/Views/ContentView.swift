@@ -421,6 +421,7 @@ struct ContentView: View {
                 showShareCard = true
             } label: {
                 Label(LocalizedStringKey("Share Card"), systemImage: "square.and.arrow.up")
+                    .accessibilityIdentifier("home.shareCard")
                     .font(.subheadline.weight(.semibold))
                     .frame(maxWidth: .infinity, minHeight: 44)
             }

@@ -12,6 +12,13 @@ struct TipJarNowApp: App {
         // any Text(LocalizedStringKey(...)) in body. Otherwise swizzle may
         // land after first localized string resolution → wrong .lproj cached.
         _ = LocalizationManager.shared
+
+        // Snapshot mode (fastlane screenshots): skip onboarding so UI tests
+        // land on the main screen (gate = @AppStorage "hasSeenOnboarding" in
+        // ContentView). Never runs in production.
+        if ProcessInfo.processInfo.arguments.contains("-FASTLANE_SNAPSHOT") {
+            UserDefaults.standard.set(true, forKey: "hasSeenOnboarding")
+        }
     }
 
     var body: some Scene {
