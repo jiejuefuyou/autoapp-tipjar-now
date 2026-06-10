@@ -63,8 +63,6 @@
 /* PaywallView */
 "One-time purchase. No subscription. Unlock everything forever." = "一次性買斷,不訂閱,永久解鎖全部功能。";
 "Unlimited tip methods" = "收款方式不限數量";
-"Printable QR posters" = "可列印的 QR 碼海報";
-"Remove watermark" = "移除浮水印";
 "Restore Purchase" = "回復購買項目";
 "No subscription. No data collected. Ever." = "不訂閱,不收集任何資料,絕對不會。";
 "Payment will be charged to your Apple ID. This is a one-time purchase that unlocks all premium features for the lifetime of your Apple ID." = "費用將從你的 Apple ID 扣款。一次性買斷,在 Apple ID 有效期內永久解鎖全部進階功能。";
@@ -189,3 +187,7 @@
 "Your QR will link to" = "你的 QR 將指向";
 "This doesn't look like a valid link yet. Check the format in the hint above." = "這看起來還不是有效連結。請參照上方提示的格式。";
 "This is a free preview. Unlock Pro to export print-ready sizes (A4, Letter, 4×6) in any theme, watermark-free." = "這是免費預覽。解鎖 Pro 即可用任意主題匯出可列印尺寸（A4、Letter、4×6），且無浮水印。";
+/* Round-6 paywall polish — honest anchors + surfaced gated power */
+"Print-ready QR posters (A4, Letter, 4×6)" = "可列印的 QR 海報(A4、Letter、4×6)";
+"Watermark-free cards & posters" = "卡片與海報均無浮水印";
+"Most apps in this category charge a subscription. This is one payment, forever — no fees, no platform cut on your tips." = "同類 App 多數要訂閱。這款一次買斷,永久使用 — 無手續費,小費平台零抽成。";

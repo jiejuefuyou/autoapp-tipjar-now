@@ -424,6 +424,16 @@ struct ShareCardView: View {
                     .padding(.vertical, Spacing.xs)
             }
             .buttonStyle(.borderedProminent)
+            // A clean, watermark-free share is a genuine "I made something good"
+            // moment — the right beat to (occasionally, self-limited) ask for a
+            // review. Watermarked free shares are NOT a success beat, so skip
+            // them. simultaneousGesture so the ShareLink's own action still runs.
+            .simultaneousGesture(TapGesture().onEnded {
+                if !showWatermark {
+                    ReviewService.recordSuccess()
+                    ReviewService.maybeRequestReview()
+                }
+            })
         } else {
             Label(LocalizedStringKey("Share Card"), systemImage: "exclamationmark.triangle")
                 .font(.headline)

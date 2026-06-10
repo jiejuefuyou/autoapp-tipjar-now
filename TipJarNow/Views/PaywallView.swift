@@ -28,16 +28,24 @@ struct PaywallView: View {
 
                     VStack(alignment: .leading, spacing: 14) {
                         // Only advertise what Pro actually unlocks. Each row below
-                        // maps to shipping code: unlimited methods (TipJarStore
-                        // freeMethodLimit gate), 7 card themes + posters
-                        // (TipCardTheme / ShareCardView / PosterExportView), and
-                        // watermark removal (TipCardView/PosterArtwork showWatermark).
-                        feature("infinity",                LocalizedStringKey("Unlimited tip methods"))
+                        // maps to shipping code and is gated behind iap.isPremium:
+                        //   • print-ready posters  → PosterExportView (A4/Letter/
+                        //     4×6 sizes locked unless premium)
+                        //   • remove watermark     → TipCardView/PosterArtwork
+                        //     showWatermark = !premiumOutputUnlocked
+                        //   • N designer themes    → ThemeChooser locks isPro themes
+                        //   • unlimited methods    → ContentView freeMethodLimit gate
+                        //
+                        // Order is intentional (Round-6 plan, TipJarNow rec #3):
+                        // LEAD with the durable value the single-method ICP reuses
+                        // — print-ready posters + watermark-free output — and
+                        // demote "unlimited methods" (a non-need for that ICP) last.
+                        feature("printer.fill",            LocalizedStringKey("Print-ready QR posters (A4, Letter, 4×6)"))
+                        feature("seal.fill",               LocalizedStringKey("Watermark-free cards & posters"))
                         // Theme count is computed from the catalog so this copy
                         // never drifts as designs are added (CLAUDE.md #53/#57).
                         feature("paintpalette.fill",       themeCountText)
-                        feature("printer.fill",            LocalizedStringKey("Printable QR posters"))
-                        feature("seal.fill",               LocalizedStringKey("Remove watermark"))
+                        feature("infinity",                LocalizedStringKey("Unlimited tip methods"))
                     }
                     .padding()
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -56,7 +64,18 @@ struct PaywallView: View {
                     .font(.footnote)
                     .accessibilityHint(Text(LocalizedStringKey("Restores a previous purchase")))
 
-                    VStack(spacing: 4) {
+                    VStack(spacing: 8) {
+                        // Honest, generic, undated value anchor (Round-6 Pattern D).
+                        // No dated "launch" claim, no fabricated install/rating
+                        // numbers (CLAUDE.md #44 / #53) — just the real pay-once
+                        // wedge vs the subscription-heavy field this category sits in.
+                        Text(LocalizedStringKey("Most apps in this category charge a subscription. This is one payment, forever — no fees, no platform cut on your tips."))
+                            .font(.footnote)
+                            .multilineTextAlignment(.center)
+                            .foregroundStyle(.secondary)
+                            .padding(.horizontal)
+                            .padding(.bottom, 4)
+
                         Label(LocalizedStringKey("No subscription. No data collected. Ever."), systemImage: "lock.shield.fill")
                             .font(.caption.weight(.semibold))
                             .foregroundStyle(.secondary)

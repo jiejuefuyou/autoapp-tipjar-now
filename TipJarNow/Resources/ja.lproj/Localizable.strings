@@ -63,8 +63,9 @@
 /* PaywallView */
 "One-time purchase. No subscription. Unlock everything forever." = "買い切り型。サブスクリプションなし。すべての機能を永久に解除。";
 "Unlimited tip methods" = "支払い方法 無制限";
-"Printable QR posters" = "印刷できる QR ポスター";
-"Remove watermark" = "ウォーターマークを削除";
+"Print-ready QR posters (A4, Letter, 4×6)" = "印刷対応の QR ポスター(A4・レター・4×6)";
+"Watermark-free cards & posters" = "ウォーターマークなしのカードとポスター";
+"Most apps in this category charge a subscription. This is one payment, forever — no fees, no platform cut on your tips." = "この種のアプリの多くはサブスク制ですが、本アプリは一度きりの買い切り型。追加料金も、チップからの手数料も一切ありません。";
 "Restore Purchase" = "購入を復元";
 "No subscription. No data collected. Ever." = "サブスクリプションなし。データ収集も一切なし。";
 "Payment will be charged to your Apple ID. This is a one-time purchase that unlocks all premium features for the lifetime of your Apple ID." = "お支払いは Apple ID に請求されます。買い切り型で、Apple ID が有効である限り全プレミアム機能をご利用いただけます。";

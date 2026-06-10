@@ -63,8 +63,6 @@
 /* PaywallView */
 "One-time purchase. No subscription. Unlock everything forever." = "일회 구매. 구독 없음. 모든 기능을 영원히 잠금 해제합니다.";
 "Unlimited tip methods" = "결제 수단 무제한";
-"Printable QR posters" = "인쇄 가능한 QR 포스터";
-"Remove watermark" = "워터마크 제거";
 "Restore Purchase" = "구매 복원";
 "No subscription. No data collected. Ever." = "구독 없음. 데이터 수집 일절 없음.";
 "Payment will be charged to your Apple ID. This is a one-time purchase that unlocks all premium features for the lifetime of your Apple ID." = "결제는 Apple ID로 청구됩니다. 일회 구매이며, Apple ID가 유효한 동안 모든 프리미엄 기능을 영구히 사용할 수 있습니다.";
@@ -189,3 +187,7 @@
 "Your QR will link to" = "QR이 연결될 주소";
 "This doesn't look like a valid link yet. Check the format in the hint above." = "아직 유효한 링크가 아닌 것 같습니다. 위 힌트의 형식을 확인하세요.";
 "This is a free preview. Unlock Pro to export print-ready sizes (A4, Letter, 4×6) in any theme, watermark-free." = "무료 미리보기입니다. Pro를 잠금 해제하면 인쇄용 크기(A4, Letter, 4×6)를 원하는 테마로 워터마크 없이 내보낼 수 있습니다.";
+/* Round-6 paywall polish — honest anchors + surfaced gated power */
+"Print-ready QR posters (A4, Letter, 4×6)" = "인쇄용 QR 포스터(A4, Letter, 4×6)";
+"Watermark-free cards & posters" = "워터마크 없는 카드와 포스터";
+"Most apps in this category charge a subscription. This is one payment, forever — no fees, no platform cut on your tips." = "이 분야 앱 대부분은 구독제입니다. 이 앱은 한 번 결제로 평생 사용 — 수수료도, 팁에 대한 플랫폼 공제도 없습니다.";

@@ -63,8 +63,6 @@
 /* PaywallView */
 "One-time purchase. No subscription. Unlock everything forever." = "Compra única. Sin suscripción. Desbloquea todo para siempre.";
 "Unlimited tip methods" = "Métodos de propina ilimitados";
-"Printable QR posters" = "Pósteres QR imprimibles";
-"Remove watermark" = "Quitar marca de agua";
 "Restore Purchase" = "Restaurar compra";
 "No subscription. No data collected. Ever." = "Sin suscripciones. Sin recopilación de datos. Nunca.";
 "Payment will be charged to your Apple ID. This is a one-time purchase that unlocks all premium features for the lifetime of your Apple ID." = "El pago se cargará a tu Apple ID. Es una compra única que desbloquea todas las funciones premium mientras tu Apple ID esté activo.";
@@ -189,3 +187,7 @@
 "Your QR will link to" = "Tu QR enlazará a";
 "This doesn't look like a valid link yet. Check the format in the hint above." = "Esto aún no parece un enlace válido. Revisa el formato en la pista de arriba.";
 "This is a free preview. Unlock Pro to export print-ready sizes (A4, Letter, 4×6) in any theme, watermark-free." = "Esta es una vista previa gratuita. Desbloquea Pro para exportar tamaños listos para imprimir (A4, Carta, 4×6) en cualquier tema, sin marca de agua.";
+/* Round-6 paywall polish — honest anchors + surfaced gated power */
+"Print-ready QR posters (A4, Letter, 4×6)" = "Pósteres QR listos para imprimir (A4, Carta, 4×6)";
+"Watermark-free cards & posters" = "Tarjetas y pósteres sin marca de agua";
+"Most apps in this category charge a subscription. This is one payment, forever — no fees, no platform cut on your tips." = "La mayoría de apps de este tipo cobran suscripción. Aquí pagas una vez, para siempre: sin comisiones ni recortes en tus propinas.";

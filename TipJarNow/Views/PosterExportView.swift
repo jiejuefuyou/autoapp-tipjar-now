@@ -350,6 +350,15 @@ struct PosterExportView: View {
                         .padding(.vertical, Spacing.xs)
                 }
                 .buttonStyle(.borderedProminent)
+                // Exporting a watermark-free, print-ready poster is the durable
+                // Pro payoff — a true success beat to (self-limited) ask for a
+                // review. Free watermarked previews are not, so skip them.
+                .simultaneousGesture(TapGesture().onEnded {
+                    if !showWatermark {
+                        ReviewService.recordSuccess()
+                        ReviewService.maybeRequestReview()
+                    }
+                })
             } else {
                 // Defensive fallback — rendering a fixed-size view effectively
                 // never fails, but never show a dead control.
