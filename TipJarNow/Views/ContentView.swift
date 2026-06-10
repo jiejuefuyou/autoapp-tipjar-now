@@ -6,6 +6,7 @@ struct ContentView: View {
     @Environment(IAPManager.self) private var iap
     @Environment(TipJarStore.self) private var store
     @Environment(LocalizationManager.self) private var l10n
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     @AppStorage("hasSeenOnboarding") private var hasSeenOnboarding: Bool = false
 
@@ -17,6 +18,10 @@ struct ContentView: View {
     @State private var showCopiedToast = false
     @State private var showShareCard = false
     @State private var showPosterExport = false
+    /// Free user tapped "Add Method" while at the free limit — explain the
+    /// limit before routing to the paywall (audit [NAV]: a silent paywall
+    /// jump reads as a bug/nag).
+    @State private var showMethodLimitDialog = false
 
     var body: some View {
         NavigationStack {
@@ -158,6 +163,17 @@ struct ContentView: View {
                     .environment(\.locale, l10n.currentLocale)
                     .id(l10n.override)
             }
+            // Audit [NAV]: explain the free-method limit at the moment of the
+            // blocked add instead of silently presenting the paywall. Reuses
+            // existing localized keys — no new strings.
+            .confirmationDialog(
+                Text(LocalizedStringKey("Free tier: 1 method. Pro: unlimited methods + themes.")),
+                isPresented: $showMethodLimitDialog,
+                titleVisibility: .visible
+            ) {
+                Button(LocalizedStringKey("Unlock Pro")) { showPaywall = true }
+                Button(LocalizedStringKey("Cancel"), role: .cancel) {}
+            }
         }
     }
 
@@ -192,6 +208,12 @@ struct ContentView: View {
     @ViewBuilder
     private func qrCardView(for method: TipMethod) -> some View {
         VStack(spacing: 20) {   // 20 = QR card section rhythm; sits between md(16)/lg(24)
+            // Audit [NAV]: surface method switching as visible pills when the
+            // user has > 1 method, instead of burying it in the overflow menu.
+            if store.methods.count > 1 {
+                methodSwitcher(current: method)
+            }
+
             heroCard(for: method)
 
             qrCodeImage(for: method)
@@ -214,6 +236,59 @@ struct ContentView: View {
         .padding(Spacing.md)
     }
 
+    /// Horizontal pill switcher shown above the hero card when the user has
+    /// more than one saved method (audit [NAV] — switching was previously only
+    /// reachable via the top-right overflow menu). The selected pill is a
+    /// filled accent capsule (fill + outline differ, so the cue isn't
+    /// color-only); switching gives a selection haptic. Pills reuse the
+    /// methods' localized display names — no new strings.
+    @ViewBuilder
+    private func methodSwitcher(current: TipMethod) -> some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: Spacing.sm) {
+                ForEach(store.methods) { m in
+                    let isSelected = m.id == current.id
+                    Button {
+                        guard !isSelected else { return }
+                        UISelectionFeedbackGenerator().selectionChanged()
+                        if reduceMotion {
+                            selectedMethod = m
+                        } else {
+                            withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
+                                selectedMethod = m
+                            }
+                        }
+                    } label: {
+                        HStack(spacing: Spacing.xs) {
+                            Image(systemName: m.kind.symbol)
+                                .font(.caption.weight(.semibold))
+                            Text(m.displayName ?? m.kind.displayName)
+                                .font(.subheadline.weight(.semibold))
+                                .lineLimit(1)
+                        }
+                        .padding(.horizontal, Spacing.md)
+                        .frame(minHeight: 44)   // HIG hit target (lesson #16)
+                        .foregroundStyle(isSelected ? Color.white : Color.primary)
+                        .background(
+                            isSelected ? Color.accentColor : Color(.secondarySystemBackground),
+                            in: Capsule()
+                        )
+                        .overlay(
+                            Capsule().strokeBorder(
+                                isSelected ? Color.clear : Color(.separator),
+                                lineWidth: 1
+                            )
+                        )
+                    }
+                    .buttonStyle(.plain)
+                    .accessibilityLabel(Text(m.displayName ?? m.kind.displayName))
+                    .accessibilityAddTraits(isSelected ? .isSelected : [])
+                }
+            }
+            .padding(.horizontal, Spacing.xs)
+        }
+    }
+
     /// The QR slot: the (synthesized or uploaded) code on a white brand card,
     /// with the "add your code" overlay for image-only wallets that have none.
     /// Extracted from qrCardView so the SwiftUI type-checker doesn't time out.
@@ -222,8 +297,11 @@ struct ContentView: View {
         qrImage(for: method)
             .resizable()
             .interpolation(.none)
-            .frame(width: 280, height: 280)
-            .padding(Spacing.md)
+            // 264 + 2×24 padding = same 312pt panel as before, but the larger
+            // margin guarantees a ≥4-module QR quiet zone for scan reliability
+            // (audit [VISUAL]).
+            .frame(width: 264, height: 264)
+            .padding(Spacing.lg)
             .background(.white, in: RoundedRectangle(cornerRadius: 24))
             .overlay(
                 RoundedRectangle(cornerRadius: 24)
@@ -254,7 +332,7 @@ struct ContentView: View {
             }
             .foregroundStyle(.white)
             .padding(Spacing.md)
-            .frame(width: 280, height: 280)
+            .frame(width: 264, height: 264)   // matches the QR slot frame above
             .background(.black.opacity(0.55), in: RoundedRectangle(cornerRadius: 24))
         }
         .buttonStyle(.plain)
@@ -407,7 +485,9 @@ struct ContentView: View {
 
     private func handleAddMethod() {
         if !iap.isPremium && store.methods.count >= TipJarStore.freeMethodLimit {
-            showPaywall = true
+            // Explain the limit first (confirmationDialog above) — tapping
+            // "Unlock Pro" there routes to the paywall.
+            showMethodLimitDialog = true
             return
         }
         addingMethod = true
@@ -433,8 +513,19 @@ extension TipMethodKind {
         case .linePay: return Color(red: 0.00, green: 0.78, blue: 0.00)  // LINE green
         case .cashApp: return Color(red: 0.00, green: 0.81, blue: 0.40)  // Cash App green
         case .zelle:   return Color(red: 0.43, green: 0.20, blue: 0.69)  // Zelle purple
-        case .revolut: return Color(red: 0.00, green: 0.00, blue: 0.00)  // Revolut black
-        case .wise:    return Color(red: 0.61, green: 0.97, blue: 0.36)  // Wise green
+        case .revolut:
+            // Revolut's brand is monochrome — pure black vanishes on the
+            // dark-mode hero card, so use the adaptive primary (black in
+            // light, white in dark). Dark-mode audit fix.
+            return Color.primary
+        case .wise:
+            // Wise's bright lime washes out on the light-mode card; use the
+            // brand's deep forest green in light mode, lime in dark.
+            return Color(uiColor: UIColor { trait in
+                trait.userInterfaceStyle == .dark
+                    ? UIColor(red: 0.61, green: 0.97, blue: 0.36, alpha: 1)  // Wise lime
+                    : UIColor(red: 0.09, green: 0.20, blue: 0.00, alpha: 1)  // Wise forest
+            })
         }
     }
 }
@@ -446,7 +537,10 @@ enum QRGenerator {
         let context = CIContext()
         let filter = CIFilter.qrCodeGenerator()
         filter.message = Data(string.utf8)
-        filter.correctionLevel = "M"
+        // "Q" (25% error correction) over "M" (15%): posters are scanned
+        // printed, at an angle, across a counter — payloads are short so the
+        // extra module density is trivial (audit [VISUAL]).
+        filter.correctionLevel = "Q"
         guard let output = filter.outputImage else { return nil }
         let scale: CGFloat = 10
         let scaled = output.transformed(by: CGAffineTransform(scaleX: scale, y: scale))

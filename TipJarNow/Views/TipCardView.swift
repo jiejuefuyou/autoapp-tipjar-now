@@ -51,13 +51,16 @@ struct TipCardView: View {
             .padding(.top, 30)
             .padding(.horizontal, 24)
 
-            // QR panel — solid light plate for scan reliability.
+            // QR panel — solid light plate for scan reliability. 180 + 2×20
+            // padding = the same 220pt panel as before, but the larger margin
+            // guarantees a ≥4-module quiet zone on the printed/shared card
+            // (audit [VISUAL]).
             Image(uiImage: qrImage)
                 .resizable()
                 .interpolation(.none)
                 .scaledToFit()
-                .frame(width: 188, height: 188)
-                .padding(16)
+                .frame(width: 180, height: 180)
+                .padding(20)
                 .background(theme.qrPanel, in: RoundedRectangle(cornerRadius: 20))
                 .overlay(
                     RoundedRectangle(cornerRadius: 20)

@@ -3,7 +3,7 @@ id: tipjar-now
 title: TipJar Now (iOS) - QR tip jar app
 category: new-ios-app
 priority: P1
-status: scaffold
+status: live
 revenue_usd_month: "100-700"
 actions: [open-editor, run-script]
 tags: [ios, swiftui, storekit2, qrcode]
@@ -18,12 +18,7 @@ A native iOS tip-jar / payment-card builder. Service workers (waiters / bartende
 
 ## Status
 
-🟡 **Scaffold v0.1** (2026-05-06, Tick #95 autoiter). Code skeleton only. Requires:
-
-1. Run `xcodegen generate` to create .xcodeproj
-2. Add app icon (1024×1024)
-3. Configure ASC IAP (`com.jiejuefuyou.tipjarnow.premium`)
-4. Submit binary to App Store Connect
+🟢 **LIVE** on the App Store (ASC id `6770249058`, bundle `com.jiejuefuyou.tipjarnow`, MARKETING_VERSION tracks `project.yml`). 8-locale i18n (en/ja/zh-Hans/zh-Hant/ko/es/fr/de), StoreKit 2 one-time IAP, CI via `git tag v*` → TestFlight. No Apple Watch app, no widgets — see "Free vs Pro" below for what actually ships.
 
 ## Architecture
 
@@ -38,36 +33,44 @@ A native iOS tip-jar / payment-card builder. Service workers (waiters / bartende
 ```
 TipJarNow/
 ├── App/
-│   └── TipJarNowApp.swift          # @main + state injection
+│   ├── TipJarNowApp.swift          # @main + state injection
+│   ├── LocalizationManager.swift   # ios-core canonical (in-app lang override)
+│   └── Theme.swift                 # ios-core canonical (Spacing/Radius/Typography)
 ├── IAP/
-│   └── IAPManager.swift            # StoreKit 2 wrapper (~90 LOC)
+│   └── IAPManager.swift            # StoreKit 2 wrapper (loadingState + PurchaseState)
 ├── Models/
-│   └── TipMethod.swift             # TipMethodKind enum + TipMethod struct
+│   ├── TipMethod.swift             # TipMethodKind enum + TipMethod struct + paymentURL
+│   ├── TipMethodQR.swift           # single QR resolver (uploaded image → URL QR)
+│   └── TipCardTheme.swift          # 12-theme card/poster catalog
 ├── Services/
-│   └── TipJarStore.swift           # @Observable + UserDefaults persist
+│   ├── TipJarStore.swift           # @Observable + UserDefaults persist + free trial
+│   └── ReviewService.swift         # ios-core canonical (self-limited review asks)
 ├── Views/
-│   ├── ContentView.swift           # Main QR display + method switcher
-│   ├── MethodEditView.swift        # Add/edit method form
-│   └── PaywallView.swift           # IAP paywall (Pro features)
-└── Resources/                      # (icon / privacy / etc)
+│   ├── ContentView.swift           # Main QR display + method switcher pills
+│   ├── MethodEditView.swift        # Add/edit form + receive-code upload + link preview
+│   ├── PaywallView.swift           # IAP paywall (2.1(b)-safe state machine)
+│   ├── TipCardView.swift           # shareable Tip Card + ThemeChooser + ShareCardView
+│   ├── PosterExportView.swift      # printable poster (A4 / Letter / 4×6 / 1080²)
+│   ├── OnboardingView.swift        # 3-screen onboarding (HIG-compliant Skip)
+│   ├── SettingsView.swift          # premium status / language / about
+│   └── CrossPromoSection.swift     # ios-core canonical (portfolio cross-promo)
+└── Resources/                      # 8 × .lproj + assets + PrivacyInfo
 ```
 
 ## Free vs Pro
 
 ```
 Free tier:
-  - 1 tip method (single QR)
-  - Basic QR
-  - No widgets
-  - No Apple Watch
+  - 1 tip method (single QR; uploading your own receive code is free)
+  - Free card theme, watermarked card/poster output
+  - One-time free premium output: taste any premium theme once,
+    watermark-free (persisted, bypass-proof — TipJarStore)
 
-Pro ($1.99 one-time):
+Pro ($1.99 one-time, no subscription):
   - Unlimited methods
-  - Apple Watch (planned)
-  - Custom themes
-  - Lock screen widget (planned)
-  - Upload custom QR images (WeChat / PayPay)
-  - Haptic feedback
+  - All 12 designer card themes (count computed from the catalog)
+  - Print-ready poster sizes (A4 / US Letter / 4×6)
+  - Watermark-free cards & posters
 ```
 
 ## Build steps
@@ -109,18 +112,14 @@ open TipJarNow.xcodeproj
 6. Submit for Review
 ```
 
-## Roadmap (8 weeks to ship)
+## Shipped milestones
 
-| Week | Milestone |
-|---|---|
-| W1 | (this scaffold) project structure + IAP + basic ContentView |
-| W2 | Apple Watch companion (independent target) |
-| W3 | Widget extension (lock screen QR) |
-| W4 | Theme picker + custom QR upload |
-| W5 | Localization en/ja/zh-Hans + edge case handling |
-| W6 | Polish + onboarding + privacy / terms / restore |
-| W7 | TestFlight beta + 30 testers + bug fix |
-| W8 | App Store submit + content launch |
+Project structure + IAP, theme picker (12 themes) + user-uploaded receive
+codes for image-only wallets, 8-locale localization, onboarding + privacy /
+terms / restore, Tip Card share + printable poster export, App Store launch.
+No Apple Watch target and no widget extension exist — do not re-add those
+claims to user-facing copy (5.2.5 / 2.3.1 vapor-feature risk; the onboarding
+"Apple Watch" copy was already removed once in commit 3b09ecd).
 
 ## Day 30 ROI projection
 
@@ -145,9 +144,8 @@ Conv 10% × $1.99 × 0.7 = $696/month
 
 ## Known limitations
 
-- Free tier doesn't have widget / Watch (intentional, drives upgrade)
-- WeChat / PayPay / LINE Pay 收款 QR 不能 deep link, 需要用户手动 paste URL
-- Apple Watch 需要独立 target (后续 W2 添加)
+- WeChat / Alipay / PayPay / LINE Pay / Zelle 没有 public payable URL —
+  用户上传自己的收款码图片 (MethodEditView PhotosPicker), 卡片/海报 verbatim 渲染
 - 无 backend (UserDefaults only, OK for v1)
 
 ## License

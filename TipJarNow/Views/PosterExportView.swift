@@ -70,7 +70,11 @@ struct PosterArtwork: View {
         // Scale the design to the shortest dimension so proportions hold across
         // A4 / Letter / 4×6 / square without per-size hand-tuning.
         let unit = min(size.width, size.height)
-        let qrSide = unit * 0.52
+        // 0.50 + 2×0.06 padding = the same 0.62-unit panel as the previous
+        // 0.52 + 2×0.05, but the larger margin guarantees a ≥4-module quiet
+        // zone on the printed poster (audit [VISUAL] — posters are scanned
+        // at an angle across a counter).
+        let qrSide = unit * 0.50
 
         VStack(spacing: unit * 0.045) {
             Spacer(minLength: 0)
@@ -95,7 +99,7 @@ struct PosterArtwork: View {
                 .interpolation(.none)
                 .scaledToFit()
                 .frame(width: qrSide, height: qrSide)
-                .padding(unit * 0.05)
+                .padding(unit * 0.06)
                 .background(theme.qrPanel, in: RoundedRectangle(cornerRadius: unit * 0.04))
                 .overlay(
                     RoundedRectangle(cornerRadius: unit * 0.04)
